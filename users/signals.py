@@ -35,7 +35,7 @@ def remove_unused_media(sender, instance, **kwargs):
             old_image = profile.image
             new_image = instance.image
 
-            path_old = old_image.path.replace("\\", "/")
+            path_old = old_image.path
 
             if old_image != new_image:
                 if settings.MEDIA_DEFAULT_IMAGE not in path_old:
