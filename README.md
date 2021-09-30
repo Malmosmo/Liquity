@@ -1,0 +1,2 @@
+# Liquity
+A Django app.
