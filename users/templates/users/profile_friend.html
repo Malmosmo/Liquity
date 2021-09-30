@@ -1,0 +1,103 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        <!-- Profile Header -->
+                        <div class="d-flex flex-column flex-md-row flex-grow-1">
+
+                            <!-- Image Profile -->
+                            <div class="profile-image flex-shrink-0 rounded-circle mx-auto mb-3 m-md-0" style="background-image: url('{{ profile_user.profile.image.url }}');"></div>
+
+                            <div class="vertical-center flex-grow-1">
+                                <div class="mx-4 fs-6">
+                                    <h2>{{ profile_user.profile.name }}</h2>
+                                </div>
+
+                                <div class="ms-auto">
+                                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#friendRemoveModal">
+                                        Unfriend
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Friend Remove -->
+<div class="modal fade" id="friendRemoveModal" tabindex="-1" aria-labelledby="friendRemove" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="friendRemove">Remove Friend</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you really want to remove <b>{{ profile_user.profile.name }}</b> as your friend?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'profile' pk=profile_user.pk %}?remove=True" class="btn btn-danger">Unfriend</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-2">
+        <div class="row m-0 mb-4">
+            <div class="col-12 col-md-6 m-0">
+                <div class="my-3 fw-lighter fs-2 border-bottom">
+                    Profile Info
+                </div>
+
+                <p class="text-secondary">{{ profile_user.profile.description }}</p>
+
+            </div>
+
+            <!-- 2nd Column -->
+            <div class="col-12 col-md-6 m-0">
+                <div class="my-3 fw-lighter fs-2 border-bottom">
+                    Personal Stats
+                </div>
+
+                <div class="py-1">
+                    <span class="fs-5 fw-lighter">This Week</span>
+
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-dark fw-bolder">
+                                75%
+                            </span>
+                        </div>
+                    </div>
+
+                    <span class="fs-5 fw-lighter">This Month</span>
+
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-light fw-bolder">
+                                50%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TODO -->
+                <div class="py-5 text-center text-secondary fs-1">
+                    There is more to come!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

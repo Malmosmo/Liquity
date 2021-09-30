@@ -1,0 +1,246 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 col-md-8 col-lg-9 p-0 mb-2 mb-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        Friends
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-3 p-0 d-flex justify-content-center justify-content-md-end">
+                    <div class="vertical-center">
+
+                        <a class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalViewRequests">
+                            View Requests
+                            {% if user.profile.incoming_requests %}
+                            <span class="badge bg-secondary">
+                                {{ user.profile.incoming_requests }}
+                            </span>
+                            {% endif %}
+                        </a>
+
+                        <a class="btn btn-primary" href="{% url 'search' %}"><i class="bi bi-search"></i> Search</a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-5">
+        <ul class="list-group">
+
+            {% for friend in friends %}
+
+            <li class="list-group-item">
+                <div class="d-flex px-1 py-1">
+                    <div class="friend-image rounded-circle" style="background-image: url('{{ friend.profile.image.url }}');"></div>
+
+                    <div class="vertical-center flex-grow-1">
+                        <span class="ms-2">
+                            <a href="{% url 'profile' pk=friend.pk %}" class="link text-dark">
+                                {{ friend.profile.name }}
+                            </a>
+                        </span>
+
+                        <div class="ms-auto">
+                            <a class="link text-danger" data-bs-toggle="modal" data-bs-target="#modalRemove_{{ friend.pk }}">
+                                Remove
+                            </a>
+
+                            <!-- Modal Remove Friend -->
+                            <div class="modal fade" id="modalRemove_{{ friend.pk }}" tabindex="-1" aria-labelledby="removeFriend" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="fw-lighter fs-4">
+                                                Remove Friend
+                                            </div>
+
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                        </div>
+
+                                        <div class="modal-body">
+                                            Are you sure that you want to remove <b>"{{ friend.profile.name }}"</b> as your friend?
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <a class="btn btn-danger" href="{% url 'friends' %}?pk={{ friend.pk }}">Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+<!-- View Requests Modal -->
+<div class="modal fade" id="modalViewRequests" tabindex="-1" aria-labelledby="viewRequests" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="fw-lighter fs-4">
+                    Your Friend Requests
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <div class="d-flex">
+                            <div class="fw-lighter fs-5">
+                                Incoming
+                            </div>
+
+                            <div class="vertical-center flex-grow-1">
+                                <span class="ms-auto badge bg-white text-dark rounded-pill">{{ incoming.count }}</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    {% for rq in incoming %}
+
+                    <li class="list-group-item">
+                        <div class="d-flex px-1 py-1">
+                            <div class="friend-image rounded-circle" style="background-image: url('{{  rq.sender.profile.image.url }}');"></div>
+
+                            <div class="vertical-center flex-grow-1">
+                                <span class="ms-2">
+                                    <a href="{% url 'profile' pk=rq.sender.pk %}" class="link text-dark">
+                                        {{ rq.sender.profile.name }}
+                                    </a>
+                                </span>
+
+                                <div class="ms-auto">
+                                    <a class="link text-success me-3" href="{% url 'friends'%}?method=accept&pk={{ rq.pk }}">Accept</a>
+
+                                    <a class="link text-danger" href="{% url 'friends'%}?method=decline&pk={{ rq.pk }}">Decline</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    {% endfor %}
+                </ul>
+
+                <hr>
+
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <div class="d-flex">
+                            <div class="fw-lighter fs-5">
+                                Outgoing
+                            </div>
+
+                            <div class="vertical-center flex-grow-1">
+                                <span class="ms-auto badge bg-white text-dark rounded-pill">{{ outgoing.count }}</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    {% for rq in outgoing %}
+
+                    <li class="list-group-item">
+                        <div class="d-flex px-1 py-1">
+                            <div class="friend-image d-inline-block rounded-circle align-middle" style="background-image: url('{{  rq.receiver.profile.image.url }}');"></div>
+
+                            <div class="vertical-center flex-grow-1">
+                                <span class="ms-2">
+                                    <a href="{% url 'profile' pk=rq.receiver.pk %}" class="link text-dark">
+                                        {{ rq.receiver.profile.name }}
+                                    </a>
+                                </span>
+
+                                <div class="ms-auto">
+                                    <a class="link text-danger" href="{% url 'friends'%}?method=cancel&pk={{ rq.pk }}">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    {% endfor %}
+                </ul>
+
+
+                <!--
+
+                <div class="fw-lighter fs-5">
+                    Incoming
+                </div>
+
+                {% for rq in incoming %}
+
+                <div class="d-flex align-items-center shadow-sm m-2 p-2 bg-light">
+                    <div class="flex-grow-1">
+                        <a class="link vertical-center" href="{% url 'profile' pk=rq.sender.pk %}">
+
+                             Image Friend -- >
+                            <div class="friend-image d-inline-block rounded-circle" style="background-image: url('{{  rq.sender.profile.image.url }}');"></div>
+
+                            <div class="ms-2 d-inline-block">{{ rq.sender.profile.name }}</div>
+                        </a>
+                    </div>
+
+                    <div class="d-inline ms-4">
+                        <a class="link btn btn-success" href="{% url 'friends'%}?method=accept&pk={{ rq.pk }}">Accept</a>
+
+                        <a class="link btn btn-danger" href="{% url 'friends'%}?method=decline&pk={{ rq.pk }}">Decline</a>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                <hr>
+
+                <div class="fw-lighter fs-5">
+                    Outgoing
+                </div>
+
+                {% for rq in outgoing %}
+
+                <div class="d-flex align-items-center shadow-sm m-2 p-2 bg-light">
+                    <div class="flex-grow-1">
+                        <a class="link vertical-center" href="{% url 'profile' pk=rq.receiver.pk %}">
+                            <! -- Image Friend -- >
+                            <div class="friend-image d-inline-block rounded-circle" style="background-image: url('{{  rq.receiver.profile.image.url }}');"></div>
+
+                            <div class="ms-2 d-inline-block">{{ rq.receiver.profile.name }}</div>
+                        </a>
+                    </div>
+
+                    <div class="d-inline ms-4">
+                        <a class="link btn btn-danger" href="{% url 'friends'%}?method=cancel&pk={{ rq.pk }}">Cancel</a>
+                    </div>
+                </div>
+
+                {% endfor %}
+                -->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

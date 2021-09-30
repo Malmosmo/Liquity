@@ -1,0 +1,112 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        Overview
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-4">
+
+        <div class="row m-0 mb-5">
+            <div class="col-12 col-md-6 col-lg-3 p-0">
+                <div class="overview-card yellow-gradient px-3 py-2 mx-auto rounded shadow my-2">
+                    <div class="fs-5">
+                        Total: <span class="float-end fw-bold">{{ total }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3 p-0">
+                <div class="overview-card red-gradient px-3 py-2 mx-auto bg-info rounded shadow my-2">
+                    <div class="fs-5">
+                        This Week: <span class="float-end fw-bold">{{ week }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3 p-0">
+                <div class="overview-card green-gradient px-3 py-2 mx-auto bg-success rounded shadow my-2">
+                    <div class="fs-5">
+                        This Month: <span class="float-end fw-bold">{{ month }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3 p-0">
+                <div class="overview-card blue-gradient px-3 py-2 mx-auto bg-primary rounded shadow my-2">
+                    <div class="fs-5">
+                        This Year: <span class="float-end fw-bold">{{ year }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-0 mx-auto w-50">
+            <div class="col-md-4 p-1">
+                <label for="fromDate" class="form">From:</label>
+                <input type="date" class="form-control" id="fromDate" value="{{ fromDate }}">
+            </div>
+
+            <div class="col-md-4 p-1">
+                <label for="toDate" class="form">To:</label>
+                <input type="date" class="form-control" id="toDate" value="{{ toDate }}">
+            </div>
+
+            <div class="col-md-4 p-1">
+                <label for="inputPassword4" class="form-label"></label>
+                <input type="submit" class="btn btn-success form-control" value="submit" onclick="updateOverviewCharts()">
+            </div>
+        </div>
+
+        <!-- Overview Charts -->
+        <div id="OverviewAccumulatedChart" class="my-5 overflow-hidden p-3 shadow-sm bg-white"></div>
+
+        <div id="OverviewColumnChart" class="my-5 overflow-hidden p-3 shadow-sm bg-white"></div>
+
+        <div id="OverviewStackedChart" class="my-5 overflow-hidden p-3 shadow-sm bg-white"></div>
+
+        <table class="table table-striped table-borderless">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Beer</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for drink in drinks %}
+
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ drink.beer.name }}</td>
+                    <td>{{ drink.date }}</td>
+                    <td>{{ drink.count }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Overview Chart API Call -->
+<script>
+    initOverviewCharts();
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        Search
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-5">
+
+        <form action="{% url 'search' %}" method="GET">
+            <div class="row m-0">
+                <div class="col-9">
+                    <input type="text" class="form-control" id="profileName" name="name" value="{{ name }}" onkeyup="profileSearch()">
+                </div>
+
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <ul class="list-group my-5" id="LIST">
+            <li class="list-group-item active" aria-current="true">Profiles</li>
+
+            {% for profile in profiles %}
+
+            <li class="list-group-item">
+                <div class="d-flex px-1 py-1">
+                    <div class="friend-image rounded-circle" style="background-image: url('{{ profile.image.url }}');"></div>
+
+                    <div class="vertical-center flex-grow-1">
+                        <span class="ms-2">
+                            <a href="{% url 'profile' pk=profile.user.pk %}" class="link text-dark">
+                                {{ profile.name }}
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </li>
+
+
+
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+</div>
+
+{% endblock %}

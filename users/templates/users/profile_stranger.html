@@ -1,0 +1,44 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        <!-- Profile Header -->
+                        <div class="d-flex flex-column flex-md-row flex-grow-1">
+
+                            <!-- Image Profile -->
+                            <div class="profile-image flex-shrink-0 rounded-circle mx-auto mb-3 m-md-0" style="background-image: url('{{ profile_user.profile.image.url }}');"></div>
+
+                            <div class="vertical-center flex-grow-1">
+                                <div class="mx-4 fs-6">
+                                    <h2>{{ profile_user.profile.name }}</h2>
+
+                                    <p class="text-secondary">{{ profile_user.profile.description }}</p>
+                                </div>
+
+                                <div class="ms-auto">
+                                    <a href="{% url 'profile' pk=profile_user.pk  %}?add=True" class="btn btn-primary">Add</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-2">
+
+        <div class="my-3 fw-lighter fs-2">
+            You are not friends with this profile... maybe you want to send a friend request?
+        </div>
+
+    </div>
+</div>
+{% endblock %}

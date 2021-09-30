@@ -1,0 +1,112 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 col-md-8 col-lg-9 p-0 mb-2 mb-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        Groups
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-3 p-0 d-flex justify-content-center justify-content-md-end">
+                    <div class="vertical-center">
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">
+                            Create Group
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-4">
+        <ul class="list-group shadow-sm">
+            <li class="list-group-item bg-dark text-white">Your Groups</li>
+
+            {% for group in groups_own %}
+
+            <li class="list-group-item">
+                <a href="{% url 'group-single' pk=group.pk %}" class="link">{{ group.name }}</a>
+
+                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalGroupDelete_{{ group.pk }}">Delete</a>
+
+                <!-- Modal Group Delete -->
+                <div class="modal fade" id="modalGroupDelete_{{ group.pk }}" tabindex="-1" aria-labelledby="groupDelete" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="groupDelete">Delete Group</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                Are you sure that you want to delete <b>"{{ group.name }}"</b>? It can not
+                                be restored!
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a class="btn btn-danger" href="{% url 'groups' %}?pk={{group.pk}}">Yes
+                                    delete!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            {% endfor %}
+        </ul>
+
+        <ul class="list-group shadow-sm mt-4">
+            <li class="list-group-item bg-dark text-white">Other Groups</li>
+
+            {% for group in groups_oth %}
+
+            <li class="list-group-item">
+                <a class="link" href="{% url 'group-single' pk=group.pk %}">{{ group.name }}</a>
+            </li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+<!-- Group Create Modal -->
+<div class="modal fade" id="modalCreateGroup" tabindex="-1" aria-labelledby="createGroup" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="fw-lighter fs-4">
+                    Create Group
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form method="POST">
+                <div class="modal-body">
+
+                    {% csrf_token %}
+
+                    {% include "forms.html" %}
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <button class="btn btn-outline-success" type="submit">Create Group</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
