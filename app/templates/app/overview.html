@@ -82,6 +82,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Beer</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Volume</th>
                     <th scope="col">Count</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -94,6 +95,7 @@
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ drink.beer.name }}</td>
                     <td>{{ drink.date }}</td>
+                    <td>{{ drink.volume.l }} liter</td>
                     <td>{{ drink.count }}</td>
                     <td>
                         <a class="link text-danger" data-bs-toggle="modal" data-bs-target="#DrinkDelete_{{drink.id}}">

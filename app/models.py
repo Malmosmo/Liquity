@@ -1,5 +1,7 @@
 import os
 
+from django_measurement.models import MeasurementField
+from measurement.measures import Volume
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -32,12 +34,19 @@ class Beer(models.Model):
         default="default_beer.png",
         upload_to=upload_to
     )
+
+    # unused
     percent = models.FloatField(
         validators=[MinValueValidator(0.0), MaxValueValidator(100.0)],
         default=0.0
     )
+
+    # unused
     description = models.TextField(null=True)
+
+    # unused
     type = models.CharField(max_length=100, default="")
+
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def __str__(self) -> str:
@@ -55,6 +64,7 @@ class Drink(models.Model):
     beer = models.ForeignKey(Beer, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     count = models.IntegerField()
+    volume = MeasurementField(measurement=Volume, default=0.0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self) -> str:

@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
+from measurement.measures import Volume
 from .forms import BeerCreateForm, DrinkForm, GroupCreateForm, GroupRenameForm
 from .models import Beer, Drink, Group
 from users.models import FriendList
@@ -242,13 +243,16 @@ def beers(request):
                     count = form.cleaned_data["count"]
 
                     date = form.cleaned_data["date"]
+                    amount = form.cleaned_data["amount"]
+                    unit = form.cleaned_data["unit"]
                     time = form.cleaned_data["time"]
 
                     dt = datetime.datetime.combine(date, time)
                     beer = Beer.objects.filter(pk=beer_pk).first()
+                    volume = Volume(l=amount) if unit == "l" else Volume(ml=amount)
 
                     if beer:
-                        Drink.objects.create(beer=beer, user=request.user, count=count, date=dt)
+                        Drink.objects.create(beer=beer, user=request.user, count=count, date=dt, volume=volume)
 
                         messages.success(request, "Successfully added Drink")
 
