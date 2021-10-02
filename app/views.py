@@ -282,6 +282,12 @@ def beers(request):
 
 @login_required
 def overview(request):
+    deleteID = request.GET.get('delete')
+    if deleteID:
+        Drink.objects.filter(id=deleteID).delete()
+
+        return redirect('overview')
+
     drinks = Drink.objects.filter(user=request.user).order_by("date")
 
     context = {
