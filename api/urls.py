@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from .views import group, single, profile
+from api.views import group, profile, single
 
 urlpatterns = [
     path('group/', group, name="group"),
