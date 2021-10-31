@@ -1,40 +1,21 @@
-{% extends 'main.html' %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Content Header -->
-<div class="container">
-    <div class="row m-0">
-        <div class="p-0 py-4">
-            <div class="row m-0">
-                <div class="col-12 p-0">
-                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
-                        LIQUITY - Homepage
-                    </div>
-                </div>
-            </div>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="px-8">
+        New Home!
     </div>
-</div>
+</body>
 
-<div class="content flex-grow-1">
-    <div class="container my-4">
-
-        <div class="my-5 text-center">
-            <h1 class="display-1">
-                Willkommen :)
-            </h1>
-
-            <div>
-                <h4 class="text-warning">Hier wird noch gearbeitet <i class="bi bi-cone-striped"></i></h4>
-            </div>
-
-            <div class="my-4">
-                <a class="btn btn-primary" href="{% url 'login' %}">Anmelden</a>
-                <a class="btn btn-primary" href="{% url 'register' %}">Registieren</a>
-            </div>
-
-            <img class="img-fluid" src="https://images.pexels.com/photos/4620723/pexels-photo-4620723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="500">
-        </div>
-
-    </div>
-</div>
-{% endblock %}
+</html>
