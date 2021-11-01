@@ -7,15 +7,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{% static 'css/tailwind-output.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
 
     <title>Document</title>
 </head>
 
 <body>
-    <div class="px-8">
-        New Home!
+    <div class="h-screen w-screen flex flex-col">
+
+        <!-- Nav -->
+        <nav>
+            <div class="container flex flex-row items-center mx-auto">
+                <!-- Logo -->
+                <div class="flex-grow-0 p-2">
+                    <img src="/assets/images/logo.png" alt="Logo" width="48">
+                </div>
+
+                <!-- Links -->
+                <div class="hidden md:flex flex-grow">
+                    <div class="flex justify-center flex-grow">
+                        <a href="#" class="link">Link 1</a>
+                        <a href="#" class="link">Link 2</a>
+                        <a href="#" class="link">Link 3</a>
+                    </div>
+
+                    <!-- Login -->
+                    <div class="flex justify-center">
+                        <a href="#" class="link">Login</a>
+                        <a href="#" class="link">Register</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown Button -->
+                <button class="ml-auto flex md:hidden link" data-dropdown-toggle="dropdown">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <!-- Dropdown -->
+                <div class="absolute hidden top-0 left-0 hidde bg-white z-50 w-screen h-screen" id="dropdown">
+                    <nav>
+                        <div class="container flex flex-row items-center mx-auto">
+                            <div class="flex-grow-0 p-2">
+                                <img src="/assets/images/logo.png" alt="Logo" width="48">
+                            </div>
+
+                            <button class="ml-auto flex link" data-dropdown-close="dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="container mx-auto">
+                            <div class="flex flex-col mx-4">
+                                <div class="flex flex-col py-4">
+                                    <a href="#" class="link border-b">Link 1</a>
+                                    <a href="#" class="link border-b">Link 2</a>
+                                    <a href="#" class="link border-b">Link 3</a>
+                                </div>
+
+                                <!-- Login -->
+                                <div class="flex justify-around py-4">
+                                    <a href="#" class="link bg-green-600 rounded-md">Login</a>
+                                    <a href="#" class="link text-green-600 rounded-md">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
+
+
+        </nav>
+
+        <!-- Main -->
+        <main class="flex-grow bg-purple-600">
+            Ae
+        </main>
+
+        <!-- Footer -->
+        <footer class="container mx-auto bg-green-600 p-2">
+            <div>
+                Footer Here !
+            </div>
+        </footer>
     </div>
+
+    <script src="/assets/js/tailwind/tailwind.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-// npm run-script build
+// npm run-script build         // in ~/tailwind
 module.exports = {
     plugins: [
         require('tailwindcss'),
