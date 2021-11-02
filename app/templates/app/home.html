@@ -7,16 +7,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Tailwind -->
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .diag-1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            top: 0;
+            left: 0;
+
+            clip-path: polygon(0 0, 37.5% 0%, 62.5% 100%, 0% 100%);
+        }
+
+        .diag-2 {
+            position: absolute;
+            width: 62.5%;
+            height: 100%;
+
+            top: 0;
+            left: 37.5%;
+
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 37.5% 100%);
+
+            background-image: url("https://images.pexels.com/photos/2707972/pexels-photo-2707972.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="h-screen w-screen flex flex-col">
+    <div class="flex flex-col" style="min-height: 100vh;">
 
         <!-- Nav -->
-        <nav>
+        <nav class="border-b">
             <div class="container flex flex-row items-center mx-auto">
                 <!-- Logo -->
                 <div class="flex-grow-0 p-2">
@@ -46,7 +82,7 @@
                 </button>
 
                 <!-- Dropdown -->
-                <div class="absolute hidden top-0 left-0 hidde bg-white z-50 w-screen h-screen" id="dropdown">
+                <div class="absolute hidden top-0 left-0 hidde bg-white z-50 min-w-full min-h-full" id="dropdown">
                     <nav>
                         <div class="container flex flex-row items-center mx-auto">
                             <div class="flex-grow-0 p-2">
@@ -84,14 +120,47 @@
         </nav>
 
         <!-- Main -->
-        <main class="flex-grow bg-purple-600">
-            Ae
+        <main class="flex flex-grow">
+            <!-- Hero -->
+            <div class="relative flex-grow">
+                <div class="diag-1 flex items-center pl-80">
+                    <div class="w-3/12">
+                        <h1 class="text-5xl pb-4">Liquity</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, impedit! Iste ipsam nemo nulla voluptates,
+                            dicta facilis iure optio, eos at officia eligendi corporis iusto ad dolore temporibus quam alias?
+                        </p>
+                        <button class="p-4">Click me!</button>
+                    </div>
+                </div>
+                <div class="diag-2"></div>
+            </div>
         </main>
 
         <!-- Footer -->
-        <footer class="container mx-auto bg-green-600 p-2">
-            <div>
-                Footer Here !
+        <footer class="flex justify-center bg-gray-600">
+            <div class="flex flex-col py-6">
+                <!-- Social -->
+                <div class="flex justify-around text-xl">
+                    <a href="#" class="fa fa-google    bg-white text-gray-600 rounded-full p-2 m-2"></a>
+                    <a href="#" class="fa fa-instagram bg-white text-gray-600 rounded-full p-2 m-2"></a>
+                    <a href="#" class="fa fa-reddit    bg-white text-gray-600 rounded-full p-2 m-2"></a>
+                </div>
+
+                <div class="flex justify-around text-white text-sm font-semibold">
+                    <span class="p-2">Info</span>
+                    <span class="p-2">Support</span>
+                    <span class="p-2">Marketing</span>
+                </div>
+
+                <div class="flex justify-around text-white text-sm font-semibold">
+                    <span class="p-2">Termes of Use</span>
+                    <span class="p-2">Privacy Policy</span>
+                </div>
+
+                <div class="flex justify-around text-gray-400 text-sm font-semibold">
+                    <span class="p-2">&copy; 2021 Monte Carlo</span>
+                </div>
             </div>
         </footer>
     </div>
