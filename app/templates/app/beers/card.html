@@ -1,0 +1,23 @@
+<!-- Card -->
+<div class="rounded border shadow-sm" style="width:200px;">
+    <!-- Card Image -->
+    <img height="200" class="card-image" src="{{ beer.image.url }}" alt="Beverage">
+
+    <!-- Card Body -->
+    <div class="p-2 border-top">
+        <!-- Card Text -->
+        <p class="card-text">
+            <a class="link" data-bs-toggle="modal" data-bs-target="#modal_{{ beer.pk }}" onclick="updateTime({{ beer.pk }})">
+                {{ beer.name }}
+            </a>
+        </p>
+
+        <p class="card-text text-end">
+            <small><a href="{% url 'profile' pk=beer.creator.pk %}" class="link text-muted">{{ beer.creator.profile.name }}</a></small>
+        </p>
+
+        <!-- Modal -->
+        {% include "app/beers/add.html" %}
+
+    </div>
+</div>

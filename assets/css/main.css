@@ -117,6 +117,26 @@ Images
 ===============================================================================
 */
 
+.grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-auto-flow: dense;
+    justify-content: center;
+}
+
+.card-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+p.card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
 .beer-card-image {
     height: 300px;
 

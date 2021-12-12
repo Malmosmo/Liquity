@@ -15,9 +15,7 @@
                     <form class="d-flex input-group mx-auto mx-md-0 ms-md-auto">
                         <input class="form-control" id="liveSearch" type="search" placeholder="Search" aria-label="Search" onkeyup="search()">
                         <a class="input-group-text link" data-bs-toggle="modal" data-bs-target="#modal_beer_add">
-                            <svg xmlns="http://www.w3.org/2000/svg/" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                            </svg>
+                            New
                         </a>
                     </form>
                 </div>
@@ -27,197 +25,18 @@
 </div>
 
 <div class="content flex-grow-1">
-    <div class="container my-4">
-        <div class="row m-0">
-            <div class="fs-2 beer-no-found text-center p-5" id="BEER_LIST" style="display: none;">
-                Nothing found. Maybe you want to add one <a class="link" data-bs-toggle="modal" data-bs-target="#modal_beer_add">here</a>?
-            </div>
+    <div class="container grid mb-4">
 
-            <!-- Modal Beer add -->
-            <div class="modal fade" id="modal_beer_add" tabindex="-1" aria-labelledby="beerAdd" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="beerAdd">Add Beer</h5>
+        <!-- Modal -->
+        {% include "app/beers/new.html" %}
 
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+        {% for beer in beers %}
 
-                        <form method="POST" enctype="multipart/form-data">
-                            <div class="modal-body">
+        <!-- card -->
+        {% include "app/beers/card.html" %}
 
-                                {% csrf_token %}
-
-                                {% include "forms.html" %}
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                <input class="btn btn-outline-success" type="submit" name="beerAdd" value="Add Beer">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            {% for beer in beers %}
-
-            <div class="CARD_SEARCH col-6 col-md-4 col-lg-3 col-xxl-2 p-0">
-
-                <!-- Card -->
-                <div class="csm-card rounded shadow-sm bg-white overflow-hidden m-2 position-relative">
-
-                    <!-- Delete Beer -->
-                    <a href="#" class="p-2 fs-5 position-absolute top-0 end-0 text-danger bg-warning link" style="z-index: 1030;line-height: 0;" data-bs-toggle="modal" data-bs-target="#modal_beer_delete_{{ beer.pk }}"><i class="bi bi-x"></i></a>
-
-                    <!-- Modal Group Delete -->
-                    <div class="modal fade" id="modal_beer_delete_{{ beer.pk }}" tabindex="-1" aria-labelledby="beerDelete" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="beerDelete">Delete Beer</h5>
-
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-
-                                <div class="modal-body">
-                                    Are you sure that you want to delete <b>"{{ beer.name }}"</b>? It can not
-                                    be restored and <b>all</b> Drinks of this beer will be deleted!
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                    <a class="btn btn-danger" href="{% url 'beers' %}?delete={{ beer.pk }}">Yes delete!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Image Card -->
-                    <div class="beer-card-image" style="background-image: url('{{ beer.image.url }}')"></div>
-
-                    <!-- Card Text -->
-                    <div class="m-3 overflow-hidden">
-                        <div class="text-truncate" style="white-space:nowrap;">
-
-                            <a class="link" data-bs-toggle="modal" data-bs-target="#modal_{{ beer.pk }}" onclick="updateTime({{ beer.pk }})">
-                                {{ beer.name }}
-                            </a>
-
-                            {% if user.is_authenticated %}
-
-                            <!-- Modal Drink Add -->
-                            <div class="modal fade" id="modal_{{ beer.pk }}" tabindex="-1" aria-labelledby="drinkAdd" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <div class="fw-lighter fs-4">
-                                                Add Drink
-                                            </div>
-
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-
-                                        <form method="POST">
-                                            <div class="modal-body">
-                                                <div class="text-center m-3">
-                                                    <!-- Image Drink Add-->
-                                                    <img src="{{ beer.image.url }}" height="300">
-                                                </div>
-
-                                                {% csrf_token %}
-
-                                                <!-- Actual Beer Input -->
-                                                <input type="hidden" name="beer" value="{{ beer.pk }}">
-
-                                                <!-- Displayed Beer Input -->
-                                                <div class="form-group mb-3">
-                                                    <label for="beerDisplay" class="form-label">Beer</label>
-
-                                                    <input type="text" name="beerDisplay" class="form-control" id="beerDisplay" value="{{ beer.name }}" disabled>
-                                                </div>
-
-                                                <div class="form-group mb-3">
-                                                    <div class="row m-0">
-                                                        <div class="col-md-6 p-0 pe-1">
-                                                            {{ form_drink.amount.erros }}
-                                                            <label for="{{ form_drink.amount.id_for_label }}" class="form-label">
-                                                                {{ form_drink.amount.label }}
-                                                            </label>
-
-                                                            {% render_field form_drink.amount class="form-control" %}
-                                                        </div>
-
-                                                        <div class="col-md-6 p-0 ps-1">
-                                                            {{ form_drink.unit.erros }}
-                                                            <label for="{{ form_drink.unit.id_for_label }}" class="form-label">
-                                                                {{ form_drink.unit.label }}
-                                                            </label>
-
-                                                            {% render_field form_drink.unit class="form-control" %}
-
-                                                        </div>
-
-                                                        <div class="col-md-6 p-0 pe-1">
-                                                            {{ form_drink.date.erros }}
-                                                            <label for="{{ form_drink.date.id_for_label }}" class="form-label">
-                                                                {{ form_drink.date.label }}
-                                                            </label>
-
-                                                            {% render_field form_drink.date class="form-control" %}
-                                                        </div>
-
-                                                        <div class="col-md-6 p-0 ps-1">
-                                                            {{ form_drink.time.erros }}
-                                                            <label for="{{ form_drink.time.id_for_label }}" class="form-label">
-                                                                {{ form_drink.time.label }}
-                                                            </label>
-
-                                                            <input type="time" name="time" value="" id="time_{{ beer.pk }}" class="form-control" required="">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group mb-3">
-                                                    {{ form_drink.count.erros }}
-                                                    <label for="{{ form.count.id_for_label }}" class="form-label">
-                                                        {{ form_drink.count.label }}
-                                                    </label>
-                                                    {{ form_drink.count|add_class:'form-control' }}
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button class="btn btn-outline-success" type="submit">Add Drink</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% endif %}
-
-                        </div>
-
-                        <div class="text-truncate text-end w-75 ms-auto">
-                            <small class="text-muted">added by <a href="{% url 'profile' pk=beer.creator.pk %}" class="link">{{ beer.creator.profile.name }}</a></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {% endfor %}
-
-        </div>
+        {% endfor %}
     </div>
-
 </div>
 
 {% endblock %}
