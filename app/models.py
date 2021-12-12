@@ -1,7 +1,7 @@
 import os
 
-from django_measurement.models import MeasurementField
-from measurement.measures import Volume
+# from django_measurement.models import MeasurementField
+# from measurement.measures import Volume
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -64,7 +64,7 @@ class Drink(models.Model):
     beer = models.ForeignKey(Beer, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     count = models.IntegerField()
-    volume = MeasurementField(measurement=Volume, default=0.0)
+    # volume = MeasurementField(measurement=Volume, default=0.0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
