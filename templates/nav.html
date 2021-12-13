@@ -31,8 +31,18 @@
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
                         <!-- Image Navbar -->
-                        <div class="navbar-image d-inline-block align-bottom rounded-circle" style="background-image: url('{{ user.profile.image.url }}');"></div>
+                        <div class="navbar-image d-inline-block align-bottom rounded-circle" style="position: relative;background-image: url('{{ user.profile.image.url }}');">
 
+                            {% if user.profile.incoming_requests %}
+
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem;">
+                                {{ user.profile.incoming_requests }}
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+
+                            {% endif %}
+
+                        </div>
                         <!-- Icon
                         <span class="fs-6">
                             <i class="bi bi-caret-down-fill">
@@ -65,13 +75,16 @@
                         <li><a class="dropdown-item" href="{% url 'profile' pk=user.pk %}">Profile</a></li>
 
                         <li>
-                            <a class="dropdown-item" href="{% url 'friends' %}">
-                                Friends
-                                {% if user.profile.incoming_requests %}
-                                <span class="badge bg-secondary">
-                                    {{ user.profile.incoming_requests }}
+                            <a class="dropdown-item position-relative" href="{% url 'friends' %}">
+                                <span class="position-relative">Friends
+                                    {% if user.profile.incoming_requests %}
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem;">
+                                        {{ user.profile.incoming_requests }}
+                                        <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                    {% endif %}
                                 </span>
-                                {% endif %}
+
                             </a>
                         </li>
 
