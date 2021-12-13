@@ -243,16 +243,17 @@ def beers(request):
                     count = form.cleaned_data["count"]
 
                     date = form.cleaned_data["date"]
-                    amount = form.cleaned_data["amount"]
-                    unit = form.cleaned_data["unit"]
+                    # amount = form.cleaned_data["amount"]
+                    # unit = form.cleaned_data["unit"]
                     time = form.cleaned_data["time"]
 
                     dt = datetime.datetime.combine(date, time)
                     beer = Beer.objects.filter(pk=beer_pk).first()
-                    volume = Volume(l=amount) if unit == "l" else Volume(ml=amount)
+                    #volume = Volume(l=amount) if unit == "l" else Volume(ml=amount)
 
                     if beer:
-                        Drink.objects.create(beer=beer, user=request.user, count=count, date=dt, volume=volume)
+                        # Drink.objects.create(beer=beer, user=request.user, count=count, date=dt, volume=volume)
+                        Drink.objects.create(beer=beer, user=request.user, count=count, date=dt)
 
                         messages.success(request, "Successfully added Drink")
 
@@ -260,7 +261,7 @@ def beers(request):
                         messages.success(request, "Beer does not exist")
 
                 else:
-                    messages.warning(request, request.POST)
+                    messages.warning(request, form.errors)
 
             return redirect('beers')
 
