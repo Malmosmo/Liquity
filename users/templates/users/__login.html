@@ -1,0 +1,48 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        Log In
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-4">
+        <form method="POST" class="w-75 mx-auto">
+
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+
+                {% include "forms.html" %}
+
+            </fieldset>
+
+            <div class="form-group">
+                <button class="btn btn-outline-success" type="submit">Login</button>
+
+                <small class="text-muted mt-2 float-end"><a href="#">Forgot Password?</a></small>
+            </div>
+
+            <div class="text-center my-3">
+                <small class="text-muted">
+                    Have No Account?
+
+                    <a class="link ms-2" href="{% url 'register' %}">Register now!</a>
+                </small>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
