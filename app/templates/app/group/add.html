@@ -1,0 +1,49 @@
+<!-- Add Member Modal -->
+<div class="modal fade" id="modalAddMember" tabindex="-1" aria-labelledby="modalAddMember" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAddMember">Add Member</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <ul class="list-group">
+
+                    {% for friend in user.friendlist.friends.all %}
+                    {% if not friend in group.members.all %}
+
+                    <li class="list-group-item">
+                        <div class="d-flex px-1 py-1">
+                            <div class="friend-image rounded-circle" style="background-image: url('{{ friend.profile.image.url }}');"></div>
+
+                            <div class="vertical-center flex-grow-1">
+                                <span class="ms-2">
+                                    <a href="{% url 'profile' pk=friend.pk %}" class="link text-dark">
+                                        {{ friend.profile.name }}
+                                    </a>
+                                </span>
+
+                                <div class="ms-auto">
+                                    <a href="#" class="link text-success GROUP_ADD" id="group_add_{{ friend.pk }}" add-status="on">
+                                        Add to group
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    {% endif %}
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                <button class="btn btn-outline-success" id="groupSubmit" group-pk="{{ group.pk }}" type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

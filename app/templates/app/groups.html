@@ -36,28 +36,8 @@
 
                 <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalGroupDelete_{{ group.pk }}">Delete</a>
 
-                <!-- Modal Group Delete -->
-                <div class="modal fade" id="modalGroupDelete_{{ group.pk }}" tabindex="-1" aria-labelledby="groupDelete" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="groupDelete">Delete Group</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
+                {% include "app/groups/delete.html" %}
 
-                            <div class="modal-body">
-                                Are you sure that you want to delete <b>"{{ group.name }}"</b>? It can not
-                                be restored!
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a class="btn btn-danger" href="{% url 'groups' %}?pk={{group.pk}}">Yes
-                                    delete!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </li>
 
             {% endfor %}
@@ -78,35 +58,6 @@
     </div>
 </div>
 
-<!-- Group Create Modal -->
-<div class="modal fade" id="modalCreateGroup" tabindex="-1" aria-labelledby="createGroup" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="fw-lighter fs-4">
-                    Create Group
-                </div>
-
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <form method="POST">
-                <div class="modal-body">
-
-                    {% csrf_token %}
-
-                    {% include "forms.html" %}
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                    <button class="btn btn-outline-success" type="submit">Create Group</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+{% include "app/groups/create.html" %}
 
 {% endblock %}

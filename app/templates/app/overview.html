@@ -102,26 +102,7 @@
                             Delete
                         </a>
 
-                        <!-- Delete Drink Modal -->
-                        <div class="modal fade" id="DrinkDelete_{{drink.id}}" tabindex="-1" aria-labelledby="DrinkDelete_{{drink.id}}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="DrinkDelete_{{drink.id}}">Delete Drink?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        Are you sure that you want to delete <b>{{ drink.beer.name }}, {{ drink.date }}, {{ drink.count }}</b>?
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <a href="{% url 'overview' %}?delete={{ drink.id }}" class="link btn btn-danger">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% include "app/overview/delete.html" %}
                     </td>
                 </tr>
 

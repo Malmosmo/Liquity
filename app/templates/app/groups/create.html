@@ -1,0 +1,30 @@
+<!-- Group Create Modal -->
+<div class="modal fade" id="modalCreateGroup" tabindex="-1" aria-labelledby="createGroup" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="fw-lighter fs-4">
+                    Create Group
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form method="POST">
+                <div class="modal-body">
+
+                    {% csrf_token %}
+
+                    {% include "forms.html" %}
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <button class="btn btn-outline-success" type="submit">Create Group</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
