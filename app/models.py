@@ -64,7 +64,10 @@ class Drink(models.Model):
     beer = models.ForeignKey(Beer, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     count = models.IntegerField()
-    # volume = MeasurementField(measurement=Volume, default=0.0)
+    volume = models.FloatField(
+        validators=[MinValueValidator(0.0), MaxValueValidator(100.0)],
+        default=0.5
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self) -> str:

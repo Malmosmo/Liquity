@@ -154,7 +154,7 @@ def group_single(request, pk):
                 "form": form
             }
 
-            return render(request, 'app/group_single.html', context)
+            return render(request, 'app/group.html', context)
 
         elif request.user in group.members.all():
             if del_pk:
@@ -175,7 +175,7 @@ def group_single(request, pk):
                 "creator": False
             }
 
-            return render(request, 'app/group_single.html', context)
+            return render(request, 'app/group.html', context)
 
         else:
             messages.info(request, "You are not in this group!")
@@ -245,15 +245,18 @@ def beers(request):
                     date = form.cleaned_data["date"]
                     # amount = form.cleaned_data["amount"]
                     # unit = form.cleaned_data["unit"]
+                    volume = form.cleaned_data["volume"]
                     time = form.cleaned_data["time"]
 
                     dt = datetime.datetime.combine(date, time)
                     beer = Beer.objects.filter(pk=beer_pk).first()
+
+                    # print(">>", form.cleaned_data["volume"])
                     #volume = Volume(l=amount) if unit == "l" else Volume(ml=amount)
 
                     if beer:
                         # Drink.objects.create(beer=beer, user=request.user, count=count, date=dt, volume=volume)
-                        Drink.objects.create(beer=beer, user=request.user, count=count, date=dt)
+                        Drink.objects.create(beer=beer, user=request.user, count=count, date=dt, volume=volume)
 
                         messages.success(request, "Successfully added Drink")
 
