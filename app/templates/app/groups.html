@@ -11,13 +11,13 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-4 col-lg-3 p-0 d-flex justify-content-center justify-content-md-end">
+                <!-- <div class="col-12 col-md-4 col-lg-3 p-0 d-flex justify-content-center justify-content-md-end">
                     <div class="vertical-center">
                         <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">
                             Create Group
                         </a>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -27,11 +27,16 @@
 <div class="content flex-grow-1">
     <div class="container my-4">
         <ul class="list-group shadow-sm">
-            <li class="list-group-item bg-dark text-white">Your Groups</li>
+            <li class="list-group-item bg-dark text-white fw-bold">
+                Your Groups
+
+                <!-- <a class="link float-end ms-2 text-success" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">Create</a> -->
+                <span class="float-end text-success ">{{ groups_own.count }}</span>
+            </li>
 
             {% for group in groups_own %}
 
-            <li class="list-group-item">
+            <li class=" list-group-item">
                 <a href="{% url 'group-single' pk=group.pk %}" class="link">{{ group.name }}</a>
 
                 <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalGroupDelete_{{ group.pk }}">Delete</a>
@@ -41,15 +46,28 @@
             </li>
 
             {% endfor %}
+
+            <li class=" list-group-item">
+                <a class="link text-success" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">New Group</a>
+            </li>
         </ul>
 
         <ul class="list-group shadow-sm mt-4">
-            <li class="list-group-item bg-dark text-white">Other Groups</li>
+            <li class="list-group-item bg-dark text-white fw-bold">
+                Other Groups
+                <span class="float-end text-success ">{{ groups_oth.count }}</span>
+            </li>
 
             {% for group in groups_oth %}
 
             <li class="list-group-item">
                 <a class="link" href="{% url 'group-single' pk=group.pk %}">{{ group.name }}</a>
+            </li>
+
+            {% empty %}
+
+            <li class="list-group-item">
+                <span style="opacity: 0.2;" class="d-inline-block w-100 text-center fs-1 my-5">You are in no other groups... :(</span>
             </li>
 
             {% endfor %}

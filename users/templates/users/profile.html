@@ -11,7 +11,8 @@
                         <div class="d-flex flex-column flex-md-row">
 
                             <!-- Image Profile -->
-                            <div class="profile-image flex-shrink-0 rounded-circle mx-auto mb-3 m-md-0" style="background-image: url('{{ user.profile.image.url }}');"></div>
+                            <!-- <div class="profile-image flex-shrink-0 rounded-circle mx-auto mb-3 m-md-0" style="background-image: url('{{ user.profile.image.url }}');"></div> -->
+                            <img width="200" height="200" class="image rounded-circle border mx-auto" src="{{ user.profile.image.url }}" alt="">
 
                             <div class="vertical-center flex-grow-1">
                                 <div class="mx-4 fs-6">
@@ -19,7 +20,7 @@
                                         <h1 class="display-5 text-center text-md-start">{{ user.profile.name }}</h1>
                                     </div>
 
-                                    <p class="text-secondary">{{ user.profile.description }}</p>
+                                    <p class="text-center text-secondary">{{ user.profile.description }}</p>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +34,7 @@
 <div class="content flex-grow-1">
     <div class="container my-2">
         <div class="row m-0 mb-4">
-            <div class="col-12 col-md-6 m-0">
+            <div class="col-12 col-md-6 m-0 border rounded p-3">
                 <div class="my-3 fw-lighter fs-2 border-bottom">
                     Profile Info
                 </div>

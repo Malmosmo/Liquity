@@ -1,0 +1,24 @@
+<!-- Modal Remove Friend -->
+<div class="modal fade" id="modalRemove_{{ friend.pk }}" tabindex="-1" aria-labelledby="removeFriend" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="fw-lighter fs-4">
+                    Remove Friend
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body">
+                Are you sure that you want to remove <b>"{{ friend.profile.name }}"</b> as your friend?
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a class="btn btn-danger" href="{% url 'friends' %}?pk={{ friend.pk }}">Remove</a>
+            </div>
+        </div>
+    </div>
+</div>

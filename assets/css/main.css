@@ -65,21 +65,14 @@ login.html / register.html
     width: 300px;
     height: fit-content;
     margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 /* 
 ===============================================================================
-Specific
+Overview.html
 ===============================================================================
 */
-
-.csm-card {
-    transition: 0.15s ease-in-out;
-}
-
-.csm-card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
 
 .overview-card {
     height: 75px;
@@ -124,7 +117,7 @@ Specific
 
 /* 
 ===============================================================================
-Images
+beers.html
 ===============================================================================
 */
 
@@ -148,6 +141,30 @@ p.card-text {
     margin: 0;
 }
 
+/* 
+===============================================================================
+nav.html
+===============================================================================
+*/
+
+.nav-menu {
+    cursor: pointer;
+}
+.navbar-dark .nav-menu {
+    color: white;
+}
+
+.nav-image {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+}
+
+.image {
+    object-fit: cover;
+}
+
+/* 
 .beer-card-image {
     height: 300px;
 
@@ -161,23 +178,23 @@ p.card-text {
 
     background-position: center;
     background-size: cover;
-}
-
+} */
+/* 
 .profile-image {
     width: 200px;
     height: 200px;
 
     background-position: center;
     background-size: cover;
-}
+} */
 
-.friend-image {
+/* .friend-image {
     width: 40px;
     height: 40px;
 
     background-position: center;
     background-size: cover;
-}
+} */
 
 /* 
 ===============================================================================

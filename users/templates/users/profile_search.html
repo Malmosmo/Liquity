@@ -35,10 +35,13 @@
 
             {% for profile in profiles %}
 
-            <li class="list-group-item">
-                <div class="d-flex px-1 py-1">
-                    <div class="friend-image rounded-circle" style="background-image: url('{{ profile.image.url }}');"></div>
+            <li class="list-group-item"> {{ profile.name }}</li>
 
+
+
+            <!-- <li class="list-group-item">
+                <div class="d-flex px-1 py-1">
+                    <img width="40" height="40" class="image rounded-circle" src="{{ profile.image.url }}" alt="">
                     <div class="vertical-center flex-grow-1">
                         <span class="ms-2">
                             <a href="{% url 'profile' pk=profile.user.pk %}" class="link text-dark">
@@ -47,14 +50,21 @@
                         </span>
                     </div>
                 </div>
+            </li> -->
+
+            <li class="list-group-item">
+                no results
             </li>
-
-
-
 
             {% endfor %}
 
+            <li>
+                <img src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg" alt="">
+            </li>
+
         </ul>
+
+
 
     </div>
 </div>

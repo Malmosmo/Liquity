@@ -33,18 +33,30 @@
 <div class="content flex-grow-1">
     <div class="container my-4">
 
-        <div class="my-3 fw-lighter fs-3">
+        <!-- <div class="my-3 fw-lighter fs-3">
             Members: {{ group.members.count|add:"1" }}
-        </div>
+        </div> -->
 
         <ul class="list-group shadow-sm">
-            <li class="list-group-item bg-dark text-white" aria-current="true">Creator</li>
+            <!-- <li class="list-group-item bg-dark text-white" aria-current="true">
+                Creator
+                <span class="float-end text-success">Members: {{ group.members.count|add:"1" }}</span>
+            </li>
 
             <li class="list-group-item">
                 <a href="{% url 'profile' pk=group.creator.pk %}" class="link text-dark">{{ group.creator.profile.name }}</a>
+            </li> -->
+
+            <li class="list-group-item bg-dark text-white fw-bold" aria-current="true">
+                Members
+                <span class="float-end text-success ">{{ group.members.count|add:"1" }}</span>
             </li>
 
-            <li class="list-group-item bg-dark text-white" aria-current="true">Members</li>
+            <li class="list-group-item">
+                <a href="{% url 'profile' pk=group.creator.pk %}" class="link text-dark">{{ group.creator.profile.name }}</a>
+
+                <span class="float-end text-success">Creator</span>
+            </li>
 
             {% for member in group.members.all %}
 

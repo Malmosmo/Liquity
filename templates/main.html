@@ -77,6 +77,15 @@
         {% include "footer.html" %}
 
     </div>
+
+    <script>
+        // Navbar Icon
+        let icon = document.getElementById("nav-icon");
+        icon.addEventListener("click", () => {
+            icon.classList.toggle("bi-list");
+            icon.classList.toggle("bi-x");
+        });
+    </script>
 </body>
 
 </html>
