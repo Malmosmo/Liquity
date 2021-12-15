@@ -1,27 +1,8 @@
 {% extends 'main.html' %} {% block content %}
 
 <!-- Content Header -->
-<div class="container">
-    <div class="row m-0">
-        <div class="p-0 py-4">
-            <div class="row m-0">
-                <div class="col-12 col-md-8 col-lg-9 p-0 mb-2 mb-md-0">
-                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
-                        Groups
-                    </div>
-                </div>
-
-                <!-- <div class="col-12 col-md-4 col-lg-3 p-0 d-flex justify-content-center justify-content-md-end">
-                    <div class="vertical-center">
-                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">
-                            Create Group
-                        </a>
-                    </div>
-                </div> -->
-
-            </div>
-        </div>
-    </div>
+<div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">
+    Groups
 </div>
 
 <div class="content flex-grow-1">
@@ -29,8 +10,6 @@
         <ul class="list-group shadow-sm">
             <li class="list-group-item bg-dark text-white fw-bold">
                 Your Groups
-
-                <!-- <a class="link float-end ms-2 text-success" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">Create</a> -->
                 <span class="float-end text-success ">{{ groups_own.count }}</span>
             </li>
 
@@ -38,7 +17,6 @@
 
             <li class=" list-group-item">
                 <a href="{% url 'group-single' pk=group.pk %}" class="link">{{ group.name }}</a>
-
                 <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalGroupDelete_{{ group.pk }}">Delete</a>
 
                 {% include "app/groups/delete.html" %}

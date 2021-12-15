@@ -2,37 +2,29 @@
 
 <!-- Content Header -->
 <div class="container">
-    <div class="row m-0">
-        <div class="p-0 py-4">
-            <div class="row m-0">
-                <div class="col-12 col-md-8 col-lg-9 p-0 mb-2 mb-md-0">
-                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
-                        Beer
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-4 col-lg-3 p-0 vertical-center mt-2 mt-md-0">
-                    <form class="d-flex input-group mx-auto mx-md-0 ms-md-auto">
-                        <input class="form-control" id="liveSearch" type="search" placeholder="Search" aria-label="Search" onkeyup="search()">
-                        <a class="input-group-text link" data-bs-toggle="modal" data-bs-target="#modal_beer_add">
-                            New
-                        </a>
-                    </form>
-                </div>
-            </div>
+    <div class="row mx-0 my-3">
+        <div class="col-12 col-md-8 col-lg-9 col-xxl-10 px-0 fw-lighter fs-2 text-center text-md-start">
+            Beer
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 col-xxl-2 p-0 vertical-center">
+            <form class="input-group">
+                <input class="form-control" id="drinkInput" type="search" placeholder="Search" aria-label="Search">
+                <a class="input-group-text link text-success" data-bs-toggle="modal" data-bs-target="#modal_beer_add">
+                    New
+                </a>
+            </form>
         </div>
     </div>
 </div>
 
+<!-- New Drink Modal -->
+{% include "app/beers/new.html" %}
+
 <div class="content flex-grow-1">
-    <div class="container grid mb-4">
-
-        <!-- Modal -->
-        {% include "app/beers/new.html" %}
-
+    <div class="container grid my-4">
         {% for beer in beers %}
 
-        <!-- card -->
+        <!-- Card -->
         {% include "app/beers/card.html" %}
 
         {% endfor %}

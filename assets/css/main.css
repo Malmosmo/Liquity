@@ -1,3 +1,7 @@
+:root {
+    --card-width: 200px;
+}
+
 /* 
 ===============================================================================
 General
@@ -15,10 +19,11 @@ General
 }
 
 .content {
-    /*background-color: #f3f3f3;*/
+    /* background-color: #f3f3f3; */
+    background-color: #dedad6;
     /* Dark */
-    background-color: #fafbfc;
-    /*background-color: #dfe7f0;*/
+    /* background-color: #fafbfc; */
+    /* background-color: #dfe7f0; */
 }
 
 .message {
@@ -61,6 +66,7 @@ General
 login.html / register.html
 ===============================================================================
 */
+
 .user-box {
     width: 300px;
     height: fit-content;
@@ -124,17 +130,20 @@ beers.html
 .grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, 200px);
-    grid-auto-flow: dense;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fill, min(42.5vw, 200px));
 }
 
-.card-image {
+/* 
+===============================================================================
+login.html / register.html
+===============================================================================
+*/
+
+.lq-card {
     width: 100%;
-    object-fit: cover;
 }
 
-p.card-text {
+.lq-card-text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -157,7 +166,6 @@ nav.html
 .nav-image {
     width: 2rem;
     height: 2rem;
-    object-fit: cover;
 }
 
 .image {
@@ -165,40 +173,8 @@ nav.html
 }
 
 /* 
-.beer-card-image {
-    height: 300px;
-
-    background-position: center;
-    background-size: cover;
-}
-
-.navbar-image {
-    width: 30px;
-    height: 30px;
-
-    background-position: center;
-    background-size: cover;
-} */
-/* 
-.profile-image {
-    width: 200px;
-    height: 200px;
-
-    background-position: center;
-    background-size: cover;
-} */
-
-/* .friend-image {
-    width: 40px;
-    height: 40px;
-
-    background-position: center;
-    background-size: cover;
-} */
-
-/* 
 ===============================================================================
-Bootstrap 4
+Bootstrap extensions
 ===============================================================================
 */
 
@@ -213,4 +189,15 @@ Bootstrap 4
     .m-md-0 {
         margin: 0;
     }
+
+    /* .w-md-0 {
+        width: 0;
+    }
+
+    .w-md-100 {
+        width: 100%;
+    } */
+}
+
+@media (max-width: 768px) {
 }

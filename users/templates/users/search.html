@@ -1,0 +1,55 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<!-- <div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        Search
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">
+    Search
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-4">
+        <form action="{% url 'search' %}" method="GET" class="d-flex my-4">
+            <input type="text" class="form-control" id="profileSearchInput" name="name" value="{{ name }}" api-url="{% url 'api-profile' %}">
+            <button type="submit" class="btn btn-primary w-25 ms-5">Search</button>
+        </form>
+
+        <ul class="list-group shadow-sm" id="profileSearchList">
+            <li class="list-group-item bg-dark text-white fw-bold">
+                Profiles
+
+                <span class="float-end text-success">
+                    Results
+                    <span id="results">{{ profiles.count }}</span>
+                </span>
+            </li>
+
+            {% for profile in profiles %}
+
+            <li class="list-group-item d-flex align-items-center">
+                <img width="40" height="40" class="image rounded-circle" src="{{ profile.image.url }}" alt="">
+                <a href="{% url 'profile' pk=profile.user.pk %}" class="link text-dark ms-2">{{ profile.name }}</a>
+            </li>
+
+            {% empty %}
+
+            <li class="list-group-item">Empty</li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

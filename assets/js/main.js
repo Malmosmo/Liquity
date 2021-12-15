@@ -1,5 +1,5 @@
 function init() {
-    initSearch();
+    // initSearch();
     initGroup();
 }
 

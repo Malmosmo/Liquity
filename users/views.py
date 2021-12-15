@@ -94,7 +94,7 @@ def profile(request, pk: int) -> HttpResponse:
             "profile_user": user
         }
 
-        return render(request, 'users/profile_friend.html', context)
+        return render(request, 'users/profile/friend.html', context)
 
     else:
         add = request.GET.get('add')
@@ -129,7 +129,7 @@ def profile(request, pk: int) -> HttpResponse:
             "profile": Profile.objects.get(user=user)
         }
 
-        return render(request, 'users/profile_stranger.html', context)
+        return render(request, 'users/profile/stranger.html', context)
 
 
 @login_required
@@ -202,7 +202,6 @@ def friends(request) -> HttpResponse:
 
 @login_required
 def password_change(request) -> HttpResponse:
-
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
 
@@ -230,7 +229,6 @@ def password_change(request) -> HttpResponse:
 @login_required
 def search(request) -> HttpResponse:
     name = request.GET.get('name')
-
     profiles = []
 
     if name:
@@ -244,4 +242,4 @@ def search(request) -> HttpResponse:
         "name": name
     }
 
-    return render(request, 'users/profile_search.html', context)
+    return render(request, 'users/search.html', context)

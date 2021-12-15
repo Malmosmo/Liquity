@@ -1,18 +1,18 @@
-<!-- Card -->
-<div class="rounded border shadow-sm" style="width:200px;">
+<div class="lq-card rounded border shadow-sm bg-body" name="{{ beer.name }}">
     <!-- Card Image -->
-    <img height="200" class="card-image" src="{{ beer.image.url }}" alt="Beverage">
+    <img height="200" class="image w-100" src="{{ beer.image.url }}" alt="Drink">
 
     <!-- Card Body -->
     <div class="p-2 border-top">
+
         <!-- Card Text -->
-        <p class="card-text">
-            <a class="link" data-bs-toggle="modal" data-bs-target="#modal_{{ beer.pk }}" onclick="updateTime({{ beer.pk }})">
+        <p class="card-text m-0">
+            <a class="link" data-bs-toggle="modal" data-bs-target="#modal_{{ beer.pk }}" onclick="updateTime('{{ beer.pk }}')">
                 {{ beer.name }}
             </a>
         </p>
 
-        <p class="card-text text-end">
+        <p class="lq-card-text text-end">
             <small><a href="{% url 'profile' pk=beer.creator.pk %}" class="link text-muted">{{ beer.creator.profile.name }}</a></small>
         </p>
 

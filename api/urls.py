@@ -7,7 +7,7 @@ from api.views import group, profile, single
 urlpatterns = [
     path('group/', group, name="group"),
     path('single/', single, name="single"),
-    path('profile/', profile, name="profile"),
+    path('profile/', profile, name="api-profile"),
 ]
 
 if settings.DEBUG:

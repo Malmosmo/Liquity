@@ -1,7 +1,7 @@
 {% extends 'main.html' %} {% block content %}
 
 <div class="content flex-grow-1 d-flex justify-content-center">
-    <form class="user-box border rounded p-4 shadow-sm" method="POST" style="width: 400px;">
+    <form class="user-box bg-body border rounded p-4 shadow-sm" method="POST" style="width: 400px;">
         <!-- Title -->
         <div class="text-center fw-lighter fs-3">
             Register
@@ -15,15 +15,14 @@
 
             {% include "forms.html" %}
 
+            <button class="w-100 btn btn-success" type="submit">Sign Up</button>
         </fieldset>
 
         <hr>
 
-        <div class="form-group">
-            <button class="btn btn-outline-success" type="submit">Sign Up</button>
-            <small class="text-muted mt-2 float-end">
-                Already have an account?
-                <a class="link ms-1" href="{% url 'login' %}">Sign in!</a>
+        <div class="form-group text-center">
+            <small class="text-muted">
+                Already have an account? <a class="link ms-1" href="{% url 'login' %}">Sign in!</a>
             </small>
         </div>
     </form>

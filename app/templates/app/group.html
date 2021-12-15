@@ -2,51 +2,27 @@
 
 <!-- Content Header -->
 <div class="container">
-    <div class="row m-0">
-        <div class="p-0 py-4">
-            <div class="row m-0">
-                <div class="col-12 col-md-8 col-lg-9 p-0 mb-2 mb-md-0">
-                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
-                        {{ group.name }}
-                    </div>
-                </div>
-
-                {% if creator %}
-
-                <div class="col-12 col-md-4 col-lg-3 p-0 d-flex justify-content-center justify-content-md-end">
-                    <div class="vertical-center">
-                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRename">
-                            Rename
-                        </a>
-                    </div>
-                </div>
-
-                {% endif %}
-
-            </div>
+    <div class="row mx-0 my-3">
+        <div class="col-12 col-md-8 col-lg-9 col-xxl-10 px-0 fw-lighter fs-2 text-center text-md-start">
+            {{ group.name }}
         </div>
+
+        {% if creator %}
+
+        <div class="col-12 col-md-4 col-lg-3 col-xxl-2 p-0 vertical-center justify-content-center justify-content-md-end">
+            <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRename">
+                Rename
+            </a>
+        </div>
+
+        {% endif %}
+
     </div>
 </div>
 
-
-
 <div class="content flex-grow-1">
     <div class="container my-4">
-
-        <!-- <div class="my-3 fw-lighter fs-3">
-            Members: {{ group.members.count|add:"1" }}
-        </div> -->
-
         <ul class="list-group shadow-sm">
-            <!-- <li class="list-group-item bg-dark text-white" aria-current="true">
-                Creator
-                <span class="float-end text-success">Members: {{ group.members.count|add:"1" }}</span>
-            </li>
-
-            <li class="list-group-item">
-                <a href="{% url 'profile' pk=group.creator.pk %}" class="link text-dark">{{ group.creator.profile.name }}</a>
-            </li> -->
-
             <li class="list-group-item bg-dark text-white fw-bold" aria-current="true">
                 Members
                 <span class="float-end text-success ">{{ group.members.count|add:"1" }}</span>
@@ -74,9 +50,7 @@
 
                 {% else %} {% if member == user %}
 
-                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalLeave">
-                    Leave
-                </a>
+                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalLeave">Leave</a>
 
                 {% include "app/group/leave.html" %}
 
@@ -90,11 +64,11 @@
 
             <li class="list-group-item"><a href="#" class="link" data-bs-toggle="modal" data-bs-target="#modalAddMember">Add Member</a></li>
 
-            {% include "app/group/add.html" %}
-
             {% endif %}
 
         </ul>
+
+        {% include "app/group/add.html" %}
 
         <!-- Group Charts -->
         <div id="GroupColumnChart" class="mt-4 p-3 shadow-sm bg-white"></div>
