@@ -1,0 +1,10 @@
+{% for message in messages %}
+<div class="position-fixed top-0 end-50 p-3" style="z-index: 11;transform: translate(50%);">
+    <div id="message-{{ forloop.counter }}" class="toast show bg-{{ message.tags }}" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header py-3 px-4" style="border-bottom: 0;">
+            <strong class="me-auto text-{{ message.tags }}">{{ message }}</strong>
+            <button type="button" class="btn-close toast-close" data-bs-dismiss="toast" target="message-{{ forloop.counter }}" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+{% endfor %}
