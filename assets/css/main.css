@@ -184,20 +184,3 @@ Bootstrap extensions
     background-color: #f8d7da;
     border-color: #f5c2c7;
 }
-
-@media (max-width: 768px) {
-    .m-md-0 {
-        margin: 0;
-    }
-
-    /* .w-md-0 {
-        width: 0;
-    }
-
-    .w-md-100 {
-        width: 100%;
-    } */
-}
-
-@media (max-width: 768px) {
-}
