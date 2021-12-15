@@ -1,0 +1,5 @@
+{% if user.profile.incoming_requests %}
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem;">
+    {% if user.profile.incoming_requests < 100 %} {{ user.profile.incoming_requests }} {% else %} 99+ {% endif %} <span class="visually-hidden">unread messages</span>
+</span>
+{% endif %}

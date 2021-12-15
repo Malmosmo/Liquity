@@ -27,6 +27,10 @@
         <!-- Card -->
         {% include "app/beers/card.html" %}
 
+        {% empty %}
+
+        <h1>No Drinks for you :(... maybe add one?</h1>
+
         {% endfor %}
     </div>
 </div>

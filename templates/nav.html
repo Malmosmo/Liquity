@@ -31,12 +31,7 @@
                     <a class="nav-link p-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <!-- Image here -->
                         <img class="rounded-circle nav-image image" src="{{ user.profile.image.url }}" alt="">
-                        {% if user.profile.incoming_requests %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem;">
-                            {{ user.profile.incoming_requests }}
-                            <span class="visually-hidden">unread messages</span>
-                        </span>
-                        {% endif %}
+                        {% include "notification.html" %}
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -61,12 +56,7 @@
                         <li>
                             <a class="dropdown-item position-relative" href="{% url 'friends' %}">
                                 <span class="position-relative">Friends
-                                    {% if user.profile.incoming_requests %}
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem;">
-                                        {{ user.profile.incoming_requests }}
-                                        <span class="visually-hidden">unread messages</span>
-                                    </span>
-                                    {% endif %}
+                                    {% include "notification.html" %}
                                 </span>
 
                             </a>
