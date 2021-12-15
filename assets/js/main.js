@@ -1,6 +1,6 @@
 function init() {
     // initSearch();
-    initGroup();
+    // initGroup();
 }
 
 function apiGroupCall(params, callback) {

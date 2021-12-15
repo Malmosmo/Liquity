@@ -15,7 +15,7 @@
 
                     <li class="list-group-item">
                         <div class="d-flex px-1 py-1">
-                            <div class="friend-image rounded-circle" style="background-image: url('{{ friend.profile.image.url }}');"></div>
+                            <img width="40" height="40" class="image rounded-circle" src="{{ friend.profile.image.url }}" alt="">
 
                             <div class="vertical-center flex-grow-1">
                                 <span class="ms-2">
@@ -24,16 +24,19 @@
                                     </a>
                                 </span>
 
-                                <div class="ms-auto">
-                                    <a href="#" class="link text-success GROUP_ADD" id="group_add_{{ friend.pk }}" add-status="on">
-                                        Add to group
-                                    </a>
-                                </div>
+                                <a href="#" class="lq-group-add link ms-auto text-success" profile="{{ friend.pk }}" add-status="on">
+                                    Add to group
+                                </a>
                             </div>
                         </div>
                     </li>
 
                     {% endif %}
+
+                    {% empty %}
+
+                    <li class="list-group-item">No Friends :(</li>
+
                     {% endfor %}
 
                 </ul>
@@ -42,7 +45,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                <button class="btn btn-outline-success" id="groupSubmit" group-pk="{{ group.pk }}" type="submit">Submit</button>
+                <button class="btn btn-outline-success" id="groupSubmit" url="{% url 'group-single' pk=group.pk %}" type="submit">Submit</button>
             </div>
         </div>
     </div>
