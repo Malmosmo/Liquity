@@ -11,7 +11,6 @@
                         <div class="d-flex flex-column flex-md-row">
 
                             <!-- Image Profile -->
-                            <!-- <div class="profile-image flex-shrink-0 rounded-circle mx-auto mb-3 m-md-0" style="background-image: url('{{ user.profile.image.url }}');"></div> -->
                             <img width="200" height="200" class="image rounded-circle border mx-auto" src="{{ user.profile.image.url }}" alt="">
 
                             <div class="vertical-center flex-grow-1">
@@ -90,24 +89,7 @@
                     <a class="btn btn-outline-danger me-3 float-end" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">Delete Your Account</a>
 
                     <!-- Modal Delete Account-->
-                    <div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="deleteAccount" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteAccount">Do you really want to delete your Account?</h5>
-
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    If you delete your account all of your data will be deleted (including groups, beers, drinks, etc.) and can <b>not</b> be restored. Are you sure you want to do that?
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
-                                    <a href="{% url 'profile' pk=user.pk %}?delete=true" class="btn btn-danger">Yes delete my Account!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% include "users/profile/delete.html" %}
 
                 </form>
             </div>
