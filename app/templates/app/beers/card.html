@@ -7,7 +7,7 @@
 
         <!-- Card Text -->
         <p class="card-text m-0">
-            <a class="link" data-bs-toggle="modal" data-bs-target="#modal_{{ beer.pk }}" onclick="updateTime('{{ beer.pk }}')">
+            <a class="link drink-add" data-bs-toggle="modal" data-bs-target="#modal_{{ beer.pk }}" target="time_{{ beer.pk }}">
                 {{ beer.name }}
             </a>
         </p>

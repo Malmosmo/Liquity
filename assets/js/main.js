@@ -27,16 +27,3 @@ function apiSingleCall(params, callback) {
 
     userAction();
 }
-
-// Time update on Beer cards
-function updateTime(pk) {
-    // Pad time with zeros
-    function pad(arg) {
-        return (arg < 10 ? "0" : "") + arg;
-    }
-
-    let element = document.getElementById("time_" + pk.toString());
-    let date = new Date();
-
-    element.value = pad(date.getHours()) + ":" + pad(date.getMinutes());
-}

@@ -1,25 +1,6 @@
 {% load widget_tweaks %}
 {% if user.is_authenticated %}
 
-<!-- <div class="col-md-6 p-0 pe-1">
-                                {{ form_drink.amount.erros }}
-                                <label for="{{ form_drink.amount.id_for_label }}" class="form-label">
-                                    {{ form_drink.amount.label }}
-                                </label>
-
-                                {% render_field form_drink.amount class="form-control" %}
-                            </div>
-
-                            <div class="col-md-6 p-0 ps-1">
-                                {{ form_drink.unit.erros }}
-                                <label for="{{ form_drink.unit.id_for_label }}" class="form-label">
-                                    {{ form_drink.unit.label }}
-                                </label>
-
-                                {% render_field form_drink.unit class="form-control" %}
-
-                            </div> -->
-
 <!-- Modal Drink Add -->
 <div class="modal fade" id="modal_{{ beer.pk }}" tabindex="-1" aria-labelledby="drinkAdd" aria-hidden="true">
     <div class="modal-dialog">
@@ -51,46 +32,44 @@
                         <input type="text" name="beerDisplay" class="form-control" id="beerDisplay" value="{{ beer.name }}" disabled>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <div class="row m-0">
-                            <div class="col-md-4 p-0 pe-1">
-                                {{ form_drink.volume.erros }}
-                                <label for="{{ form_drink.volume.id_for_label }}" class="form-label">
-                                    {{ form_drink.volume.label }}
-                                </label>
+                    <div class="form-group mb-3 row m-0">
+                        <div class="col-6 p-0 pe-1 mb-3">
+                            {{ form_drink.date.erros }}
+                            <label for="{{ form_drink.date.id_for_label }}" class="form-label">
+                                {{ form_drink.date.label }}
+                            </label>
 
-                                {% render_field form_drink.volume class="form-control" %}
-                            </div>
+                            {% render_field form_drink.date class="form-control" %}
+                        </div>
+
+                        <div class="col-6 p-0 ps-1  mb-3">
+                            {{ form_drink.time.erros }}
+                            <label for="{{ form_drink.time.id_for_label }}" class="form-label">
+                                {{ form_drink.time.label }}
+                            </label>
+
+                            <input type="time" name="time" class="form-control" required="" id="time_{{ beer.pk }}">
+                        </div>
+
+                        <div class="col-6 p-0 pe-1">
+                            {{ form_drink.volume.erros }}
+                            <label for="{{ form_drink.volume.id_for_label }}" class="form-label">
+                                {{ form_drink.volume.label }}
+                            </label>
+
+                            {% render_field form_drink.volume class="form-control" %}
+                        </div>
 
 
-                            <div class="col-md-4 p-0 pe-1">
-                                {{ form_drink.date.erros }}
-                                <label for="{{ form_drink.date.id_for_label }}" class="form-label">
-                                    {{ form_drink.date.label }}
-                                </label>
-
-                                {% render_field form_drink.date class="form-control" %}
-                            </div>
-
-                            <div class="col-md-4 p-0 ps-1">
-                                {{ form_drink.time.erros }}
-                                <label for="{{ form_drink.time.id_for_label }}" class="form-label">
-                                    {{ form_drink.time.label }}
-                                </label>
-
-                                <!-- <input type="time" name="time" value="" id="time_{{ beer.pk }}" class="form-control" required=""> -->
-                                {% render_field form_drink.time class="form-control" %}
-                            </div>
+                        <div class="col-6 p-0 ps-1">
+                            {{ form_drink.count.erros }}
+                            <label for="{{ form.count.id_for_label }}" class="form-label">
+                                {{ form_drink.count.label }}
+                            </label>
+                            {{ form_drink.count|add_class:'form-control' }}
                         </div>
                     </div>
 
-                    <div class="form-group mb-3">
-                        {{ form_drink.count.erros }}
-                        <label for="{{ form.count.id_for_label }}" class="form-label">
-                            {{ form_drink.count.label }}
-                        </label>
-                        {{ form_drink.count|add_class:'form-control' }}
-                    </div>
                 </div>
 
                 <div class="modal-footer">
