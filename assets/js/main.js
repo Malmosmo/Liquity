@@ -1,8 +1,3 @@
-function init() {
-    // initSearch();
-    // initGroup();
-}
-
 function apiGroupCall(params, callback) {
     const userAction = async () => {
         const response = await fetch("/api/group/" + params);
@@ -44,32 +39,4 @@ function updateTime(pk) {
     let date = new Date();
 
     element.value = pad(date.getHours()) + ":" + pad(date.getMinutes());
-}
-
-// Message FadeOut
-function setTimer(delay, target) {
-    let fade;
-
-    // Fade out
-    let func1 = () => {
-        let element = document.getElementById(target);
-        if (!element.style.opacity) {
-            element.style.opacity = 1;
-        }
-
-        if (element.style.opacity > 0) {
-            element.style.opacity -= 0.025;
-        } else {
-            clearInterval(fade);
-
-            document.getElementById("messages").style.display = "none";
-        }
-    };
-
-    // For delay
-    let func2 = () => {
-        fade = setInterval(func1, 1);
-    };
-
-    setTimeout(func2, delay);
 }

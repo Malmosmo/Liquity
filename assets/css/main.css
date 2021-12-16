@@ -188,3 +188,8 @@ Bootstrap extensions
 .toast {
     transition: 500ms;
 }
+
+.toast-wrapper {
+    z-index: 11;
+    transform: translate(50%);
+}
