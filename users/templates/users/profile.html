@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% block content %} {% load widget_tweaks %}
+{% extends 'main.html' %} {% block content %} {% load widget_tweaks %} {% load lq_filters %}
 
 <!-- Content Header -->
 <div class="container">
@@ -91,6 +91,8 @@
                     <!-- Modal Delete Account-->
                     {% include "users/profile/delete.html" %}
 
+                    <a href="{% url 'api-all' %}" download="{% autoescape on %}{{ user.profile.name|download }}{% endautoescape %}.json"><i class="bi bi-download"></i></a>
+                    <a href="#"><i class="bi bi-trash"></i></a>
                 </form>
             </div>
 

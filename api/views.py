@@ -5,6 +5,8 @@ from django.db.models import Q
 from django.http import JsonResponse
 from users.models import Profile
 
+from app.models import Drink
+
 
 @login_required
 def profile(request):
@@ -24,6 +26,24 @@ def profile(request):
         })
 
     return JsonResponse({})
+
+
+@login_required
+def _all(request):
+    drinks = Drink.objects.filter(user=request.user).order_by("date")
+    drinkData = []
+    for drink in drinks:
+        drinkData.append({
+            "beer": drink.beer.name,
+            "date": drink.date,
+            "count": drink.count
+        })
+
+    data = {
+        "data": drinkData
+    }
+
+    return JsonResponse(data)
 
 
 @login_required
