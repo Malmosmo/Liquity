@@ -8,6 +8,19 @@ from users.models import Profile
 from app.models import Drink
 
 
+def getDrinkData(user):
+    drinks = Drink.objects.filter(user=user).order_by("date")
+    drinkData = []
+    for drink in drinks:
+        drinkData.append({
+            "beer": drink.beer.name,
+            "date": drink.date,
+            "count": drink.count
+        })
+
+    return drinkData
+
+
 @login_required
 def profile(request):
     name = request.GET.get('name', None)
@@ -30,17 +43,17 @@ def profile(request):
 
 @login_required
 def _all(request):
-    drinks = Drink.objects.filter(user=request.user).order_by("date")
-    drinkData = []
-    for drink in drinks:
-        drinkData.append({
-            "beer": drink.beer.name,
-            "date": drink.date,
-            "count": drink.count
-        })
+    # drinks = Drink.objects.filter(user=request.user).order_by("date")
+    # drinkData = []
+    # for drink in drinks:
+    #     drinkData.append({
+    #         "beer": drink.beer.name,
+    #         "date": drink.date,
+    #         "count": drink.count
+    #     })
 
     data = {
-        "data": drinkData
+        "data": getDrinkData(request.user)
     }
 
     return JsonResponse(data)
@@ -62,33 +75,32 @@ def single(request):
 
 
 @login_required
-def group(request):
-    grouppk = request.GET.get('grouppk')
+def group(request, pk):
+    # grouppk = request.GET.get('grouppk')
 
-    fromDate = request.GET.get('fromDate')
-    toDate = request.GET.get('toDate')
+    # fromDate = request.GET.get('fromDate')
+    # toDate = request.GET.get('toDate')
 
-    if grouppk:
-        group = Group.objects.filter(pk=grouppk).filter(Q(creator=request.user) | Q(
-            members=request.user)).first()
+    # if pk:
+    group = Group.objects.filter(pk=pk).filter(Q(creator=request.user) | Q(members=request.user)).first()
 
-        if group:
-            data = {
-                "data": {
-                    "name": group.name,
-                    "data": [{
-                        "name": group.creator.username,
-                        "drinks": getDrinksOfUser(group.creator, fromDate, toDate)
-                    }] + [{
-                        "name": member.username,
-                        "drinks": getDrinksOfUser(member, fromDate, toDate)
-                    } for member in group.members.all()]
-                },
-                "status": "Success"
-            }
+    if group:
+        data = {
+            "data": {
+                "name": group.name,
+                "data": [{
+                    "name": group.creator.username,
+                    "drinks": getDrinkData(group.creator)
+                }] + [{
+                    "name": member.username,
+                    "drinks": getDrinkData(member)
+                } for member in group.members.all()]
+            },
+            "status": "Success"
+        }
 
-        else:
-            data = {"status": "Error"}
+        # else:
+        #     data = {"status": "Error"}
 
     else:
         data = {"status": "Error"}

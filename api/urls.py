@@ -5,7 +5,7 @@ from django.urls import path
 from api.views import group, profile, single, _all
 
 urlpatterns = [
-    path('group/', group, name="group"),
+    path('group/<int:pk>', group, name="group"),
     path('single/', single, name="single"),
     path('profile/', profile, name="api-profile"),
     path('all/', _all, name="api-all"),

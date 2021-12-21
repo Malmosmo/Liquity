@@ -42,29 +42,30 @@
             </div>
         </div>
 
-        <div class="row m-0 mx-auto w-50">
-            <div class="col-md-4 p-1">
-                <label for="fromDate" class="form">From:</label>
-                <input type="date" class="form-control" id="fromDate" value="{{ fromDate }}">
+        <!-- New Charts -->
+        <div id="charts" url="{% url 'api-all' %}" class="my-5 overflow-hidden p-3 shadow-sm border bg-white">
+            <button id="one_month">Month</button>
+            <button id="one_year">Year</button>
+            <button id="all">All</button>
+
+            <div id="chart-timeline">
             </div>
 
-            <div class="col-md-4 p-1">
-                <label for="toDate" class="form">To:</label>
-                <input type="date" class="form-control" id="toDate" value="{{ toDate }}">
+            <div id="chart-type">
             </div>
 
-            <div class="col-md-4 p-1">
-                <label for="inputPassword4" class="form-label"></label>
-                <input type="submit" class="btn btn-success form-control" value="submit" onclick="updateOverviewCharts()">
+            <div class="row m-0">
+                <div class="col-12 col-md-6 p-0 border">
+                    <div id="chart-pie">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 p-0">
+                    Other
+                </div>
             </div>
+
+
         </div>
-
-        <!-- Overview Charts -->
-        <div id="OverviewAccumulatedChart" class="my-5 overflow-hidden p-3 shadow-sm bg-white"></div>
-
-        <div id="OverviewColumnChart" class="my-5 overflow-hidden p-3 shadow-sm bg-white"></div>
-
-        <div id="OverviewStackedChart" class="my-5 overflow-hidden p-3 shadow-sm bg-white"></div>
 
         <div class="accordion bg-body" id="drinkListParent">
             <div class="accordion-item">
@@ -113,15 +114,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
-
-<!-- Overview Chart API Call -->
-<script>
-    initOverviewCharts();
-</script>
-
 
 {% endblock %}

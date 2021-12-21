@@ -23,7 +23,6 @@
 </head>
 
 <body>
-
     <!-- ApexCharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
@@ -33,13 +32,11 @@
     <!-- Custom JS -->
     <script src="{% static 'js/util.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/chart.js' %}"></script>
 
     <!-- Notifications -->
     {% include "messages.html" %}
 
     <div class="d-flex flex-column" style="min-height: 100vh;">
-
         <!-- Navbar -->
         {% include "nav.html" %}
 
@@ -50,15 +47,14 @@
 
         <!-- Footer -->
         {% include "footer.html" %}
-
     </div>
 
     <script type="text/javascript" src="{% static 'js/messages.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
     <script src="{% static 'js/group.js' %}"></script>
     <script src="{% static 'js/navbar.js' %}"></script>
-
-    <script src="{% static 'js/overview.js' %}"></script>
+    <script src="{% static 'js/charts/overview.js' %}"></script>
+    <script src="{% static 'js/charts/group.js' %}"></script>
 
     <script>
         // Time update on cards
