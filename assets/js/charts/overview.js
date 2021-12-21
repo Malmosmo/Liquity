@@ -71,7 +71,7 @@ if (document.getElementById("charts") != null) {
                 },
             };
 
-            var chartTimeline = new ApexCharts(document.querySelector("#chart-timeline"), options);
+            var chartTimeline = new ApexCharts(document.querySelector("#timeline-chart"), options);
             chartTimeline.render();
 
             // event listeners for chart 1
@@ -177,7 +177,7 @@ if (document.getElementById("charts") != null) {
                 }
             };
 
-            var chart = new ApexCharts(document.querySelector("#chart-type"), options);
+            var chart = new ApexCharts(document.querySelector("#type-chart"), options);
             chart.render();
         }
 
@@ -239,7 +239,7 @@ if (document.getElementById("charts") != null) {
 
             };
 
-            var chart = new ApexCharts(document.querySelector("#chart-pie"), options);
+            var chart = new ApexCharts(document.querySelector("#donut-chart"), options);
             chart.render();
         }
     })

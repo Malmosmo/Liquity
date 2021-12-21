@@ -74,7 +74,7 @@ if (document.getElementById("group-charts") != null) {
                 },
             };
 
-            var chart = new ApexCharts(document.querySelector("#groupChart"), options);
+            var chart = new ApexCharts(document.querySelector("#line-chart"), options);
             chart.render();
         }
         // Chart 2
