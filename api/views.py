@@ -43,15 +43,6 @@ def profile(request):
 
 @login_required
 def _all(request):
-    # drinks = Drink.objects.filter(user=request.user).order_by("date")
-    # drinkData = []
-    # for drink in drinks:
-    #     drinkData.append({
-    #         "beer": drink.beer.name,
-    #         "date": drink.date,
-    #         "count": drink.count
-    #     })
-
     data = {
         "data": getDrinkData(request.user)
     }
@@ -76,12 +67,6 @@ def single(request):
 
 @login_required
 def group(request, pk):
-    # grouppk = request.GET.get('grouppk')
-
-    # fromDate = request.GET.get('fromDate')
-    # toDate = request.GET.get('toDate')
-
-    # if pk:
     group = Group.objects.filter(pk=pk).filter(Q(creator=request.user) | Q(members=request.user)).first()
 
     if group:
@@ -98,9 +83,6 @@ def group(request, pk):
             },
             "status": "Success"
         }
-
-        # else:
-        #     data = {"status": "Error"}
 
     else:
         data = {"status": "Error"}
