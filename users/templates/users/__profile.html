@@ -1,0 +1,135 @@
+{% extends 'main.html' %} {% block content %} {% load widget_tweaks %} {% load lq_filters %}
+
+<!-- Content Header -->
+<div class="container">
+    <div class="row m-0">
+        <div class="p-0 py-4">
+            <div class="row m-0">
+                <div class="col-12 p-0">
+                    <div class="d-flex justify-content-center justify-content-md-start fw-lighter fs-2">
+                        <!-- Profile Header -->
+                        <div class="d-flex flex-column flex-md-row">
+
+                            <!-- Image Profile -->
+                            <img width="200" height="200" class="image rounded-circle border mx-auto" src="{{ user.profile.image.url }}" alt="">
+
+                            <div class="vertical-center flex-grow-1">
+                                <div class="mx-4 fs-6">
+                                    <div class="mb-3 m-md-0">
+                                        <h1 class="display-5 text-center text-md-start">{{ user.profile.name }}</h1>
+                                    </div>
+
+                                    <p class="text-center text-secondary">{{ user.profile.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-2">
+        <div class="row m-0 mb-4">
+            <div class="col-12 col-md-6 m-0 border rounded p-3">
+                <div class="my-3 fw-lighter fs-2 border-bottom">
+                    Profile Info
+                </div>
+
+                <form method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    <div class="row m-0 mb-3">
+                        <div class="col p-0 pe-1">
+                            {{ profile_form.name.erros }}
+                            <label for="{{ profile_form.name.id_for_label }}" class="form-label">Your Name:</label>
+                            {{ profile_form.name|add_class:'form-control' }}
+                            <div id="help" class="form-text">
+                                <small>This is the name that will be displayed</small>
+                            </div>
+                        </div>
+
+                        <div class="col p-0 ps-1">
+                            {{ user_form.email.erros }}
+                            <label for="{{ user_form.email.id_for_label }}" class="form-label">E-Mail:</label>
+                            {{ user_form.email|add_class:'form-control' }}
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        {{ profile_form.image.erros }}
+                        <label for="{{ profile_form.image.id_for_label }}" class="form-label">Image:</label>
+
+                        <input type="file" name="image" accept="image/*" class="form-control clearablefileinput form-control-file" id="id_image">
+
+                        <div id="help" class="form-text">
+                            <small>
+                                Currently: <a href="{{ user.profile.image.url }}" class="link">
+                                    {{ user.profile.image.url}}
+                                </a>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        {{ profile_form.description.erros }}
+                        <label for="{{ profile_form.description.id_for_label }}" class="form-label">Description:</label>
+
+                        {{ profile_form.description|add_class:'form-control' }}
+                    </div>
+
+                    <div class="form-group d-inline">
+                        <button class="btn btn-outline-success" type="submit">Save Changes</button>
+                    </div>
+
+                    <small class="text-muted float-end mt-2"><a href="{% url 'change_password' %}">Change Password?</a></small>
+
+                    <a class="btn btn-outline-danger me-3 float-end" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">Delete Your Account</a>
+
+                    <!-- Modal Delete Account-->
+                    {% include "users/profile/delete.html" %}
+
+                    <a href="{% url 'api-all' %}" download="{% autoescape on %}{{ user.profile.name|download }}{% endautoescape %}.json"><i class="bi bi-download"></i></a>
+                    <a href="#"><i class="bi bi-trash"></i></a>
+                </form>
+            </div>
+
+            <!-- 2nd Column -->
+            <div class="col-12 col-md-6 m-0">
+                <div class="my-3 fw-lighter fs-2 border-bottom">
+                    Personal Stats
+                </div>
+
+                <div class="py-1">
+                    <span class="fs-5 fw-lighter">This Week</span>
+
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-dark fw-bolder">
+                                75%
+                            </span>
+                        </div>
+                    </div>
+
+                    <span class="fs-5 fw-lighter">This Month</span>
+
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                            <span class="text-light fw-bolder">
+                                50%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TODO -->
+                <div class="py-5 text-center text-secondary fs-1">
+                    There is more to come!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
