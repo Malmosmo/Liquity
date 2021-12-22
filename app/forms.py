@@ -17,12 +17,6 @@ class BeerCreateForm(forms.ModelForm):
         fields = ['name', 'image']
 
 
-# class DrinkCreateForm(forms.ModelForm):
-#     class Meta:
-#         model = Drink
-#         fields = ['date', 'beer', 'count', 'volume']
-
-
 class DrinkForm(forms.Form):
     date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
     time = forms.TimeField(widget=forms.DateInput(attrs={"type": "time"}))
