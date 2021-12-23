@@ -1,26 +1,25 @@
+from django.contrib.auth.models import AbstractUser
+from PIL import Image
+from django.utils import timezone
+from django.db import models
+from django.conf import settings
 import os
 import shutil
 import uuid
 
 from app.models import Group
-from django.conf import settings
-from django.contrib.auth.models import User
-from django.db import models
-from django.utils import timezone
-from PIL import Image
+
+
+class User(AbstractUser):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
 
 def upload_to(instance, filename):
-    return f"profiles/{instance.token}/profile/{filename}"
-
-
-def generateUUID():
-    return uuid.uuid4().hex
+    return f"profiles/{instance.id}/profile/{filename}"
 
 
 class Profile(models.Model):
-    id = models.AutoField(primary_key=True)
-    token = models.CharField(default=generateUUID, max_length=24, unique=True)  # maybe add ", unique=True"
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(default="", max_length=16)
     image = models.ImageField(
@@ -72,7 +71,7 @@ class Profile(models.Model):
         self.user.delete()
 
         # remove profile folder
-        path = os.path.join(settings.MEDIA_ROOT, f"profiles/{self.token}")
+        path = os.path.join(settings.MEDIA_ROOT, f"profiles/{self.id}")
         if os.path.exists(path):
             shutil.rmtree(path)
 
@@ -81,7 +80,8 @@ class Profile(models.Model):
 
 
 class FriendList(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     friends = models.ManyToManyField(User, blank=True, related_name="friends")
 
@@ -111,7 +111,8 @@ class FriendList(models.Model):
 
 
 class FriendRequest(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sender")
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="receiver")
 

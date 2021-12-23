@@ -30,7 +30,7 @@ urlpatterns = [
 
     path('password/change/', user_views.password_change, name='change_password'),
     path('register/', user_views.register, name="register"),
-    path('profile/<int:pk>/', user_views.profile, name="profile"),
+    path('profile/<uuid:pk>/', user_views.profile, name="profile"),
     path('friends/', user_views.friends, name="friends"),
     path('search/', user_views.search, name="search"),
 

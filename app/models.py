@@ -1,39 +1,37 @@
 import os
+import uuid
 
-from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
 
+# from users.models import User
+
 
 def upload_to(instance, filename):
-    return f"profiles/{instance.creator.profile.token}/drinks/{filename}"
+    return f"profiles/{instance.creator.profile.id}/drinks/{filename}"
 
 
 class Group(models.Model):
-    id = models.AutoField(primary_key=True)
-    creator = models.ForeignKey(
-        to=User,
-        on_delete=models.CASCADE,
-        related_name="creator"
-    )
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    creator = models.ForeignKey(to="users.User", on_delete=models.CASCADE, related_name="creator")
     name = models.CharField(max_length=64)
-    members = models.ManyToManyField(User, related_name="group_member")
+    members = models.ManyToManyField("users.User", related_name="group_member")
 
     def __str__(self) -> str:
         return f"Group({self.name}, {self.creator.username})"
 
 
 class Drink(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     image = models.ImageField(
         default="default_drink.png",
         upload_to=upload_to
     )
 
-    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    creator = models.ForeignKey("users.User", on_delete=models.SET_NULL, null=True)
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -46,7 +44,7 @@ class Drink(models.Model):
 
 
 class DrinkEntry(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     drinkType = models.ForeignKey(Drink, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     count = models.IntegerField()
@@ -54,7 +52,7 @@ class DrinkEntry(models.Model):
         validators=[MinValueValidator(0.0), MaxValueValidator(100.0)],
         default=0.5
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey("users.User", on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f"DrinkEntry({self.drinkType}, {self.user.username})"

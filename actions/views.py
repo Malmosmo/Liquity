@@ -5,10 +5,9 @@ from app.models import Drink, DrinkEntry, Group
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
-from users.models import Profile, FriendList, FriendRequest
+from users.models import Profile, FriendList, FriendRequest, User
 from users.forms import ProfileUpdateForm, UserUpdateForm
 
 
@@ -17,7 +16,6 @@ from users.forms import ProfileUpdateForm, UserUpdateForm
 ##########################################################
 @login_required
 def drink_create(request):
-
     form = DrinkCreateForm(request.POST, request.FILES)
 
     if form.is_valid():
@@ -72,36 +70,33 @@ def drink_add(request):
     return redirect('drinks')
 
 
-@login_required
-def drink_delete(request):
-    # TODO: function does not work as intendet
-    delete_pk = request.GET.get('delete')
+# @login_required
+# def drink_delete(request):
+#     # TODO: function does not work as intendet
+#     delete_pk = request.GET.get('delete')
 
-    if delete_pk:
-        drink = Drink.objects.filter(
-            pk=delete_pk, creator=request.user).first()
+#     if delete_pk:
+#         drink = Drink.objects.filter(
+#             pk=delete_pk, creator=request.user).first()
 
-        if drink:
-            drink.delete()
-            # TODO: Translate
-            messages.success(request, "Beer successfully deleted")
+#         if drink:
+#             drink.delete()
+#             # TODO: Translate
+#             messages.success(request, "Beer successfully deleted")
 
-        else:
-            # TODO: Translate
-            messages.info(request, "Beer does not exist or was not created by yourself")
+#         else:
+#             # TODO: Translate
+#             messages.info(request, "Beer does not exist or was not created by yourself")
 
-    return redirect('drinks')
+#     return redirect('drinks')
 
 
 ##########################################################
 # overview
 ##########################################################
 @login_required
-def overview_delete(request):
-    # TODO: remove GET, /<int:...>/
-    deleteID = request.GET.get('delete')
-    if deleteID:
-        DrinkEntry.objects.filter(id=deleteID).delete()
+def overview_delete(request, pk):
+    DrinkEntry.objects.filter(pk=pk).delete()
 
     return redirect('overview')
 
@@ -110,10 +105,7 @@ def overview_delete(request):
 # Groups
 ##########################################################
 @login_required
-def groups_delete(request):
-    # TODO: remove GET, /<int:...>/
-    pk = request.GET.get('delete')
-
+def groups_delete(request, pk):
     group = Group.objects.filter(pk=pk).first()
 
     if group:
@@ -193,14 +185,12 @@ def group_rename(request, pk):
 
 
 @login_required
-def group_user_remove(request, pk):
+def group_user_remove(request, pk, user_pk):
     group = Group.objects.filter(pk=pk).first()
 
     if group:
         if request.user == group.creator:
-            user_pk = request.GET.get('pk')
-
-            if user_pk:
+            if user_pk:  # TODO: remove
                 user = User.objects.filter(pk=user_pk).first()
 
                 if user:
@@ -264,9 +254,8 @@ def group_user_add(request, pk):
     if group:
         if request.user == group.creator:
             add = request.GET.get('add')
-
-            if add:
-                user_pks = add.split("-")
+            if add:  # TODO: remove
+                user_pks = add.split("_")
                 fail = False
 
                 for user_pk in user_pks:

@@ -33,7 +33,7 @@ if (document.getElementById("groupSubmit") != null) {
         let url = submitBtn.getAttribute("url")
 
         if (newMembers.length > 0) {
-            window.location.href = url + "?add=" + newMembers.join("-");
+            window.location.href = url + "?add=" + newMembers.join("_");
         } else {
             window.location.href = url;
         }

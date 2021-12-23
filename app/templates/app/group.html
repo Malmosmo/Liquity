@@ -71,7 +71,7 @@
         {% include "app/group/add.html" %}
 
         <!-- Group Charts -->
-        <div id="group-charts" url="{% url 'group' pk=group.pk %}" class="mt-4 p-3 shadow-sm bg-white border">
+        <div id="group-charts" url="{% url 'api-group' pk=group.pk %}" class="mt-4 p-3 shadow-sm bg-white border">
             <div id="line-chart"></div>
             <div id="bar-chart"></div>
         </div>

@@ -7,7 +7,7 @@ from .views import drinks, group_single, groups, homepage, overview
 urlpatterns = [
     path('', homepage, name="home"),
     path('groups/', groups, name="groups"),
-    path('groups/<int:pk>/', group_single, name="group-single"),
+    path('groups/<uuid:pk>/', group_single, name="group-single"),
     path('drinks/', drinks, name="drinks"),
     path('overview/', overview, name="overview"),
 ]

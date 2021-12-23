@@ -1,10 +1,9 @@
 import os
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
-from .models import FriendList, Profile
+from .models import User, FriendList, Profile
 
 
 @receiver(post_save, sender=User)
