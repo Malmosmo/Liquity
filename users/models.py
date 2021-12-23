@@ -112,10 +112,8 @@ class FriendList(models.Model):
 
 class FriendRequest(models.Model):
     id = models.AutoField(primary_key=True)
-    sender = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="sender")
-    receiver = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="receiver")
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sender")
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="receiver")
 
     def __str__(self) -> str:
         return f"FriendRequest({self.sender.username} to {self.receiver.username})"

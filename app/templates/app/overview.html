@@ -74,7 +74,7 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Beer</th>
+                                    <th scope="col">Drink</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Volume</th>
                                     <th scope="col">Count</th>
@@ -83,11 +83,11 @@
                             </thead>
                             <tbody>
 
-                                {% for drink in drinks %}
+                                {% for drink in drinkEntries %}
 
                                 <tr>
                                     <th scope="row">{{ forloop.counter }}</th>
-                                    <td>{{ drink.beer.name }}</td>
+                                    <td>{{ drink.drink.name }}</td>
                                     <td>{{ drink.date }}</td>
                                     <td>{{ drink.volume }} l</td>
                                     <td>{{ drink.count }}</td>

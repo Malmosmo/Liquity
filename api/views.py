@@ -1,19 +1,19 @@
 from app.models import Group
-from app.util import getDrinksOfUser
+# from app.util import getDrinksOfUser
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
 from users.models import Profile
 
-from app.models import Drink
+from app.models import DrinkEntry
 
 
 def getDrinkData(user):
-    drinks = Drink.objects.filter(user=user).order_by("date")
+    drinks = DrinkEntry.objects.filter(user=user).order_by("date")
     drinkData = []
     for drink in drinks:
         drinkData.append({
-            "beer": drink.beer.name,
+            "beer": drink.drinkType.name,
             "date": drink.date,
             "count": drink.count
         })
@@ -50,19 +50,19 @@ def _all(request):
     return JsonResponse(data)
 
 
-@login_required
-def single(request):
-    fromDate = request.GET.get('fromDate', None)
-    toDate = request.GET.get('toDate', None)
+# @login_required
+# def single(request):
+#     fromDate = request.GET.get('fromDate', None)
+#     toDate = request.GET.get('toDate', None)
 
-    if fromDate and toDate:
-        data = {
-            "data": getDrinksOfUser(request.user, fromDate, toDate)
-        }
+#     if fromDate and toDate:
+#         data = {
+#             "data": getDrinksOfUser(request.user, fromDate, toDate)
+#         }
 
-        return JsonResponse(data)
+#         return JsonResponse(data)
 
-    return JsonResponse({})
+#     return JsonResponse({})
 
 
 @login_required

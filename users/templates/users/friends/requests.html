@@ -22,8 +22,8 @@
                     <li class="list-group-item d-flex align-items-center">
                         <img width="40" height="40" class="image rounded-circle" src="{{ rq.sender.profile.image.url }}" alt="">
                         <a href="{% url 'profile' pk=rq.sender.pk %}" class="link text-dark ms-2">{{ rq.sender.profile.name }}</a>
-                        <a class="link text-success ms-auto" href="{% url 'friends'%}?method=accept&pk={{ rq.pk }}">Accept</a>
-                        <a class="link text-danger ms-3" href="{% url 'friends'%}?method=decline&pk={{ rq.pk }}">Decline</a>
+                        <a class="link text-success ms-auto" href="{% url 'action-friend-accept' pk=rq.pk %}">Accept</a>
+                        <a class="link text-danger ms-3" href="{% url 'action-friend-decline' pk=rq.pk %}">Decline</a>
                     </li>
 
                     {% empty%}
@@ -48,7 +48,7 @@
                     <li class="list-group-item d-flex align-items-center">
                         <img width="40" height="40" class="image rounded-circle" src="{{ rq.receiver.profile.image.url }}" alt="">
                         <a href="{% url 'profile' pk=rq.receiver.pk %}" class="link text-dark ms-2">{{ rq.receiver.profile.name }}</a>
-                        <a class="link text-danger ms-auto" href="{% url 'friends'%}?method=cancel&pk={{ rq.pk }}">Cancel</a>
+                        <a class="link text-danger ms-auto" href="{% url 'action-friend-cancel' pk=rq.pk %}">Cancel</a>
                     </li>
 
                     {% empty %}

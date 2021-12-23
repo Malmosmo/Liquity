@@ -1,0 +1,23 @@
+<div class="lq-card rounded border shadow-sm bg-body" name="{{ drink.name }}">
+    <!-- Card Image -->
+    <img height="200" class="image w-100" src="{{ drink.image.url }}" alt="Drink">
+
+    <!-- Card Body -->
+    <div class="p-2 border-top">
+
+        <!-- Card Text -->
+        <p class="card-text m-0">
+            <a class="link drink-add" data-bs-toggle="modal" data-bs-target="#modal_{{ drink.pk }}" target="time_{{ drink.pk }}">
+                {{ drink.name }}
+            </a>
+        </p>
+
+        <p class="lq-card-text text-end">
+            <small><a href="{% url 'profile' pk=drink.creator.pk %}" class="link text-muted">{{ drink.creator.profile.name }}</a></small>
+        </p>
+
+        <!-- Modal -->
+        {% include "app/drinks/add.html" %}
+
+    </div>
+</div>

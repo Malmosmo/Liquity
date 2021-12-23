@@ -11,7 +11,6 @@
                         <div class="d-flex flex-column flex-md-row flex-grow-1">
 
                             <!-- Image Profile -->
-                            <!-- <div class="profile-image flex-shrink-0 rounded-circle mx-auto mb-3 m-md-0" style="background-image: url('{{ profile_user.profile.image.url }}');"></div> -->
                             <img width="200" height="200" class="image rounded-circle border mx-auto" src="{{ profile_user.profile.image.url }}" alt="">
 
                             <div class="vertical-center flex-grow-1">
@@ -22,7 +21,7 @@
                                 </div>
 
                                 <div class="ms-auto">
-                                    <a href="{% url 'profile' pk=profile_user.pk  %}?add=True" class="btn btn-primary">Add</a>
+                                    <a href="{% url 'action-friend-add' pk=profile_user.pk  %}" class="btn btn-primary">Add</a>
                                 </div>
                             </div>
                         </div>

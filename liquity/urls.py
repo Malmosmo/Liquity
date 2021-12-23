@@ -29,17 +29,14 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name="users/logout.html"), name="logout"),
 
     path('password/change/', user_views.password_change, name='change_password'),
-
     path('register/', user_views.register, name="register"),
-
     path('profile/<int:pk>/', user_views.profile, name="profile"),
-
     path('friends/', user_views.friends, name="friends"),
-
     path('search/', user_views.search, name="search"),
 
     path('', include('app.urls')),
     path('api/', include('api.urls')),
+    path('actions/', include('actions.urls')),
     path('', include('django.contrib.auth.urls')),
 ]
 

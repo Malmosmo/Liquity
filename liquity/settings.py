@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'app.apps.AppConfig',
     'api.apps.ApiConfig',
+    'actions.apps.ActionsConfig',
 ]
 
 MIDDLEWARE = [
@@ -155,7 +156,7 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # MEDIA_DEFAULT_IMAGE = MEDIA_ROOT / 'default.jpg'
 # MEDIA_DEFAULT_BEER = MEDIA_ROOT / 'default_beer.png'
 MEDIA_DEFAULT_IMAGE = os.path.join(MEDIA_ROOT, 'default.jpg')
-MEDIA_DEFAULT_BEER = os.path.join(MEDIA_ROOT, 'default_beer.png')
+MEDIA_DEFAULT_BEER = os.path.join(MEDIA_ROOT, 'default_drink.png')
 
 
 # Default primary key field type

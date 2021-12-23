@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% block content %} {% load widget_tweaks %} {% load lq_filters %}
+{% extends 'main.html' %} {% block content %}
 
 <div class="container rounded border shadow-sm my-5 p-3" style="max-width: 800px;">
     <!-- Header -->
@@ -10,65 +10,12 @@
         </div>
     </div>
     <hr>
-    <!-- Info -->
-    <form action="#" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+    <!-- Form -->
+    {% include "users/profile/form.html" %}
 
-        <!-- Name and E-Mail -->
-        <div class="row m-0 mb-3" style="max-width: 800px;">
-            <div class="col-12 col-md-6 p-0 pe-md-1">
-                {{ profile_form.name.erros }}
-                <label for="{{ profile_form.name.id_for_label }}" class="form-label">Your Name:</label>
-                {{ profile_form.name|add_class:'form-control' }}
-                <div id="help" class="form-text">
-                    <small>This is the name that will be displayed</small>
-                </div>
-            </div>
+    <!-- Modal Delete Account-->
+    {% include "users/profile/delete.html" %}
 
-            <div class="col-12 col-md-6 p-0 ps-md-1">
-                <label for="{{ user_form.email.id_for_label }}" class="form-label">E-Mail:</label>
-                {% render_field user_form.email class="form-control" %}
-            </div>
-        </div>
-
-        <!-- Image -->
-        <div class="form-group mb-3">
-            <label for="{{ profile_form.image.id_for_label }}" class="form-label">Image:</label>
-            <input type="file" name="image" accept="image/*" class="form-control clearablefileinput form-control-file" id="id_image">
-
-            <small id="help" class="form-text">
-                Currently: <a href="{{ user.profile.image.url }}" class="link">
-                    {{ user.profile.image.url}}
-                </a>
-            </small>
-        </div>
-
-        <!-- Description -->
-        <div class="form-group mb-3">
-            {{ profile_form.description.erros }}
-            <label for="{{ profile_form.description.id_for_label }}" class="form-label">Description:</label>
-
-            {{ profile_form.description|add_class:'form-control lq-area' }}
-        </div>
-
-        <!-- Buttons -->
-        <div class="form-group d-flex flex-column flex-md-row justify-content-between">
-            <div class="d-flex mb-3 mb-md-0">
-                <button class="btn btn-outline-success" type="submit">Save Changes</button>
-                <a href="{% url 'api-all' %}" class="btn btn-outline-primary ms-auto ms-md-2" download="{% autoescape on %}{{ user.profile.name|download }}{% endautoescape %}.json"><i class="bi bi-download"></i></a>
-                <a href="#" class="btn btn-outline-primary ms-2"><i class="bi bi-trash"></i></a>
-            </div>
-
-            <div class="d-flex align-items-center">
-                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">Delete Account</a>
-
-                <!-- Modal Delete Account-->
-                {% include "users/profile/delete.html" %}
-
-                <small class="ms-auto ms-md-2 text-center"><a href="{% url 'change_password' %}">Change Password</a></small>
-            </div>
-        </div>
-    </form>
 </div>
 
 {% endblock %}

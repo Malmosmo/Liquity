@@ -38,34 +38,8 @@ def profile(request, pk: int) -> HttpResponse:
     friend_list = FriendList.objects.get(user=user)
 
     if request.user == user:
-        delete = request.GET.get('delete')
-
-        if delete:
-            profile = Profile.objects.get(user=request.user)
-            profile.delete()
-
-            messages.info(request, "Your account has been deleted!")
-
-            return redirect('logout')
-
-        if request.method == 'POST':
-            user_form = UserUpdateForm(request.POST, instance=request.user)
-
-            profile_form = ProfileUpdateForm(
-                request.POST, request.FILES, instance=request.user.profile)
-
-            if user_form.is_valid() and profile_form.is_valid():
-                # profile form is also saved because of signals.py
-                user_form.save()
-
-                messages.success(
-                    request, 'Your account has been updated!')
-
-                return redirect('profile', pk=pk)
-
-        else:
-            user_form = UserUpdateForm(instance=request.user)
-            profile_form = ProfileUpdateForm(instance=request.user.profile)
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
 
         context = {
             'user_form': user_form,
@@ -75,21 +49,6 @@ def profile(request, pk: int) -> HttpResponse:
         return render(request, 'users/profile.html', context)
 
     elif request.user in friend_list.friends.all():
-        remove = request.GET.get('remove')
-
-        if remove:
-            user = User.objects.filter(pk=pk).first()
-            friend_list = FriendList.objects.get(user=request.user)
-
-            if user in friend_list.friends.all():
-                friend_list.unfriend(user)
-
-                messages.success(request, f"Friend successfully removed!")
-                return redirect('friends')
-
-            else:
-                messages.info(request, "You are not friends")
-
         context = {
             "profile_user": user
         }
@@ -97,33 +56,6 @@ def profile(request, pk: int) -> HttpResponse:
         return render(request, 'users/profile/friend.html', context)
 
     else:
-        add = request.GET.get('add')
-
-        if add:
-            user = User.objects.filter(pk=pk).first()
-
-            if user:
-
-                if FriendRequest.objects.filter(receiver=user, sender=request.user).exists():
-                    messages.info(
-                        request, "You have already send a friend request")
-
-                elif FriendRequest.objects.filter(receiver=request.user, sender=user).exists():
-                    messages.info(
-                        request, "The User already send you a request")
-
-                else:
-                    FriendRequest.objects.create(
-                        receiver=user, sender=request.user)
-
-                    messages.success(
-                        request, "successfully send friend request")
-
-                    return redirect('friends')
-
-            else:
-                messages.info(request, "User could not be found")
-
         context = {
             "profile_user": user,
             "profile": Profile.objects.get(user=user)
@@ -134,58 +66,6 @@ def profile(request, pk: int) -> HttpResponse:
 
 @login_required
 def friends(request) -> HttpResponse:
-    pk = request.GET.get('pk')
-    method = request.GET.get('method')
-
-    if pk and method:
-        friend_request = FriendRequest.objects.filter(pk=pk).first()
-
-        if friend_request:
-            if friend_request.receiver == request.user:
-                if method == "accept":
-                    friend_request.accept()
-                    messages.success(request, f"Accepted Friend Request")
-
-                elif method == "decline":
-                    friend_request.decline()
-                    messages.info(request, f"Declined Friend Request")
-
-                else:
-                    messages.info(request, f"Unknown Method")
-
-            elif friend_request.sender == request.user:
-                if method == "cancel":
-                    friend_request.cancel()
-                    messages.info(request, f"Canceled Friend Request")
-
-            else:
-                messages.info(request, f"This is not your friend request")
-
-        else:
-            messages.info(request, f"This Friend Request does not exist" +
-                          str(method) + str(pk))
-
-        return redirect('friends')
-
-    elif pk:
-        user = User.objects.filter(pk=pk).first()
-
-        if user:
-            friend_list = FriendList.objects.get(user=request.user)
-            if user in friend_list.friends.all():
-                friend_list.unfriend(user)
-
-                messages.success(request, f"Friend successfully removed!")
-                return redirect('friends')
-
-            else:
-                messages.info(request, f"User is not your Friend!")
-                return redirect('friends')
-
-        else:
-            messages.info(request, f"User does not exist!")
-            return redirect('friends')
-
     friend_list = FriendList.objects.get(user=request.user)
 
     incoming = FriendRequest.objects.filter(receiver=request.user)

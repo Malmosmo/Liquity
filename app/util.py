@@ -1,38 +1,37 @@
 import datetime
 import calendar
 
-from .models import Drink
+from .models import DrinkEntry
 
 
-def filterDrinks(drinks, fromDate, toDate):
+def filterDrinks(entries, fromDate, toDate):
     drinkList = []
 
-    for drink in drinks:
-        if fromDate <= drink.date.date() <= toDate:
-            drinkList.append(drink)
+    for entry in entries:
+        if fromDate <= entry.date.date() <= toDate:
+            drinkList.append(entry)
 
     return drinkList
 
 
-def getDrinksOfUser(user, fromDate, toDate):
-    drinks = Drink.objects.filter(user=user).order_by("date")
+# def getDrinksOfUser(user, fromDate, toDate):
+#     drinkEntries = DrinkEntry.objects.filter(user=user).order_by("date")
+#     drinkData = []
 
-    drinkData = []
+#     if fromDate and toDate:
+#         fromDate = datetime.datetime.strptime(fromDate, "%Y-%m-%d").date()
+#         toDate = datetime.datetime.strptime(toDate, "%Y-%m-%d").date()
 
-    if fromDate and toDate:
-        fromDate = datetime.datetime.strptime(fromDate, "%Y-%m-%d").date()
-        toDate = datetime.datetime.strptime(toDate, "%Y-%m-%d").date()
+#         drinks = filterDrinks(drinkEntries, fromDate, toDate)
 
-        drinks = filterDrinks(drinks, fromDate, toDate)
+#     for drink in drinks:
+#         drinkData.append({
+#             "drink": drink.drink.name,
+#             "date": drink.date,
+#             "count": drink.count
+#         })
 
-    for drink in drinks:
-        drinkData.append({
-            "beer": drink.beer.name,
-            "date": drink.date,
-            "count": drink.count
-        })
-
-    return drinkData
+#     return drinkData
 
 
 def getTotal(drinks):

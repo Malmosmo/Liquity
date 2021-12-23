@@ -1,13 +1,13 @@
-<div class="modal fade" id="modal_beer_add" tabindex="-1" aria-labelledby="beerAdd" aria-hidden="true">
+<div class="modal fade" id="modal_drink_create" tabindex="-1" aria-labelledby="drinkCreate" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="beerAdd">Add New Beer</h5>
+                <h5 class="modal-title" id="drinkCreate">Create new Drink</h5>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form method="POST" enctype="multipart/form-data">
+            <form action="{% url 'action-drink-create'%}" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
 
                     {% csrf_token %}
@@ -19,7 +19,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                    <input class="btn btn-outline-success" type="submit" name="beerAdd" value="Add Beer">
+                    <input class="btn btn-outline-success" type="submit" name="drinkCreate" value="Create">
                 </div>
             </form>
         </div>

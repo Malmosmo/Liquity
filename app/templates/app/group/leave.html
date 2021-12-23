@@ -13,8 +13,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a class="btn btn-danger" href="{% url 'group-single' pk=group.pk %}?pk={{ user.pk }}">Yes
-                    leave!</a>
+                <a class="btn btn-danger" href="{% url 'action-group-leave' pk=group.pk %}">Yes leave!</a>
             </div>
         </div>
     </div>
