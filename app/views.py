@@ -1,17 +1,14 @@
+import datetime
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-# from measurement.measures import Volume
-from app.models import DrinkEntry, Drink, Group
-from app.forms import DrinkCreateForm, DrinkEntryForm, GroupCreateForm, GroupRenameForm
-# from .forms import BeerCreateForm, DrinkForm, GroupCreateForm, GroupRenameForm
-# from .models import Beer, Drink, Group
-
-
 from users.models import FriendList
+
+from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm, GroupRenameForm)
+from app.models import Drink, DrinkEntry, Group
+
 from .util import getMonthTotal, getTotal, getWeekTotal, getYearTotal
-import datetime
 
 
 def homepage(request):

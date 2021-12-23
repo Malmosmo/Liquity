@@ -4,6 +4,7 @@ from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm, GroupRe
 from app.models import Drink, DrinkEntry, Group
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 
@@ -14,6 +15,7 @@ from users.forms import ProfileUpdateForm, UserUpdateForm
 ##########################################################
 # Drinks
 ##########################################################
+@login_required
 def drink_create(request):
 
     form = DrinkCreateForm(request.POST, request.FILES)
@@ -40,6 +42,7 @@ def drink_create(request):
     return redirect('drinks')
 
 
+@login_required
 def drink_add(request):
     form = DrinkEntryForm(request.POST)
 
@@ -69,6 +72,7 @@ def drink_add(request):
     return redirect('drinks')
 
 
+@login_required
 def drink_delete(request):
     # TODO: function does not work as intendet
     delete_pk = request.GET.get('delete')
@@ -92,6 +96,7 @@ def drink_delete(request):
 ##########################################################
 # overview
 ##########################################################
+@login_required
 def overview_delete(request):
     # TODO: remove GET, /<int:...>/
     deleteID = request.GET.get('delete')
@@ -104,6 +109,7 @@ def overview_delete(request):
 ##########################################################
 # Groups
 ##########################################################
+@login_required
 def groups_delete(request):
     # TODO: remove GET, /<int:...>/
     pk = request.GET.get('delete')
@@ -128,6 +134,7 @@ def groups_delete(request):
     return redirect('groups')
 
 
+@login_required
 def groups_create(request):
     form = GroupCreateForm(request.POST)
 
@@ -154,6 +161,7 @@ def groups_create(request):
 ##########################################################
 # Group Single
 ##########################################################
+@login_required
 def group_rename(request, pk):
     group = Group.objects.filter(pk=pk).first()
     form = GroupRenameForm(request.POST)
@@ -184,6 +192,7 @@ def group_rename(request, pk):
     return redirect('group-single', pk=pk)
 
 
+@login_required
 def group_user_remove(request, pk):
     group = Group.objects.filter(pk=pk).first()
 
@@ -225,6 +234,7 @@ def group_user_remove(request, pk):
     return redirect('group-single', pk=pk)
 
 
+@login_required
 def group_leave(request, pk):
     group = Group.objects.filter(pk=pk).first()
 
@@ -247,6 +257,7 @@ def group_leave(request, pk):
     return redirect('groups')
 
 
+@login_required
 def group_user_add(request, pk):
     group = Group.objects.filter(pk=pk).first()
 
@@ -296,6 +307,7 @@ def group_user_add(request, pk):
 ##########################################################
 # Profile
 ##########################################################
+@login_required
 def profile_delete(request, pk):
     user = User.objects.filter(pk=pk).first()
 
@@ -320,6 +332,7 @@ def profile_delete(request, pk):
     return redirect('home')
 
 
+@login_required
 def profile_update(request, pk):
     user_form = UserUpdateForm(request.POST, instance=request.user)
     profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
@@ -338,6 +351,7 @@ def profile_update(request, pk):
     return redirect('profile', pk=pk)
 
 
+@login_required
 def friend_remove(request, pk):
     user = User.objects.filter(pk=pk).first()
     my_friend_list = FriendList.objects.get(user=request.user)
@@ -360,6 +374,7 @@ def friend_remove(request, pk):
     return redirect('friends')
 
 
+@login_required
 def friend_add(request, pk):
     user = User.objects.filter(pk=pk).first()
 
@@ -388,6 +403,7 @@ def friend_add(request, pk):
 ##########################################################
 # Friends
 ##########################################################
+@login_required
 def friend_rq_accept(request, pk):
     friend_request = FriendRequest.objects.filter(pk=pk).first()
 
@@ -409,6 +425,7 @@ def friend_rq_accept(request, pk):
     return redirect('friends')
 
 
+@login_required
 def friend_rq_decline(request, pk):
     friend_request = FriendRequest.objects.filter(pk=pk).first()
 
@@ -430,6 +447,7 @@ def friend_rq_decline(request, pk):
     return redirect('friends')
 
 
+@login_required
 def friend_rq_cancel(request, pk):
     friend_request = FriendRequest.objects.filter(pk=pk).first()
 
