@@ -29,10 +29,6 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-    <!-- Custom JS -->
-    <script src="{% static 'js/util.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-
     <!-- Notifications -->
     {% include "messages.html" %}
 
@@ -49,26 +45,12 @@
         {% include "footer.html" %}
     </div>
 
-    <script type="text/javascript" src="{% static 'js/messages.js' %}"></script>
+    <!-- Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
     <script src="{% static 'js/group.js' %}"></script>
-    <script src="{% static 'js/navbar.js' %}"></script>
     <script src="{% static 'js/charts/overview.js' %}"></script>
     <script src="{% static 'js/charts/group.js' %}"></script>
-
-    <script>
-        // Time update on cards
-        let cardAdds = document.getElementsByClassName("drink-add")
-        for (const cardAdd of cardAdds) {
-            cardAdd.addEventListener("click", () => {
-                let date = new Date().toLocaleTimeString().slice(0, -3);
-                let targetID = cardAdd.getAttribute("target")
-                document.getElementById(targetID).value = date
-
-            })
-        }
-
-    </script>
 </body>
 
 </html>

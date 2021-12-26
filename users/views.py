@@ -53,8 +53,6 @@ def profile(request, pk: int) -> HttpResponse:
             "profile_user": user
         }
 
-        return render(request, 'users/profile/other.html', context)
-
     else:
         context = {
             "friend": False,
@@ -62,7 +60,7 @@ def profile(request, pk: int) -> HttpResponse:
             "profile": Profile.objects.get(user=user)
         }
 
-        return render(request, 'users/profile/other.html', context)
+    return render(request, 'users/profile/other.html', context)
 
 
 @login_required

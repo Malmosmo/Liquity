@@ -1,29 +1,45 @@
-// function apiGroupCall(params, callback) {
-//     const userAction = async () => {
-//         const response = await fetch("/api/group/" + params);
-//         const myJson = await response.json();
+/**
+ * Navbar
+ */
+let icon = document.getElementById("nav-icon");
+icon.addEventListener("click", () => {
+    icon.classList.toggle("bi-list");
+    icon.classList.toggle("bi-x");
+});
 
-//         if (myJson.status === "Error") {
-//             throw "Invalid API call";
-//         } else {
-//             callback(myJson);
-//         }
-//     };
+/**
+ * Messages
+ */
+// Toast Buttons
+let toastCloseBtns = document.getElementsByClassName("toast-close")
 
-//     userAction();
-// }
+for (const closeBtn of toastCloseBtns) {
+    closeBtn.addEventListener("click", () => {
+        let targetID = closeBtn.getAttribute("target")
+        let target = document.getElementById(targetID)
+        target.classList.toggle("show")
+        target.classList.toggle("d-none")
+    })
+}
 
-// function apiSingleCall(params, callback) {
-//     const userAction = async () => {
-//         const response = await fetch("/api/single/" + params);
-//         const myJson = await response.json();
+// Toasts
+let toasts = document.getElementsByClassName("toast")
+for (const toast of toasts) {
+    setTimeout(() => {
+        toast.classList.toggle("show")
+    }, 5000)
+}
 
-//         if (myJson.status === "Error") {
-//             throw "Invalid API call";
-//         } else {
-//             callback(myJson);
-//         }
-//     };
+/**
+ * Drinks
+ */
+// Time update on cards
+let cardAdds = document.getElementsByClassName("drink-add")
+for (const cardAdd of cardAdds) {
+    cardAdd.addEventListener("click", () => {
+        let date = new Date().toLocaleTimeString().slice(0, -3);
+        let targetID = cardAdd.getAttribute("target")
+        document.getElementById(targetID).value = date
 
-//     userAction();
-// }
+    })
+}
