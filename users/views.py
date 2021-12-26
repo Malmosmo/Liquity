@@ -49,18 +49,20 @@ def profile(request, pk: int) -> HttpResponse:
 
     elif request.user in friend_list.friends.all():
         context = {
+            "friend": True,
             "profile_user": user
         }
 
-        return render(request, 'users/profile/friend.html', context)
+        return render(request, 'users/profile/other.html', context)
 
     else:
         context = {
+            "friend": False,
             "profile_user": user,
             "profile": Profile.objects.get(user=user)
         }
 
-        return render(request, 'users/profile/stranger.html', context)
+        return render(request, 'users/profile/other.html', context)
 
 
 @login_required

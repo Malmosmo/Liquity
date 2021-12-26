@@ -1,0 +1,19 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="container rounded border shadow-sm my-5 p-3" style="max-width: 800px;">
+    <!-- Header -->
+    <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-center">
+        <img width="200" height="200" class="image rounded-circle border" src="{{ profile_user.profile.image.url }}" alt="">
+        <div class="d-flex flex-column justify-content-center ms-2">
+            <span class="text-center text-md-start display-5">{{ profile_user.profile.name }}</span>
+            <span class="text-center text-md-start text-secondary">{{ profile_user.profile.description }}</span>
+        </div>
+
+        <a class="my-3 my-md-0 ms-md-auto text-nowrap btn {% if friend %}btn-danger{% else %}btn-success{% endif %}" {% if friend %} data-bs-toggle="modal" data-bs-target="#friendRemoveModal" {% else %} href="{% url 'action-friend-add' pk=profile_user.pk  %}" {% endif %}>{% if friend %}Unfriend{% else %}Send friend request{% endif %}</a>
+    </div>
+</div>
+
+{% include 'users/profile/modals/remove.html' %}
+
+
+{% endblock %}

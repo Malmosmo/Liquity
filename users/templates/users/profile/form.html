@@ -3,7 +3,7 @@
     {% csrf_token %}
 
     <!-- Name and E-Mail -->
-    <div class="row m-0 mb-3" style="max-width: 800px;">
+    <div class="row m-0 mb-3">
         <div class="col-12 col-md-6 p-0 pe-md-1">
             {{ profile_form.name.erros }}
             <label for="{{ profile_form.name.id_for_label }}" class="form-label">Your Name:</label>
@@ -44,7 +44,7 @@
         <div class="d-flex mb-3 mb-md-0">
             <button class="btn btn-outline-success" type="submit">Save Changes</button>
             <a href="{% url 'api-all' %}" class="btn btn-outline-primary ms-auto ms-md-2" download="{% autoescape on %}{{ user.profile.name|download }}{% endautoescape %}.json"><i class="bi bi-download"></i></a>
-            <a href="#" class="btn btn-outline-primary ms-2"><i class="bi bi-trash"></i></a>
+            <a href="#" class="btn btn-outline-secondary ms-2"><i class="bi bi-trash"></i></a>
         </div>
 
         <div class="d-flex align-items-center">
