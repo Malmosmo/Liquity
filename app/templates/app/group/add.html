@@ -1,9 +1,10 @@
+{% load i18n %}
 <!-- Add Member Modal -->
 <div class="modal fade" id="modalAddMember" tabindex="-1" aria-labelledby="modalAddMember" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAddMember">Add Member</h5>
+                <h5 class="modal-title" id="modalAddMember">{% trans "Add Member" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -25,7 +26,7 @@
                                 </span>
 
                                 <a href="#" class="lq-group-add link ms-auto text-success" profile="{{ friend.pk }}" add-status="on">
-                                    Add to group
+                                    {% trans "Add to Group" %}
                                 </a>
                             </div>
                         </div>
@@ -35,7 +36,7 @@
 
                     {% empty %}
 
-                    <li class="list-group-item">No Friends :(</li>
+                    <li class="list-group-item">{% trans "No Friends :(" %}</li>
 
                     {% endfor %}
 
@@ -43,9 +44,9 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
 
-                <button class="btn btn-outline-success" id="groupSubmit" url="{% url 'action-group-add' pk=group.pk %}" type="submit">Submit</button>
+                <button class="btn btn-outline-success" id="groupSubmit" url="{% url 'action-group-add' pk=group.pk %}" type="submit">{% trans "Submit" %}</button>
             </div>
         </div>
     </div>

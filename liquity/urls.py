@@ -22,7 +22,10 @@ from django.contrib import admin
 from django.urls import path, include
 from users import views as user_views
 
-urlpatterns = [
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
+
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
 
     path('login/', auth_views.LoginView.as_view(template_name="users/login.html"), name="login"),
@@ -38,7 +41,7 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('actions/', include('actions.urls')),
     path('', include('django.contrib.auth.urls')),
-]
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

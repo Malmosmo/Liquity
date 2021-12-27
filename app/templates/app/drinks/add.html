@@ -1,4 +1,4 @@
-{% if user.is_authenticated %}
+{% if user.is_authenticated %} {% load i18n %}
 
 <!-- Modal Drink Add -->
 <div class="modal fade" id="modal_{{ drink.pk }}" tabindex="-1" aria-labelledby="drinkAdd" aria-hidden="true">
@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="fw-lighter fs-4">
-                    Add Drink
+                    {% trans "Add Drink" %}
                 </div>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

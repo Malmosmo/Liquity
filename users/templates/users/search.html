@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% block content %} {% load i18n %}
 
 <!-- Content Header -->
 <div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">
@@ -9,15 +9,15 @@
     <div class="container my-4">
         <form action="{% url 'search' %}" method="GET" class="d-flex my-4">
             <input type="text" class="form-control" id="profileSearchInput" name="name" value="{{ name }}" api-url="{% url 'api-profile' %}">
-            <button type="submit" class="btn btn-primary w-25 ms-5">Search</button>
+            <button type="submit" class="btn btn-primary w-25 ms-5">{% trans "Search" %}</button>
         </form>
 
         <ul class="list-group shadow-sm" id="profileSearchList">
             <li class="list-group-item bg-dark text-white fw-bold">
-                Profiles
+                {% trans "Profiles" %}
 
                 <span class="float-end text-success">
-                    Results
+                    {% trans "Results" %}
                     <span id="results">{{ profiles.count }}</span>
                 </span>
             </li>
@@ -31,7 +31,7 @@
 
             {% empty %}
 
-            <li class="list-group-item">Empty</li>
+            <li class="list-group-item">{% trans "Empty" %}</li>
 
             {% endfor %}
         </ul>

@@ -1,19 +1,20 @@
+{% load i18n %}
 <!-- Modal Group Leave -->
 <div class="modal fade" id="modalLeave" tabindex="-1" aria-labelledby="groupLeave" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="groupLeave">Leave Group</h5>
+                <h5 class="modal-title" id="groupLeave">{% trans "Leave Group" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
-                Are you sure that you want to leave "<b>{{ group.name }}</b>"?
+                {% trans "Are you sure that you want to leave" %} "<b>{{ group.name }}</b>"?
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a class="btn btn-danger" href="{% url 'action-group-leave' pk=group.pk %}">Yes leave!</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                <a class="btn btn-danger" href="{% url 'action-group-leave' pk=group.pk %}">{% trans "Leave" %}</a>
             </div>
         </div>
     </div>

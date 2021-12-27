@@ -1,20 +1,21 @@
+{% load i18n %}
 <!-- Modal Group Member Remove -->
 <div class="modal fade" id="modalMemberRemove_{{ member.pk }}" tabindex="-1" aria-labelledby="groupRemove" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="groupRemove">Remove Member</h5>
+                <h5 class="modal-title" id="groupRemove">{% trans "Remove Member" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
-                Are you sure that you want to remove <b>"{{ member.profile.name }}"</b> from
+                {% trans "Are you sure that you want to remove" %} <b>"{{ member.profile.name }}"</b> from
                 <b>{{ group.name }}</b>?
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a class="btn btn-danger" href="{% url 'action-group-remove' pk=group.pk user_pk=member.pk %}">Yes remove!</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                <a class="btn btn-danger" href="{% url 'action-group-remove' pk=group.pk user_pk=member.pk %}">{% trans "Remove" %}</a>
             </div>
         </div>
     </div>

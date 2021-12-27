@@ -3,9 +3,11 @@ import datetime
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from django.utils.translation import gettext_lazy as _
 from users.models import FriendList
 
-from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm, GroupRenameForm)
+from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm,
+                       GroupRenameForm)
 from app.models import Drink, DrinkEntry, Group
 
 from .util import getMonthTotal, getTotal, getWeekTotal, getYearTotal
@@ -52,12 +54,12 @@ def group_single(request, pk):
             }
 
         else:
-            messages.info(request, "You are not in this group!")
+            messages.info(request, _("You are not in this group"))
             return redirect('groups')
 
         return render(request, 'app/group.html', context)
 
-    messages.info(request, "Group does not exist!")
+    messages.info(request, _("Group does not exist"))
     return redirect('groups')
 
 

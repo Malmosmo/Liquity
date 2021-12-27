@@ -1,15 +1,15 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% block content %} {% load i18n %}
 
 <!-- Content Header -->
 <div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">
-    Groups
+    {% trans "Groups" %}
 </div>
 
 <div class="content flex-grow-1">
     <div class="container my-4">
         <ul class="list-group shadow-sm">
             <li class="list-group-item bg-dark text-white fw-bold">
-                Your Groups
+                {% trans "Your Groups" %}
                 <span class="float-end text-success ">{{ groups_own.count }}</span>
             </li>
 
@@ -17,7 +17,7 @@
 
             <li class=" list-group-item">
                 <a href="{% url 'group-single' pk=group.pk %}" class="link">{{ group.name }}</a>
-                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalGroupDelete_{{ group.pk }}">Delete</a>
+                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalGroupDelete_{{ group.pk }}">{% trans "Delete" %}</a>
 
                 {% include "app/groups/delete.html" %}
 
@@ -26,13 +26,13 @@
             {% endfor %}
 
             <li class=" list-group-item">
-                <a class="link text-success" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">New Group</a>
+                <a class="link text-success" data-bs-toggle="modal" data-bs-target="#modalCreateGroup">{% trans "New Group" %}</a>
             </li>
         </ul>
 
         <ul class="list-group shadow-sm mt-4">
             <li class="list-group-item bg-dark text-white fw-bold">
-                Other Groups
+                {% trans "Other Groups" %}
                 <span class="float-end text-success ">{{ groups_oth.count }}</span>
             </li>
 
@@ -45,7 +45,7 @@
             {% empty %}
 
             <li class="list-group-item">
-                <span style="opacity: 0.2;" class="d-inline-block w-100 text-center fs-1 my-5">You are in no other groups... :(</span>
+                <span style="opacity: 0.2;" class="d-inline-block w-100 text-center fs-1 my-5">{% trans "You are in no other groups... :(" %}</span>
             </li>
 
             {% endfor %}

@@ -1,12 +1,12 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% block content %} {% load i18n %}
 
 <div class="content flex-grow-1">
     <div class="container">
         <div class="fs-2 text-center p-5">
-            You have been logged out!
+            {% trans "You have been logged out!" %}
 
             <div class="fs-5">
-                <a class="link" href="{% url 'login' %}">Log In Again</a>?
+                <a class="link" href="{% url 'login' %}">{% trans "Log In Again" %}</a>?
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% block content %} {% load i18n %}
 
 <!-- Content Header -->
 <div class="container">
@@ -9,16 +9,16 @@
 
         <div class="col-12 col-md-4 col-lg-3 p-0 vertical-center justify-content-center justify-content-md-end">
             <a class="btn btn-primary me-2 position-relative" data-bs-toggle="modal" data-bs-target="#modalViewRequests">
-                View Requests
+                {% trans "View Requests" %}
                 {% if user.profile.incoming_requests %}
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem;">
                     {{ user.profile.incoming_requests }}
-                    <span class="visually-hidden">unread messages</span>
+                    <span class="visually-hidden">{% trans "unread messages" %}</span>
                 </span>
                 {% endif %}
             </a>
 
-            <a class="btn btn-primary" href="{% url 'search' %}"><i class="bi bi-search"></i> Search</a>
+            <a class="btn btn-primary" href="{% url 'search' %}"><i class="bi bi-search"></i> {% trans "Search" %}</a>
         </div>
     </div>
 </div>
@@ -32,7 +32,7 @@
             <li class="list-group-item d-flex align-items-center">
                 <img width="40" height="40" class="image rounded-circle" src="{{ friend.profile.image.url }}" alt="">
                 <a href="{% url 'profile' pk=friend.pk %}" class="link text-dark ms-2">{{ friend.profile.name }}</a>
-                <a class="link text-danger ms-auto" data-bs-toggle="modal" data-bs-target="#modalRemove_{{ friend.pk }}">Remove</a>
+                <a class="link text-danger ms-auto" data-bs-toggle="modal" data-bs-target="#modalRemove_{{ friend.pk }}">{% trans "Remove" %}</a>
                 {% include "users/friends/remove.html" %}
             </li>
 

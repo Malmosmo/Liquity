@@ -1,9 +1,10 @@
+{% load i18n %}
 <div class="modal fade" id="modalViewRequests" tabindex="-1" aria-labelledby="viewRequests" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="fw-lighter fs-4">
-                    Your Friend Requests
+                    {% trans "Your Friend Requests" %}
                 </div>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -12,7 +13,7 @@
             <div class="modal-body">
                 <ul class="list-group shadow-sm">
                     <li class="list-group-item bg-dark text-white fw-bold">
-                        Incoming
+                        {% trans "Incoming" %}
 
                         <span class="float-end text-success ">{{ incoming.count }}</span>
                     </li>
@@ -22,13 +23,13 @@
                     <li class="list-group-item d-flex align-items-center">
                         <img width="40" height="40" class="image rounded-circle" src="{{ rq.sender.profile.image.url }}" alt="">
                         <a href="{% url 'profile' pk=rq.sender.pk %}" class="link text-dark ms-2">{{ rq.sender.profile.name }}</a>
-                        <a class="link text-success ms-auto" href="{% url 'action-friend-accept' pk=rq.pk %}">Accept</a>
-                        <a class="link text-danger ms-3" href="{% url 'action-friend-decline' pk=rq.pk %}">Decline</a>
+                        <a class="link text-success ms-auto" href="{% url 'action-friend-accept' pk=rq.pk %}">{% trans "Accept" %}</a>
+                        <a class="link text-danger ms-3" href="{% url 'action-friend-decline' pk=rq.pk %}">{% trans "Decline" %}</a>
                     </li>
 
                     {% empty%}
 
-                    <li class="list-group-item">Empty</li>
+                    <li class="list-group-item">{% trans "Empty" %}</li>
 
                     {% endfor %}
 
@@ -38,7 +39,7 @@
 
                 <ul class="list-group shadow-sm">
                     <li class="list-group-item bg-dark text-white fw-bold">
-                        Outgoing
+                        {% trans "Outgoing" %}
 
                         <span class="float-end text-success ">{{ outgoing.count }}</span>
                     </li>
@@ -48,12 +49,12 @@
                     <li class="list-group-item d-flex align-items-center">
                         <img width="40" height="40" class="image rounded-circle" src="{{ rq.receiver.profile.image.url }}" alt="">
                         <a href="{% url 'profile' pk=rq.receiver.pk %}" class="link text-dark ms-2">{{ rq.receiver.profile.name }}</a>
-                        <a class="link text-danger ms-auto" href="{% url 'action-friend-cancel' pk=rq.pk %}">Cancel</a>
+                        <a class="link text-danger ms-auto" href="{% url 'action-friend-cancel' pk=rq.pk %}">{% trans "Cancel" %}</a>
                     </li>
 
                     {% empty %}
 
-                    <li class="list-group-item">Empty</li>
+                    <li class="list-group-item">{% trans "Empty" %}</li>
 
                     {% endfor %}
 

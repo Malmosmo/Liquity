@@ -1,14 +1,16 @@
 import datetime
 
-from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm, GroupRenameForm)
+from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm,
+                       GroupRenameForm)
 from app.models import Drink, DrinkEntry, Group
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.utils.translation import gettext_lazy as _
 
-from users.models import Profile, FriendList, FriendRequest, User
 from users.forms import ProfileUpdateForm, UserUpdateForm
+from users.models import FriendList, FriendRequest, Profile, User
 
 
 ##########################################################
@@ -25,12 +27,10 @@ def drink_create(request):
         if Drink.objects.filter(name=instance.name).count() == 0:
             instance.save()
 
-            # TODO: Translate
-            messages.success(request, "Successfully added Drink")
+            messages.success(request, _("Successfully added Drink"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "Drink already exists with that name")
+            messages.info(request, _("Drink already exists with that name"))
 
     else:
         # TODO: BOTH??
@@ -58,11 +58,9 @@ def drink_add(request):
         if drink:
             DrinkEntry.objects.create(drinkType=drink, user=request.user, count=count, date=dt, volume=volume)
 
-            # TODO: Translate
-            messages.success(request, "Successfully added Drink")
+            messages.success(request, _("Successfully added Drink"))
         else:
-            # TODO: Translate
-            messages.success(request, "Drink does not exist")
+            messages.success(request, _("Drink does not exist"))
 
     else:
         messages.warning(request, form.errors)
@@ -112,16 +110,13 @@ def groups_delete(request, pk):
         if group.creator == request.user:
             group.delete()
 
-            # TODO: Translate
-            messages.success(request, "Group successfully deleted")
+            messages.success(request, _("Group successfully deleted"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "You are not the creator of this group!")
+            messages.info(request, _("You are not the creator of this group"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "Group does not exist!")
+        messages.info(request, _("Group does not exist"))
 
     return redirect('groups')
 
@@ -135,17 +130,14 @@ def groups_create(request):
         name = form.cleaned_data.get("name")
 
         if Group.objects.filter(creator=request.user, name=name).exists():
-            # TODO: Translate
-            messages.info(request, "You already have created a group with this Name!")
+            messages.info(request, _("You already have created a group with this Name"))
 
         else:
             Group.objects.create(creator=request.user, name=name)
-            # TODO: Translate
-            messages.success(request, "Group successfully created")
+            messages.success(request, _("Group successfully created"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "Form invalid")
+        messages.info(request, _("Form invalid"))
 
     return redirect('groups')
 
@@ -166,20 +158,16 @@ def group_rename(request, pk):
                 group.name = name
                 group.save()
 
-                # TODO: Translate
-                messages.success(request, "Group successfully renamed")
+                messages.success(request, _("Group successfully renamed"))
 
             else:
-                # TODO: Translate
-                messages.info(request, "Cannot rename group. You are not the creator of this Group")
+                messages.info(request, _("Cannot rename group. You are not the creator of this Group"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "Form is invalid")
+            messages.info(request, _("Form invalid"))
 
     else:
-        # TODO: Translate
-        messages.warning(request, "Group does not exist")
+        messages.warning(request, _("Group does not exist"))
 
     return redirect('group-single', pk=pk)
 
@@ -198,28 +186,22 @@ def group_user_remove(request, pk, user_pk):
                         group.members.remove(user)
                         group.save()
 
-                        # TODO: Translate
-                        messages.success(request, "Successfully removed User")
+                        messages.success(request, _("Successfully removed User"))
 
                     else:
-                        # TODO: Translate
-                        messages.info(request, "User not in Group")
+                        messages.info(request, _("User not in Group"))
 
                 else:
-                    # TODO: Translate
-                    messages.info(request, "Cannot remove User. User does not exist!")
+                    messages.info(request, _("Cannot remove User. User does not exist"))
 
             else:
-                # TODO: Translate
-                messages.info(request, "No user provided to remove")
+                messages.info(request, _("No user provided to remove"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "You are not the creator of this group")
+            messages.info(request, _("You are not the creator of this group"))
 
     else:
-        # TODO: Translate
-        messages.warning(request, "Group does not exist")
+        messages.warning(request, _("Group does not exist"))
 
     return redirect('group-single', pk=pk)
 
@@ -232,17 +214,15 @@ def group_leave(request, pk):
         if request.user in group.members.all():
             group.members.remove(request.user)
 
-            # TODO: Translate
-            messages.success(request, f"Successfully left { group.name }")
+            messages.success(request, _("Successfully left") + f" { group.name }")
 
         else:
-            # TODO: Translate
-            messages.info(request, f"You are not a member of this group")
+            messages.info(request, _("You are not in this group"))
 
         return redirect('group-single', pk=pk)
 
     else:
-        messages.info(request, "Group does not exist")
+        messages.info(request, _("Group does not exist"))
 
     return redirect('groups')
 
@@ -270,25 +250,21 @@ def group_user_add(request, pk):
                         fail = True
 
                 if fail:
-                    # TODO: Translate
-                    messages.info(request, "Could not add some users")
+                    messages.info(request, _("Could not add some users"))
 
                 else:
-                    # TODO: Translate
-                    messages.success(request, "Added all users")
+                    messages.success(request, _("Added all users"))
 
             # else:
             #     messages.info(request, "No Users to add")
 
         else:
-            # TODO: Translate
-            messages.info(request, "You cannot add users")
+            messages.info(request, _("You cannot add users"))
 
         return redirect('group-single', pk=pk)
 
     else:
-        # TODO: Translate
-        messages.info(request, "Group does not exist")
+        messages.info(request, _("Group does not exist"))
 
     return redirect('groups')
 
@@ -305,20 +281,17 @@ def profile_delete(request, pk):
             profile = Profile.objects.get(user=request.user)
             profile.delete()
 
-            # TODO: Translate
-            messages.info(request, "Your account has been deleted!")
+            messages.info(request, _("Your account has been deleted"))
 
             return redirect('logout')
 
         else:
-            # TODO: Translate
-            messages.info(request, "You cannot delete someones other account")
+            messages.info(request, _("You cannot delete someones other account"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "User does not exist")
+        messages.info(request, _("User does not exist"))
 
-    return redirect('home')
+    return redirect("home")
 
 
 @login_required
@@ -330,14 +303,12 @@ def profile_update(request, pk):
         # profile form is also saved because of signals.py
         user_form.save()
 
-        # TODO: Translate
-        messages.success(request, 'Your account has been updated!')
+        messages.success(request, _("Your account has been updated"))
 
     else:
-        # TODO: Translate
-        messages.info(request, 'Invalid Form')
+        messages.info(request, _("Form invalid"))
 
-    return redirect('profile', pk=pk)
+    return redirect("profile", pk=pk)
 
 
 @login_required
@@ -349,16 +320,13 @@ def friend_remove(request, pk):
         if user in my_friend_list.friends.all():
             my_friend_list.unfriend(user)
 
-            # TODO: Translate
-            messages.success(request, f"Friend successfully removed!")
+            messages.success(request, _("Friend successfully removed"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "You are not friends")
+            messages.info(request, _("You are not friends"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "User does not exist")
+        messages.info(request, _("User does not exist"))
 
     return redirect('friends')
 
@@ -369,22 +337,18 @@ def friend_add(request, pk):
 
     if user:
         if FriendRequest.objects.filter(receiver=user, sender=request.user).exists():
-            # TODO: Translate
-            messages.info(request, "You have already send a friend request")
+            messages.info(request, _("You have already send a friend request"))
 
         elif FriendRequest.objects.filter(receiver=request.user, sender=user).exists():
-            # TODO: Translate
-            messages.info(request, "The User already send you a request")
+            messages.info(request, _("The User already send you a request"))
 
         else:
             FriendRequest.objects.create(receiver=user, sender=request.user)
 
-            # TODO: Translate
-            messages.success(request, "successfully send friend request")
+            messages.success(request, _("successfully send friend request"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "User could not be found")
+        messages.info(request, _("User could not be found"))
 
     return redirect('friends')
 
@@ -400,16 +364,13 @@ def friend_rq_accept(request, pk):
         if friend_request.receiver == request.user:
             friend_request.accept()
 
-            # TODO: Translate
-            messages.success(request, "Accepted Friend Request")
+            messages.success(request, _("Accepted Friend Request"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "This friend request is not for you")
+            messages.info(request, _("This friend request is not for you"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "No friend request found")
+        messages.info(request, _("No friend request found"))
 
     return redirect('friends')
 
@@ -422,16 +383,13 @@ def friend_rq_decline(request, pk):
         if friend_request.receiver == request.user:
             friend_request.decline()
 
-            # TODO: Translate
-            messages.success(request, f"Declined Friend Request")
+            messages.success(request, _("Declined Friend Request"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "This friend request is not for you")
+            messages.info(request, _("This friend request is not for you"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "No friend request found")
+        messages.info(request, _("No friend request found"))
 
     return redirect('friends')
 
@@ -444,15 +402,12 @@ def friend_rq_cancel(request, pk):
         if friend_request.sender == request.user:
             friend_request.cancel()
 
-            # TODO: Translate
-            messages.success(request, f"Canceled Friend Request")
+            messages.success(request, _("Canceled Friend Request"))
 
         else:
-            # TODO: Translate
-            messages.info(request, "This friend request is not from you")
+            messages.info(request, _("This friend request is not from you"))
 
     else:
-        # TODO: Translate
-        messages.info(request, "No friend request found")
+        messages.info(request, _("No friend request found"))
 
     return redirect('friends')

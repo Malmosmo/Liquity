@@ -1,17 +1,18 @@
+{% load i18n %}
 <!-- Modal Friend Remove -->
 <div class="modal fade" id="friendRemoveModal" tabindex="-1" aria-labelledby="friendRemove" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="friendRemove">Remove Friend</h5>
+                <h5 class="modal-title" id="friendRemove">{% trans "Remove Friend" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Do you really want to remove <b>{{ profile_user.profile.name }}</b> as your friend?
+                {% trans "Do you really want to remove" %} <b>{{ profile_user.profile.name }}</b> {% trans "as your friend" %}?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="{% url 'action-friend-remove' pk=profile_user.pk %}" class="btn btn-danger">Unfriend</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                <a href="{% url 'action-friend-remove' pk=profile_user.pk %}" class="btn btn-danger">{% trans "Unfriend" %}</a>
             </div>
         </div>
     </div>

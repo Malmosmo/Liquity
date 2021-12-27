@@ -1,16 +1,16 @@
-{% extends 'main.html' %} {% block content %} {% load widget_tweaks %}
+{% extends 'main.html' %} {% block content %} {% load widget_tweaks %} {% load i18n %}
 
 <!-- Content Header -->
 <div class="container">
     <div class="row mx-0 my-3">
         <div class="col-12 col-md-8 col-lg-9 col-xxl-10 px-0 fw-lighter fs-2 text-center text-md-start pb-2 pb-md-0">
-            Beer
+            {% trans "Beer" %}
         </div>
         <div class="col-12 col-md-4 col-lg-3 col-xxl-2 p-0 vertical-center">
             <form class="input-group">
                 <input class="form-control" id="drinkInput" type="search" placeholder="Search" aria-label="Search">
                 <a class="input-group-text link text-success" data-bs-toggle="modal" data-bs-target="#modal_drink_create">
-                    New
+                    {% trans "New" %}
                 </a>
             </form>
         </div>
@@ -29,7 +29,7 @@
 
         {% empty %}
 
-        <h1>No Drinks for you :(... maybe add one?</h1>
+        <h1>{% trans "No Drinks for you :(... maybe add one?" %}</h1>
 
         {% endfor %}
     </div>

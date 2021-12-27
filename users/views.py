@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
+from django.utils.translation import gettext_lazy as _
 
 from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
 from .models import FriendList, FriendRequest, Profile, User
@@ -16,8 +17,7 @@ def register(request) -> HttpResponse:
         if form.is_valid():
             form.save()
 
-            messages.success(
-                request, 'Your account has been created! You are now able to log in!')
+            messages.success(request, _('Your account has been created! You are now able to log in!'))
 
             return redirect('login')
 
@@ -31,7 +31,7 @@ def profile(request, pk: int) -> HttpResponse:
     user = User.objects.filter(pk=pk).first()
 
     if not user:
-        messages.info(request, "User does not exist")
+        messages.info(request, _("User does not exist"))
         return redirect('home')
 
     friend_list = FriendList.objects.get(user=user)
@@ -88,8 +88,7 @@ def password_change(request) -> HttpResponse:
             user = form.save()
 
             update_session_auth_hash(request, user)  # Important!
-            messages.success(
-                request, 'Your password was successfully updated!')
+            messages.success(request, _('Your password was successfully updated!'))
 
             return redirect('profile', pk=request.user.pk)
 

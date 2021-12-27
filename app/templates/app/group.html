@@ -1,4 +1,4 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% block content %} {% load i18n %}
 
 <!-- Content Header -->
 <div class="container">
@@ -11,7 +11,7 @@
 
         <div class="col-12 col-md-4 col-lg-3 col-xxl-2 p-0 vertical-center justify-content-center justify-content-md-end">
             <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRename">
-                Rename
+                {% trans "Rename" %}
             </a>
         </div>
 
@@ -24,14 +24,14 @@
     <div class="container my-4">
         <ul class="list-group shadow-sm">
             <li class="list-group-item bg-dark text-white fw-bold" aria-current="true">
-                Members
+                {% trans "Members" %}
                 <span class="float-end text-success ">{{ group.members.count|add:"1" }}</span>
             </li>
 
             <li class="list-group-item">
                 <a href="{% url 'profile' pk=group.creator.pk %}" class="link text-dark">{{ group.creator.profile.name }}</a>
 
-                <span class="float-end text-success">Creator</span>
+                <span class="float-end text-success">{% trans "Creator" %}</span>
             </li>
 
             {% for member in group.members.all %}
@@ -43,14 +43,14 @@
                 {% if creator %}
 
                 <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalMemberRemove_{{ member.pk }}">
-                    Remove
+                    {% trans "Remove" %}
                 </a>
 
                 {% include "app/group/remove.html" %}
 
                 {% else %} {% if member == user %}
 
-                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalLeave">Leave</a>
+                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalLeave">{% trans "Leave" %}</a>
 
                 {% include "app/group/leave.html" %}
 
@@ -62,7 +62,7 @@
 
             {% if creator %}
 
-            <li class="list-group-item"><a href="#" class="link" data-bs-toggle="modal" data-bs-target="#modalAddMember">Add Member</a></li>
+            <li class="list-group-item"><a href="#" class="link" data-bs-toggle="modal" data-bs-target="#modalAddMember">{% trans "Add Member" %}</a></li>
 
             {% endif %}
 

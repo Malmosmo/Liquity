@@ -1,8 +1,8 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %} {% block content %} {% load i18n %}
 
 <!-- Content Header -->
 <div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">
-    Overview
+    {% trans "Overview" %}
 </div>
 
 <div class="content flex-grow-1">
@@ -11,7 +11,7 @@
             <div class="col-12 col-md-6 col-lg-3 p-0">
                 <div class="overview-card yellow-gradient px-3 py-2 mx-auto rounded shadow my-2">
                     <div class="fs-5">
-                        Total: <span class="float-end fw-bold">{{ total }}</span>
+                        {% trans "Total" %}: <span class="float-end fw-bold">{{ total }}</span>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <div class="col-12 col-md-6 col-lg-3 p-0">
                 <div class="overview-card red-gradient px-3 py-2 mx-auto bg-info rounded shadow my-2">
                     <div class="fs-5">
-                        This Week: <span class="float-end fw-bold">{{ week }}</span>
+                        {% trans "This Week" %}: <span class="float-end fw-bold">{{ week }}</span>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="col-12 col-md-6 col-lg-3 p-0">
                 <div class="overview-card green-gradient px-3 py-2 mx-auto bg-success rounded shadow my-2">
                     <div class="fs-5">
-                        This Month: <span class="float-end fw-bold">{{ month }}</span>
+                        {% trans "This Month" %}: <span class="float-end fw-bold">{{ month }}</span>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <div class="col-12 col-md-6 col-lg-3 p-0">
                 <div class="overview-card blue-gradient px-3 py-2 mx-auto bg-primary rounded shadow my-2">
                     <div class="fs-5">
-                        This Year: <span class="float-end fw-bold">{{ year }}</span>
+                        {% trans "This Year" %}: <span class="float-end fw-bold">{{ year }}</span>
                     </div>
                 </div>
             </div>
@@ -43,9 +43,9 @@
 
         <!-- New Charts -->
         <div id="charts" url="{% url 'api-all' %}" class="my-5 overflow-hidden p-3 shadow-sm border bg-white">
-            <button id="one_month">Month</button>
-            <button id="one_year">Year</button>
-            <button id="all">All</button>
+            <button id="one_month">{% trans "Month" %}</button>
+            <button id="one_year">{% trans "Year" %}</button>
+            <button id="all">{% trans "All" %}</button>
 
             <div id="timeline-chart">
             </div>
@@ -65,7 +65,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="drinkList">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseList" aria-expanded="false" aria-controls="collapseList">
-                        Your Drinks
+                        {% trans "Your Drinks" %}
                     </button>
                 </h2>
                 <div id="collapseList" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#drinkListParent">
@@ -74,11 +74,11 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Drink</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Volume</th>
-                                    <th scope="col">Count</th>
-                                    <th scope="col">Delete</th>
+                                    <th scope="col">{% trans "Drink" %}</th>
+                                    <th scope="col">{% trans "Date" %}</th>
+                                    <th scope="col">{% trans "Volume" %}</th>
+                                    <th scope="col">{% trans "Count" %}</th>
+                                    <th scope="col">{% trans "Delete" %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,7 +93,7 @@
                                     <td>{{ drink.count }}</td>
                                     <td>
                                         <a class="link text-danger" data-bs-toggle="modal" data-bs-target="#DrinkDelete_{{drink.id}}">
-                                            Delete
+                                            {% trans "Delete" %}
                                         </a>
 
                                         {% include "app/overview/delete.html" %}

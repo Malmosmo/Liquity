@@ -1,4 +1,4 @@
-{% load widget_tweaks %}
+{% load widget_tweaks %} {% load i18n %}
 <form action="{% url 'action-drink-add' %}" method="POST">
     <div class="modal-body">
         <div class="text-center m-3">
@@ -13,7 +13,7 @@
 
         <!-- Displayed Drink Input -->
         <div class="form-group mb-3">
-            <label for="drinkDisplay" class="form-label">Drink</label>
+            <label for="drinkDisplay" class="form-label">{% trans "Drink" %}</label>
 
             <input type="text" name="drinkDisplay" class="form-control" id="drinkDisplay" value="{{ drink.name }}" disabled>
         </div>
@@ -59,7 +59,7 @@
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button class="btn btn-outline-success" type="submit">Add Drink</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+        <button class="btn btn-outline-success" type="submit">{% trans "Add Drink" %}</button>
     </div>
 </form>

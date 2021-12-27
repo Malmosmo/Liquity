@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-22 20:28+0100\n"
+"POT-Creation-Date: 2021-12-27 01:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,600 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\liquity\settings.py:130
+#: .\actions\views.py:30 .\actions\views.py:61
+msgid "Successfully added Drink"
+msgstr ""
+
+#: .\actions\views.py:33
+msgid "Drink already exists with that name"
+msgstr ""
+
+#: .\actions\views.py:63
+msgid "Drink does not exist"
+msgstr ""
+
+#: .\actions\views.py:113
+msgid "Group successfully deleted"
+msgstr ""
+
+#: .\actions\views.py:116 .\actions\views.py:201
+msgid "You are not the creator of this group"
+msgstr ""
+
+#: .\actions\views.py:119 .\actions\views.py:170 .\actions\views.py:204
+#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:62
+msgid "Group does not exist"
+msgstr ""
+
+#: .\actions\views.py:133
+msgid "You already have created a group with this Name"
+msgstr ""
+
+#: .\actions\views.py:137
+msgid "Group successfully created"
+msgstr ""
+
+#: .\actions\views.py:140 .\actions\views.py:167 .\actions\views.py:309
+msgid "Form invalid"
+msgstr ""
+
+#: .\actions\views.py:161
+msgid "Group successfully renamed"
+msgstr ""
+
+#: .\actions\views.py:164
+msgid "Cannot rename group. You are not the creator of this Group"
+msgstr ""
+
+#: .\actions\views.py:189
+msgid "Successfully removed User"
+msgstr ""
+
+#: .\actions\views.py:192
+msgid "User not in Group"
+msgstr ""
+
+#: .\actions\views.py:195
+msgid "Cannot remove User. User does not exist"
+msgstr ""
+
+#: .\actions\views.py:198
+msgid "No user provided to remove"
+msgstr ""
+
+#: .\actions\views.py:217
+msgid "Successfully left"
+msgstr ""
+
+#: .\actions\views.py:220 .\app\views.py:57
+msgid "You are not in this group"
+msgstr ""
+
+#: .\actions\views.py:253
+msgid "Could not add some users"
+msgstr ""
+
+#: .\actions\views.py:256
+msgid "Added all users"
+msgstr ""
+
+#: .\actions\views.py:262
+msgid "You cannot add users"
+msgstr ""
+
+#: .\actions\views.py:284
+msgid "Your account has been deleted"
+msgstr ""
+
+#: .\actions\views.py:289
+msgid "You cannot delete someones other account"
+msgstr ""
+
+#: .\actions\views.py:292 .\actions\views.py:329 .\users\views.py:34
+msgid "User does not exist"
+msgstr ""
+
+#: .\actions\views.py:306
+msgid "Your account has been updated"
+msgstr ""
+
+#: .\actions\views.py:323
+msgid "Friend successfully removed"
+msgstr ""
+
+#: .\actions\views.py:326
+msgid "You are not friends"
+msgstr ""
+
+#: .\actions\views.py:340
+msgid "You have already send a friend request"
+msgstr ""
+
+#: .\actions\views.py:343
+msgid "The User already send you a request"
+msgstr ""
+
+#: .\actions\views.py:348
+msgid "successfully send friend request"
+msgstr ""
+
+#: .\actions\views.py:351
+msgid "User could not be found"
+msgstr ""
+
+#: .\actions\views.py:367
+msgid "Accepted Friend Request"
+msgstr ""
+
+#: .\actions\views.py:370 .\actions\views.py:389
+msgid "This friend request is not for you"
+msgstr ""
+
+#: .\actions\views.py:373 .\actions\views.py:392 .\actions\views.py:411
+msgid "No friend request found"
+msgstr ""
+
+#: .\actions\views.py:386
+msgid "Declined Friend Request"
+msgstr ""
+
+#: .\actions\views.py:405
+msgid "Canceled Friend Request"
+msgstr ""
+
+#: .\actions\views.py:408
+msgid "This friend request is not from you"
+msgstr ""
+
+#: .\app\forms.py:8
+msgid "Group Name"
+msgstr ""
+
+#: .\app\forms.py:12
+msgid "New Group Name"
+msgstr ""
+
+#: .\app\forms.py:25
+msgid "Volume (in Liters)"
+msgstr ""
+
+#: .\app\templates\app\drinks.html:7
+msgid "Beer"
+msgstr ""
+
+#: .\app\templates\app\drinks.html:13
+msgid "New"
+msgstr ""
+
+#: .\app\templates\app\drinks.html:32
+msgid "No Drinks for you :(... maybe add one?"
+msgstr ""
+
+#: .\app\templates\app\drinks\add.html:9
+#: .\app\templates\app\drinks\form.html:63
+msgid "Add Drink"
+msgstr ""
+
+#: .\app\templates\app\drinks\create.html:6
+msgid "Create New Drink"
+msgstr ""
+
+#: .\app\templates\app\drinks\create.html:21
+#: .\app\templates\app\drinks\form.html:62
+#: .\app\templates\app\group\add.html:47
+#: .\app\templates\app\group\leave.html:16
+#: .\app\templates\app\group\remove.html:17
+#: .\app\templates\app\group\rename.html:27
+#: .\app\templates\app\groups\create.html:24
+#: .\app\templates\app\groups\delete.html:16
+#: .\app\templates\app\overview\delete.html:16
+#: .\users\templates\users\friends\remove.html:16
+#: .\users\templates\users\profile\delete.html:14
+#: .\users\templates\users\profile\modals\remove.html:14
+msgid "Close"
+msgstr ""
+
+#: .\app\templates\app\drinks\form.html:16 .\app\templates\app\overview.html:77
+msgid "Drink"
+msgstr ""
+
+#: .\app\templates\app\group.html:14 .\app\templates\app\group\rename.html:29
+msgid "Rename"
+msgstr ""
+
+#: .\app\templates\app\group.html:27
+msgid "Members"
+msgstr ""
+
+#: .\app\templates\app\group.html:34
+msgid "Creator"
+msgstr ""
+
+#: .\app\templates\app\group.html:46 .\app\templates\app\group\remove.html:18
+#: .\users\templates\users\friends.html:35
+#: .\users\templates\users\friends\remove.html:17
+msgid "Remove"
+msgstr ""
+
+#: .\app\templates\app\group.html:53 .\app\templates\app\group\leave.html:17
+msgid "Leave"
+msgstr ""
+
+#: .\app\templates\app\group.html:65 .\app\templates\app\group\add.html:7
+msgid "Add Member"
+msgstr ""
+
+#: .\app\templates\app\group\add.html:29
+msgid "Add to Group"
+msgstr ""
+
+#: .\app\templates\app\group\add.html:39
+msgid "No Friends :("
+msgstr ""
+
+#: .\app\templates\app\group\add.html:49
+msgid "Submit"
+msgstr ""
+
+#: .\app\templates\app\group\leave.html:7
+msgid "Leave Group"
+msgstr ""
+
+#: .\app\templates\app\group\leave.html:12
+msgid "Are you sure that you want to leave"
+msgstr ""
+
+#: .\app\templates\app\group\remove.html:7
+msgid "Remove Member"
+msgstr ""
+
+#: .\app\templates\app\group\remove.html:12
+#: .\users\templates\users\friends\remove.html:12
+msgid "Are you sure that you want to remove"
+msgstr ""
+
+#: .\app\templates\app\group\rename.html:7
+msgid "Rename Group"
+msgstr ""
+
+#: .\app\templates\app\groups.html:5 .\templates\nav.html:25
+msgid "Groups"
+msgstr ""
+
+#: .\app\templates\app\groups.html:12
+msgid "Your Groups"
+msgstr ""
+
+#: .\app\templates\app\groups.html:20 .\app\templates\app\groups\delete.html:17
+#: .\app\templates\app\overview.html:81 .\app\templates\app\overview.html:96
+#: .\app\templates\app\overview\delete.html:17
+#: .\venv\Lib\site-packages\django\forms\formsets.py:433
+msgid "Delete"
+msgstr ""
+
+#: .\app\templates\app\groups.html:29
+msgid "New Group"
+msgstr ""
+
+#: .\app\templates\app\groups.html:35
+msgid "Other Groups"
+msgstr ""
+
+#: .\app\templates\app\groups.html:48
+msgid "You are in no other groups... :("
+msgstr ""
+
+#: .\app\templates\app\groups\create.html:8
+msgid "Create Group"
+msgstr ""
+
+#: .\app\templates\app\groups\create.html:26
+msgid "Create"
+msgstr ""
+
+#: .\app\templates\app\groups\delete.html:7
+msgid "Delete Group"
+msgstr ""
+
+#: .\app\templates\app\groups\delete.html:12
+#: .\app\templates\app\overview\delete.html:12
+msgid "Are you sure that you want to delete"
+msgstr ""
+
+#: .\app\templates\app\groups\delete.html:12
+msgid "It can not be restored"
+msgstr ""
+
+#: .\app\templates\app\overview.html:5 .\templates\nav.html:21
+msgid "Overview"
+msgstr ""
+
+#: .\app\templates\app\overview.html:14
+msgid "Total"
+msgstr ""
+
+#: .\app\templates\app\overview.html:22
+msgid "This Week"
+msgstr ""
+
+#: .\app\templates\app\overview.html:30
+msgid "This Month"
+msgstr ""
+
+#: .\app\templates\app\overview.html:38
+msgid "This Year"
+msgstr ""
+
+#: .\app\templates\app\overview.html:46
+msgid "Month"
+msgstr ""
+
+#: .\app\templates\app\overview.html:47
+msgid "Year"
+msgstr ""
+
+#: .\app\templates\app\overview.html:48
+msgid "All"
+msgstr ""
+
+#: .\app\templates\app\overview.html:68
+msgid "Your Drinks"
+msgstr ""
+
+#: .\app\templates\app\overview.html:78
+msgid "Date"
+msgstr ""
+
+#: .\app\templates\app\overview.html:79
+msgid "Volume"
+msgstr ""
+
+#: .\app\templates\app\overview.html:80
+msgid "Count"
+msgstr ""
+
+#: .\app\templates\app\overview\delete.html:7
+msgid "Delete Drink"
+msgstr ""
+
+#: .\liquity\settings.py:129
 msgid "German"
 msgstr "German"
 
-#: .\liquity\settings.py:131
+#: .\liquity\settings.py:130
 msgid "English"
 msgstr "English"
+
+#: .\liquity\urls.py:31
+msgid "login/"
+msgstr ""
+
+#: .\liquity\urls.py:32
+msgid "logout/"
+msgstr ""
+
+#: .\liquity\urls.py:34
+msgid "password/change/"
+msgstr ""
+
+#: .\liquity\urls.py:35
+msgid "register/"
+msgstr ""
+
+#: .\liquity\urls.py:36
+msgid "profile/<uuid:pk>/"
+msgstr ""
+
+#: .\liquity\urls.py:37
+msgid "friends/"
+msgstr ""
+
+#: .\liquity\urls.py:38
+msgid "search/"
+msgstr ""
+
+#: .\liquity\urls.py:41
+msgid "api/"
+msgstr ""
+
+#: .\liquity\urls.py:42
+msgid "actions/"
+msgstr ""
+
+#: .\templates\nav.html:17
+msgid "Drinks"
+msgstr ""
+
+#: .\templates\nav.html:42
+msgid "Logged in as"
+msgstr ""
+
+#: .\templates\nav.html:68
+msgid "Profile"
+msgstr ""
+
+#: .\templates\nav.html:72
+msgid "Friends"
+msgstr ""
+
+#: .\templates\nav.html:81
+msgid "Log Out"
+msgstr ""
+
+#: .\templates\nav.html:86 .\users\templates\users\login.html:21
+msgid "Login"
+msgstr ""
+
+#: .\templates\nav.html:89 .\users\templates\users\register.html:7
+msgid "Register"
+msgstr ""
+
+#: .\users\templates\users\friends.html:12
+msgid "View Requests"
+msgstr ""
+
+#: .\users\templates\users\friends.html:16
+msgid "unread messages"
+msgstr ""
+
+#: .\users\templates\users\friends.html:21
+#: .\users\templates\users\search.html:12
+msgid "Search"
+msgstr ""
+
+#: .\users\templates\users\friends\remove.html:7
+#: .\users\templates\users\profile\modals\remove.html:7
+msgid "Remove Friend"
+msgstr ""
+
+#: .\users\templates\users\friends\remove.html:12
+#: .\users\templates\users\profile\modals\remove.html:11
+msgid "as your friend"
+msgstr ""
+
+#: .\users\templates\users\friends\requests.html:7
+msgid "Your Friend Requests"
+msgstr ""
+
+#: .\users\templates\users\friends\requests.html:16
+msgid "Incoming"
+msgstr ""
+
+#: .\users\templates\users\friends\requests.html:26
+msgid "Accept"
+msgstr ""
+
+#: .\users\templates\users\friends\requests.html:27
+msgid "Decline"
+msgstr ""
+
+#: .\users\templates\users\friends\requests.html:32
+#: .\users\templates\users\friends\requests.html:57
+#: .\users\templates\users\search.html:34
+msgid "Empty"
+msgstr ""
+
+#: .\users\templates\users\friends\requests.html:42
+msgid "Outgoing"
+msgstr ""
+
+#: .\users\templates\users\friends\requests.html:52
+msgid "Cancel"
+msgstr ""
+
+#: .\users\templates\users\login.html:22
+msgid "Forgot Password"
+msgstr ""
+
+#: .\users\templates\users\login.html:29
+msgid "Have no account"
+msgstr ""
+
+#: .\users\templates\users\login.html:29
+msgid "Register Now"
+msgstr ""
+
+#: .\users\templates\users\logout.html:6
+msgid "You have been logged out!"
+msgstr ""
+
+#: .\users\templates\users\logout.html:9
+msgid "Log In Again"
+msgstr ""
+
+#: .\users\templates\users\password_change.html:7
+msgid "Change Your Password"
+msgstr ""
+
+#: .\users\templates\users\password_change.html:21
+#: .\users\templates\users\profile\form.html:53
+msgid "Change Password"
+msgstr ""
+
+#: .\users\templates\users\profile\delete.html:6
+msgid "Do you really want to delete your Account"
+msgstr ""
+
+#: .\users\templates\users\profile\delete.html:11
+msgid ""
+"If you delete your account all of your data will be deleted (including "
+"groups, beers, drinks, etc.) and can <b>not</b> be restored. Are you sure "
+"you want to do that"
+msgstr ""
+
+#: .\users\templates\users\profile\delete.html:15
+msgid "Delete my account"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:9
+msgid "Your Name"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:12
+msgid "This is the name that will be displayed"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:17
+msgid "E-Mail"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:24
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:375
+msgid "Image"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:28
+#: .\venv\Lib\site-packages\django\forms\widgets.py:404
+msgid "Currently"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:37
+msgid "Description"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:45
+msgid "Save Changes"
+msgstr ""
+
+#: .\users\templates\users\profile\form.html:51
+msgid "Delete Account"
+msgstr ""
+
+#: .\users\templates\users\profile\modals\remove.html:11
+msgid "Do you really want to remove"
+msgstr ""
+
+#: .\users\templates\users\profile\modals\remove.html:15
+msgid "Unfriend"
+msgstr ""
+
+#: .\users\templates\users\register.html:18
+msgid "Sign Up"
+msgstr ""
+
+#: .\users\templates\users\register.html:25
+msgid "Already have an account"
+msgstr ""
+
+#: .\users\templates\users\register.html:25
+msgid "Sign in"
+msgstr ""
+
+#: .\users\templates\users\search.html:17
+msgid "Profiles"
+msgstr ""
+
+#: .\users\templates\users\search.html:20
+msgid "Results"
+msgstr ""
+
+#: .\users\views.py:20
+msgid "Your account has been created! You are now able to log in!"
+msgstr ""
+
+#: .\users\views.py:91
+msgid "Your password was successfully updated!"
+msgstr ""
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
 msgid "Messages"
@@ -419,10 +1006,6 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:375
-msgid "Image"
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\db\models\fields\json.py:18
 msgid "A JSON object"
 msgstr ""
@@ -587,10 +1170,6 @@ msgstr[1] ""
 msgid "Order"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\forms\formsets.py:433
-msgid "Delete"
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\forms\models.py:767
 #, python-format
 msgid "Please correct the duplicate data for %(field)s."
@@ -634,10 +1213,6 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:403
 msgid "Clear"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:404
-msgid "Currently"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:405
