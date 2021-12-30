@@ -8,9 +8,11 @@ if (document.getElementById("group-charts") != null) {
         let max = 5
 
         for (const entry of json.data.data) {
-            entry.drinks.reduce((_, current) => {
-                max = Math.max(max, current.count)
-            })
+            if (entry.drinks.length > 0) {
+                entry.drinks.reduce((_, current) => {
+                    max = Math.max(max, current.count)
+                })
+            }
 
             series.push({
                 name: entry.name,

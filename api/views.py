@@ -73,10 +73,10 @@ def group(request, pk):
             "data": {
                 "name": group.name,
                 "data": [{
-                    "name": group.creator.username,
+                    "name": group.creator.profile.name,
                     "drinks": getDrinkData(group.creator)
                 }] + [{
-                    "name": member.username,
+                    "name": member.profile.name,
                     "drinks": getDrinkData(member)
                 } for member in group.members.all()]
             },
