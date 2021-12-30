@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from django.utils.translation import gettext_lazy as _
-import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nwm3#0p)c73s%cp=m@kqvd_)@v@o0$-1v7ct)_=c8@u3@c@y+w'
+with open(BASE_DIR / "secret.txt", "r") as file:
+    SECRET_KEY = file.read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -153,9 +153,6 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_PROFILE_IMAGE = MEDIA_ROOT / "profile.png"
 DEFAULT_DRINK_IMAGE = MEDIA_ROOT / "drink.png"
-
-# MEDIA_DEFAULT_IMAGE = os.path.join(MEDIA_ROOT, 'default.jpg')
-# MEDIA_DEFAULT_BEER = os.path.join(MEDIA_ROOT, 'default_drink.png')
 
 
 # Default primary key field type
