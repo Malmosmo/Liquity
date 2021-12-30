@@ -23,7 +23,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(default="", max_length=16)
     image = models.ImageField(
-        default="default.jpg",
+        default="profile.png",
         upload_to=upload_to
     )
     date = models.DateField(default=timezone.now)
@@ -40,10 +40,10 @@ class Profile(models.Model):
     def save(self, *args, **kwargs) -> None:
         super().save(*args, **kwargs)
 
-        if not self.name:
-            self.name = self.user.username
+        # if not self.name:
+        #     self.name = self.user.username
 
-        if settings.MEDIA_DEFAULT_IMAGE not in self.image.path:
+        if str(settings.DEFAULT_PROFILE_IMAGE.resolve()) != self.image.path:
             image = Image.open(self.image.path)
 
             if image.height > 300 or image.width > 300:

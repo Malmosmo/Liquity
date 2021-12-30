@@ -139,3 +139,9 @@ media/profiles/
 
 # TODO local
 TODO.md
+
+# secret
+secret.txt
+
+# config
+000-default.conf

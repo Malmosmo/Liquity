@@ -31,11 +31,6 @@ def remove_unused_media(sender, instance, **kwargs):
         profile = sender.objects.filter(pk=instance.pk).first()
 
         if profile:
-            old_image = profile.image
-            new_image = instance.image
-
-            path_old = old_image.path
-
-            if old_image != new_image:
-                if settings.MEDIA_DEFAULT_IMAGE not in path_old:
-                    os.remove(old_image.path)
+            if profile.image != instance.image:
+                if str(settings.DEFAULT_PROFILE_IMAGE.resolve()) != profile.image.path:
+                    os.remove(profile.image.path)

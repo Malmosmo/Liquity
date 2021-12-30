@@ -151,10 +151,11 @@ STATIC_ROOT = BASE_DIR / 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
-# MEDIA_DEFAULT_IMAGE = MEDIA_ROOT / 'default.jpg'
-# MEDIA_DEFAULT_BEER = MEDIA_ROOT / 'default_beer.png'
-MEDIA_DEFAULT_IMAGE = os.path.join(MEDIA_ROOT, 'default.jpg')
-MEDIA_DEFAULT_BEER = os.path.join(MEDIA_ROOT, 'default_drink.png')
+DEFAULT_PROFILE_IMAGE = MEDIA_ROOT / "profile.png"
+DEFAULT_DRINK_IMAGE = MEDIA_ROOT / "drink.png"
+
+# MEDIA_DEFAULT_IMAGE = os.path.join(MEDIA_ROOT, 'default.jpg')
+# MEDIA_DEFAULT_BEER = os.path.join(MEDIA_ROOT, 'default_drink.png')
 
 
 # Default primary key field type
