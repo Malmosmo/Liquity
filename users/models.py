@@ -21,7 +21,7 @@ def upload_to(instance, filename):
 class Profile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(default="", max_length=16)
+    name = models.CharField(default=user.username, max_length=16)
     image = models.ImageField(
         default="profile.png",
         upload_to=upload_to
@@ -40,8 +40,9 @@ class Profile(models.Model):
     def save(self, *args, **kwargs) -> None:
         super().save(*args, **kwargs)
 
-        # if not self.name:
-        #     self.name = self.user.username
+        # set name for profile
+        if not self.name:
+            self.name = self.user.username
 
         if str(settings.DEFAULT_PROFILE_IMAGE.resolve()) != self.image.path:
             image = Image.open(self.image.path)

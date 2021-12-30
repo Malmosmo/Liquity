@@ -145,3 +145,6 @@ secret.txt
 
 # config
 000-default.conf
+
+# deploy script
+deploy.sh
