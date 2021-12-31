@@ -142,6 +142,7 @@ TODO.md
 
 # secret
 secret.txt
+config.json
 
 # config
 000-default.conf

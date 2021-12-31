@@ -10,28 +10,33 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import json
+
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+with open(BASE_DIR / "config.json", "r") as file:
+    config = json.load(file)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(BASE_DIR / "secret.txt", "r") as file:
-    SECRET_KEY = file.read()
+# with open(BASE_DIR / "secret.txt", "r") as file:
+#     SECRET_KEY = file.read()
+SECRET_KEY = config["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config["DEBUG"]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config["ALLOWED_HOSTS"]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -138,7 +143,7 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/assets/'
+STATIC_URL = config["STATIC_URL"]
 
 STATICFILES_DIRS = [
     BASE_DIR / 'assets',
