@@ -193,8 +193,25 @@ if (document.getElementById("charts") != null) {
                 }
             }
 
+            let array = []
+
+            for (const key of Object.keys(types)) {
+                array.push([key, types[key]])
+            }
+
+            array.sort((a, b) => { return b[1] - a[1] })
+
+            let values = []
+            let keys = []
+
+            // top 10
+            for (const [key, value] of array.slice(0, 10)) {
+                values.push(value)
+                keys.push(key)
+            }
+
             var options = {
-                series: Object.values(types),
+                series: values,
                 chart: {
                     type: 'donut',
                     toolbar: {
@@ -217,7 +234,7 @@ if (document.getElementById("charts") != null) {
                     text: "by Type",
                     align: "left",
                 },
-                labels: Object.keys(types),
+                labels: keys,
                 dataLabels: {
                     offset: 0,
                     minAngleToShowLabel: 10
