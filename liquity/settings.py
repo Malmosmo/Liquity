@@ -171,5 +171,5 @@ AUTH_USER_MODEL = 'users.User'
 
 
 # Login
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/drinks'
 LOGIN_URL = '/login/'

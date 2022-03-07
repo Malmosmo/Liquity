@@ -1,5 +1,27 @@
 :root {
     --card-width: 200px;
+
+    --background: white;
+    --on-background: #212529;
+
+    --color-muted: #6c757d;
+
+    --color-yellow: #ffd369;
+    --shadow: rgba(70, 70, 70, 0.15);
+
+    --surface: white;
+}
+
+.dark-mode {
+    --on-background: #eee;
+    --background: #212529;
+    --shadow: rgba(0, 0, 0, 0);
+
+    --surface: rgb(44, 50, 59);
+}
+
+body {
+    color: var(--on-background);
 }
 
 /* 
@@ -7,6 +29,14 @@
 General
 ===============================================================================
 */
+
+.background {
+    background-color: var(--background);
+}
+
+.color {
+    color: var(--on-background);
+}
 
 .link {
     text-decoration: none;
@@ -63,6 +93,48 @@ General
 
 /* 
 ===============================================================================
+Home.html
+===============================================================================
+*/
+
+.dark-mode-toggle {
+    border: 0;
+    background-color: transparent;
+    font-size: 1.25rem;
+
+    color: var(--on-background);
+}
+
+.home-wrapper {
+    background-color: var(--background);
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+
+    min-height: 100vh;
+}
+
+.home-link {
+    text-decoration: none;
+
+    border-radius: 0.75rem;
+
+    padding: 1rem 3rem;
+
+    font-size: 1.25rem;
+
+    box-shadow: 0 0 30px var(--shadow);
+    background-color: var(--surface);
+}
+
+.yellow {
+    color: var(--color-yellow);
+}
+
+/* 
+===============================================================================
 login.html / register.html / password_change.html
 ===============================================================================
 */
@@ -87,38 +159,22 @@ Overview.html
 
 .yellow-gradient {
     background: rgb(255, 233, 168);
-    background: linear-gradient(
-        225deg,
-        rgba(255, 233, 168, 1) 10%,
-        rgba(255, 193, 7, 1) 100%
-    );
+    background: linear-gradient(225deg, rgba(255, 233, 168, 1) 10%, rgba(255, 193, 7, 1) 100%);
 }
 
 .red-gradient {
     background: rgb(218, 144, 151);
-    background: linear-gradient(
-        225deg,
-        rgba(218, 144, 151, 1) 10%,
-        rgba(220, 53, 69, 1) 100%
-    );
+    background: linear-gradient(225deg, rgba(218, 144, 151, 1) 10%, rgba(220, 53, 69, 1) 100%);
 }
 
 .green-gradient {
     background: rgb(123, 237, 184);
-    background: linear-gradient(
-        225deg,
-        rgba(123, 237, 184, 1) 10%,
-        rgba(25, 135, 84, 1) 100%
-    );
+    background: linear-gradient(225deg, rgba(123, 237, 184, 1) 10%, rgba(25, 135, 84, 1) 100%);
 }
 
 .blue-gradient {
     background: rgb(165, 216, 255);
-    background: linear-gradient(
-        225deg,
-        rgba(165, 216, 255, 1) 10%,
-        rgba(0, 143, 251, 1) 100%
-    );
+    background: linear-gradient(225deg, rgba(165, 216, 255, 1) 10%, rgba(0, 143, 251, 1) 100%);
 }
 
 /* 

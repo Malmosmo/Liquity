@@ -1,0 +1,30 @@
+{% extends 'main.html' %} {% block content %}
+
+<!-- Content Header -->
+<div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">
+    LIQUITY - Homepage
+</div>
+
+<div class="content flex-grow-1">
+    <div class="container my-4">
+
+        <div class="my-5 text-center">
+            <h1 class="display-1">
+                Willkommen :)
+            </h1>
+
+            <div>
+                <h4 class="text-warning">Hier wird noch gearbeitet <i class="bi bi-cone-striped"></i></h4>
+            </div>
+
+            <div class="my-4">
+                <a class="btn btn-primary" href="{% url 'login' %}">Anmelden</a>
+                <a class="btn btn-primary" href="{% url 'register' %}">Registieren</a>
+            </div>
+
+            <img class="img-fluid" src="https://images.pexels.com/photos/4620723/pexels-photo-4620723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="500">
+        </div>
+
+    </div>
+</div>
+{% endblock %}
