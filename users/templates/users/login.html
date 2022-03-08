@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <button class="btn btn-success" type="submit">{% trans "Login" %}</button>
-            <small class="text-muted mt-2 float-end"><a class="link" href="#">{% trans "Forgot Password" %}?</a></small>
+            <small class="text-muted mt-2 float-end"><a class="link" href="{% url 'password_reset' %}">{% trans "Forgot Password" %}?</a></small>
         </div>
 
         <hr>

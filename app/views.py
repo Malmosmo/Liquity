@@ -6,6 +6,8 @@ from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 from users.models import FriendList
 
+from django.core.paginator import Paginator
+
 from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm,
                        GroupRenameForm)
 from app.models import Drink, DrinkEntry, Group
@@ -39,18 +41,24 @@ def group_single(request, pk):
 
     if group:
         if request.user == group.creator:
+            total = [(member, getTotal(DrinkEntry.objects.filter(user=member))) for member in group.members.all()] + \
+                [(group.creator, getTotal(DrinkEntry.objects.filter(user=group.creator)))]
             form = GroupRenameForm()
 
             context = {
                 "group": group,
                 "creator": True,
-                "form": form
+                "form": form,
+                "users": reversed(sorted(total, key=lambda x: x[1]))
             }
 
         elif request.user in group.members.all():
+            total = [(member, getTotal(DrinkEntry.objects.filter(user=member))) for member in group.members.all()] + \
+                [(group.creator, getTotal(DrinkEntry.objects.filter(user=group.creator)))]
             context = {
                 "group": group,
-                "creator": False
+                "creator": False,
+                "users": reversed(sorted(total, key=lambda x: x[1]))
             }
 
         else:
@@ -81,10 +89,17 @@ def drinks(request):
     # Drink Form
     form_beer = DrinkCreateForm()
 
+    # Pagination
+    # paginator = Paginator(drink_friends | drinks_own, 25)
+
+    # page_number = request.GET.get('page')
+    # drinks = paginator.get_page(page_number)
+
     context = {
+        # "page_obj": drinks,
         "drinks": drink_friends | drinks_own,
         "form_drink": form_drink,
-        "form": form_beer
+        "form": form_beer,
     }
 
     return render(request, 'app/drinks.html', context)

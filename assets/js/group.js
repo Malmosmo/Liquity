@@ -39,3 +39,14 @@ if (document.getElementById("groupSubmit") != null) {
         }
     })
 }
+
+// group edit
+let toggleBtn = document.querySelector("#group-edit-toggle")
+toggleBtn.addEventListener("click", () => {
+    for (const element of document.querySelectorAll(".group-toggle-element")) {
+        element.classList.toggle("d-none")
+    }
+
+    toggleBtn.firstChild.classList.toggle("bi-pencil-square")
+    toggleBtn.firstChild.classList.toggle("bi-arrow-return-left")
+})

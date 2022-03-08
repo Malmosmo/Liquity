@@ -30,6 +30,10 @@ General
 ===============================================================================
 */
 
+.bg-highlight {
+    background-color: rgba(255, 233, 168, 0.25);
+}
+
 .background {
     background-color: var(--background);
 }
@@ -175,6 +179,22 @@ Overview.html
 .blue-gradient {
     background: rgb(165, 216, 255);
     background: linear-gradient(225deg, rgba(165, 216, 255, 1) 10%, rgba(0, 143, 251, 1) 100%);
+}
+
+/* 
+===============================================================================
+group.html
+===============================================================================
+*/
+
+#group-edit-toggle {
+    float: right;
+
+    color: white;
+}
+
+#group-edit-toggle > i {
+    cursor: pointer;
 }
 
 /* 

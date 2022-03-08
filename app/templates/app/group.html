@@ -3,20 +3,23 @@
 <!-- Content Header -->
 <div class="container">
     <div class="row mx-0 my-3">
-        <div class="col-12 col-md-8 col-lg-9 col-xxl-10 px-0 fw-lighter fs-2 text-center text-md-start {% if creator %} pb-2 pb-md-0 {% endif %}">
-            {{ group.name }}
-        </div>
+        <div class="col-12 col-md-8 col-lg-9 col-xxl-10 px-0 fw-lighter fs-2 text-center text-md-start {% if creator %} pb-2 pb-md-0 {% endif %}">{{ group.name }}</div>
 
         {% if creator %}
 
         <div class="col-12 col-md-4 col-lg-3 col-xxl-2 p-0 vertical-center justify-content-center justify-content-md-end">
-            <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRename">
-                {% trans "Rename" %}
-            </a>
+            <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRename"> {% trans "Rename" %} </a>
         </div>
 
-        {% endif %}
+        {% else %}
 
+        <div class="col-12 col-md-4 col-lg-3 col-xxl-2 p-0 vertical-center justify-content-center justify-content-md-end">
+            <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalLeave">{% trans "Leave" %}</a>
+        </div>
+
+        {% include "app/group/leave.html" %}
+
+        {% endif %}
     </div>
 </div>
 
@@ -24,40 +27,27 @@
     <div class="container my-4">
         <ul class="list-group shadow-sm">
             <li class="list-group-item bg-dark text-white fw-bold" aria-current="true">
-                {% trans "Members" %}
-                <span class="float-end text-success ">{{ group.members.count|add:"1" }}</span>
-            </li>
-
-            <li class="list-group-item">
-                <a href="{% url 'profile' pk=group.creator.pk %}" class="link text-dark">{{ group.creator.profile.name }}</a>
-
-                <span class="float-end text-success">{% trans "Creator" %}</span>
-            </li>
-
-            {% for member in group.members.all %}
-
-            <li class="list-group-item">
-
-                <a href="{% url 'profile' pk=member.pk %}" class="link text-dark">{{ member.profile.name }}</a>
-
+                {% trans "Leaderboard" %}
                 {% if creator %}
-
-                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalMemberRemove_{{ member.pk }}">
-                    {% trans "Remove" %}
-                </a>
-
-                {% include "app/group/remove.html" %}
-
-                {% else %} {% if member == user %}
-
-                <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalLeave">{% trans "Leave" %}</a>
-
-                {% include "app/group/leave.html" %}
-
-                {% endif %} {% endif %}
-
+                <a id="group-edit-toggle"><i class="bi bi-pencil-square"></i></a>
+                {% endif %}
             </li>
 
+            {% for member, total in users %}
+            <li class="list-group-item {% if member == user %} bg-highlight {% endif %}">
+                {% if forloop.counter == 1 %} <i class="bi bi-award-fill" style="color: gold"></i>{% endif %}
+                {% if forloop.counter == 2 %} <i class="bi bi-award-fill" style="color: silver"></i>{% endif %}
+                {% if forloop.counter == 3 %} <i class="bi bi-award-fill" style="color: #cd7f32"></i>{% endif %}
+                {% if forloop.counter >  3 %} <i class="bi bi-award-fill" style="color: transparent"></i>{% endif %}
+                <a href="{% url 'profile' pk=member.pk %}" class="link text-dark">{{ member.profile.name }}</a>
+                <span class="float-end group-toggle-element">{{total}}</span>
+                {% if group.creator != member %}
+                <span class="d-none float-end group-toggle-element">
+                    <a class="link float-end ms-2 text-danger" data-bs-toggle="modal" data-bs-target="#modalMemberRemove_{{ member.pk }}"> {% trans "Remove" %} </a>
+                    {% include "app/group/remove.html" %}
+                </span>
+                {% endif %}
+            </li>
             {% endfor %}
 
             {% if creator %}
@@ -65,7 +55,6 @@
             <li class="list-group-item"><a href="#" class="link" data-bs-toggle="modal" data-bs-target="#modalAddMember">{% trans "Add Member" %}</a></li>
 
             {% endif %}
-
         </ul>
 
         {% include "app/group/add.html" %}
@@ -78,6 +67,4 @@
     </div>
 </div>
 
-{% include "app/group/rename.html" %}
-
-{% endblock %}
+{% include "app/group/rename.html" %} {% endblock %}

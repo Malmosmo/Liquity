@@ -4,10 +4,24 @@
 
 -   pagination on drinks
 -   darkmode everywhere
--   password reset
+-   ~~password reset~~
 -   email-conformation
 -   Drink Edit
 -   Better Charts
+-   Update languages
+
+## 8.3.2022
+
+### Added
+
+-   Password reset forms with reset E-Mail
+-   Group leaderboard
+-   Updated group charts
+-   E-Mail content send to CLI instead of real backend (changed in production)
+
+### Changed
+
+-   Pagination clashes with live search
 
 ## 7.3.2022
 

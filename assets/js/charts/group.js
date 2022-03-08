@@ -22,6 +22,40 @@ if (document.getElementById("group-charts") != null) {
 
         // Chart 1
         {
+            console.log(json.data)
+
+            series = []
+
+            for (const member of json.data.data) {
+                let OBJ = {}
+
+                for (const data of member.drinks) {
+                    let date = new Date(new Date(data.date).toDateString())
+
+                    // date.setDate(0)
+
+                    if (date in OBJ) {
+                        OBJ[date] += data.count
+                    } else {
+                        OBJ[date] = data.count
+                    }
+                }
+
+                let dd = []
+
+                for (const [key, value] of Object.entries(OBJ)) {
+                    dd.push({
+                        x: key,
+                        y: value
+                    })
+                }
+                entry = {
+                    name: member.name,
+                    data: dd
+                }
+                series.push(entry)
+            }
+
             var options = {
                 series: series,
                 title: {
@@ -42,7 +76,8 @@ if (document.getElementById("group-charts") != null) {
                     }
                 },
                 stroke: {
-                    curve: 'straight'
+                    // curve: 'straight'
+                    curve: 'smooth'
                 },
                 dataLabels: {
                     enabled: false
@@ -53,7 +88,7 @@ if (document.getElementById("group-charts") != null) {
                 },
                 yaxis: {
                     min: 0,
-                    max: max + 1,
+                    // max: max + 1,
                     tickAmount: max,
                 },
                 xaxis: {
