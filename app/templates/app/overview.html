@@ -1,70 +1,135 @@
 {% extends 'main.html' %} {% block content %} {% load i18n %}
 
 <!-- Content Header -->
-<div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">
-    {% trans "Overview" %}
-</div>
+<div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">{% trans "Overview" %}</div>
 
 <div class="content flex-grow-1">
     <div class="container my-4">
-        <div class="row m-0 mb-5">
-            <div class="col-12 col-md-6 col-lg-3 p-0">
-                <div class="overview-card yellow-gradient px-3 py-2 mx-auto rounded shadow my-2">
+        <div class="row m-0">
+            <div class="col-12 col-md-6 col-lg-3 p-3 p-lg-0 ps-lg-0">
+                <!-- <div class="overview-card yellow-gradient px-3 py-2 mx-auto rounded shadow my-2">
                     <div class="fs-5">
-                        {% trans "Total" %}: <span class="float-end fw-bold">{{ total }}</span>
+                        {% trans "Total" %}: <span class="float-end fw-bold">{{ total|floatformat:2 }} Liters</span>
+                    </div>
+                </div> -->
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="h6 text-muted">Total</span>
+                            <span class="h4 fw-bold mb-0">{{ total|floatformat:2 }} Liters</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            {% if today > 0%}
+                            <!-- <span class="badge text-secondary p-2 fs-6" style="background-color: #f5f7f9">{{today}}</span>
+                            { % else % } -->
+                            <span class="badge text-success p-2 fs-6" style="background-color: #ccf5e7"><i class="bi bi-arrow-up"></i>+{{today|floatformat:2}}</span>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-3 p-0">
-                <div class="overview-card red-gradient px-3 py-2 mx-auto bg-info rounded shadow my-2">
-                    <div class="fs-5">
-                        {% trans "This Week" %}: <span class="float-end fw-bold">{{ week }}</span>
+            <div class="col-12 col-md-6 col-lg-3 py-3 py-lg-0">
+                <!-- <div class="overview-card red-gradient px-3 py-2 mx-auto bg-info rounded shadow my-2">
+                    <div class="fs-5">{% trans "7 Day Average" %}: <span class="float-end fw-bold">{{ mean|floatformat:3 }} l</span></div>
+                </div> -->
+                <div class="card shadow-sm border-0">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="h6 text-muted">{% trans "7 Day Average" %}</span>
+                            <span class="h4 fw-bold mb-0">{{ mean|floatformat:2 }} l</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            {% if mean_diff == 0%}
+                            <span class="badge text-secondary p-2 fs-6" style="background-color: #f5f7f9">{{mean_diff}}</span>
+                            {% elif mean_diff > 0 %}
+                            <span class="badge text-success p-2 fs-6" style="background-color: #ccf5e7"><i class="bi bi-arrow-up"></i>+{{mean_diff|floatformat:2}}</span>
+                            {% else %}
+                            <span class="badge text-danger p-2 fs-6" style="background-color: #ffd6e0"><i class="bi bi-arrow-down"></i>{{mean_diff|floatformat:2}}</span>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-3 p-0">
-                <div class="overview-card green-gradient px-3 py-2 mx-auto bg-success rounded shadow my-2">
-                    <div class="fs-5">
-                        {% trans "This Month" %}: <span class="float-end fw-bold">{{ month }}</span>
+            <div class="col-12 col-md-6 col-lg-3 py-3 py-lg-0">
+                <!-- <div class="overview-card green-gradient px-3 py-2 mx-auto bg-success rounded shadow my-2">
+                    <div class="fs-5">{% trans "performance" %}: <span class="float-end fw-bold">{{ performance|floatformat:2 }} %</span></div>
+                </div> -->
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="h6 text-muted">{% trans "Performance" %}</span>
+                            {% if performance == 0%}
+                            <span class="h4 fw-bold mb-0 text-secondary">{{ performance }}</span>
+                            {% elif performance > 0 %}
+                            <span class="h4 fw-bold mb-0 text-success"><i class="bi bi-arrow-up"></i>+{{ performance|floatformat:2 }}</span>
+                            {% else %}
+                            <span class="h4 fw-bold mb-0 text-danger"><i class="bi bi-arrow-down"></i>{{ performance|floatformat:2 }}</span>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-3 p-0">
-                <div class="overview-card blue-gradient px-3 py-2 mx-auto bg-primary rounded shadow my-2">
-                    <div class="fs-5">
-                        {% trans "This Year" %}: <span class="float-end fw-bold">{{ year }}</span>
+            <div class="col-12 col-md-6 col-lg-3 py-3 py-lg-0 pe-lg-0">
+                <!-- <div class="overview-card blue-gradient px-3 py-2 mx-auto bg-primary rounded shadow my-2">
+                    <div class="fs-5">{% trans "This Year" %}: <span class="float-end fw-bold">{{ year|floatformat:2 }} Liters</span></div>
+                </div> -->
+                <div class="card shadow-sm border-0">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <span class="h6 text-muted">{% trans "Today" %}</span>
+                            {% if today == 0%}
+                            <span class="h4 fw-bold mb-0 text-secondary">{{ today|floatformat:2 }}</span>
+                            {% else %}
+                            <span class="h4 fw-bold mb-0 text-success">+{{ today|floatformat:2 }}</span>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="card overflow-hidden shadow-sm border-0 my-4 p-md-3 p-lg-4">
+            <div class="h6 fw-bold pt-3 px-3">7 Day Average</div>
+            <div id="charts" url="{% url 'api-all' %}">
+                <div id="timeline-chart"></div>
+            </div>
+        </div>
+
+        <div class="card overflow-hidden shadow-sm border-0 my-4 p-md-3 p-lg-4">
+            <div class="h6 fw-bold pt-3 px-3">Top 10 Drinks</div>
+            <!-- <div id="charts" url="{% url 'api-all' %}"> -->
+            <div id="donut-chart"></div>
+            <!-- </div> -->
         </div>
 
         <!-- New Charts -->
-        <div id="charts" url="{% url 'api-all' %}" class="my-5 overflow-hidden p-3 shadow-sm border bg-white">
-            <button id="one_month">{% trans "Month" %}</button>
+        <!-- <div id="charts" url="{% url 'api-all' %}" class="my-4 overflow-hidden p-3 shadow-sm border bg-white"> -->
+        <!-- <button id="one_month">{% trans "Month" %}</button>
             <button id="one_year">{% trans "Year" %}</button>
-            <button id="all">{% trans "All" %}</button>
+            <button id="all">{% trans "All" %}</button> -->
 
-            <div id="timeline-chart">
-            </div>
+        <!-- <div id="timeline-chart"></div> -->
 
-            <div id="type-chart">
-            </div>
+        <!-- <div id="type-chart"></div> -->
 
-            <div class="row m-0">
-                <div class="col-12 col-md-6 mx-auto p-0 border">
-                    <div id="donut-chart">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- </div> -->
 
         <div class="accordion bg-body" id="drinkListParent">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="drinkList">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseList" aria-expanded="false" aria-controls="collapseList">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseList"
+                        aria-expanded="false"
+                        aria-controls="collapseList"
+                    >
                         {% trans "Your Drinks" %}
                     </button>
                 </h2>
@@ -82,7 +147,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                                 {% for drink in drinkEntries %}
 
                                 <tr>
@@ -92,16 +156,13 @@
                                     <td>{{ drink.volume }} l</td>
                                     <td>{{ drink.count }}</td>
                                     <td>
-                                        <a class="link text-danger" data-bs-toggle="modal" data-bs-target="#DrinkDelete_{{drink.id}}">
-                                            {% trans "Delete" %}
-                                        </a>
+                                        <a class="link text-danger" data-bs-toggle="modal" data-bs-target="#DrinkDelete_{{drink.id}}"> {% trans "Delete" %} </a>
 
                                         {% include "app/overview/delete.html" %}
                                     </td>
                                 </tr>
 
                                 {% endfor %}
-
                             </tbody>
                         </table>
                     </div>

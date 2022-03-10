@@ -14,7 +14,8 @@ def getDrinkData(user):
         drinkData.append({
             "beer": drink.drinkType.name,
             "date": drink.date,
-            "count": drink.count
+            "count": drink.count,
+            "volume": drink.volume
         })
 
     return drinkData

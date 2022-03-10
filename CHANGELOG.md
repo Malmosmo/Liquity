@@ -2,13 +2,29 @@
 
 ## TODO
 
--   pagination on drinks
+-   pagination on drinks **(clashes with live search)**
 -   darkmode everywhere
 -   ~~password reset~~
--   email-conformation
+-   email-conformation **(not nessaccary)**
 -   Drink Edit
--   Better Charts
+-   Better Charts **(DONE kind of)**
 -   Update languages
+-   remove commented code
+-   change redirects on language change
+-   long loading time on drinks.html (with lazy loading)
+
+## 9.3.2022
+
+### Added
+
+-   api shows now volume
+
+### Changed
+
+-   Graphs show 7 day average
+-   useless graphs removed
+-   everything now in liters
+-   Overview Dashboard updated
 
 ## 8.3.2022
 
@@ -35,5 +51,3 @@
 
 -   home.html has now darkmode + new design
 -   login redirects to drinks
-
-### Fixed

@@ -1,5 +1,6 @@
 import datetime
 import calendar
+from unittest import result
 
 from .models import DrinkEntry
 
@@ -38,9 +39,18 @@ def getTotal(drinks):
     total = 0
 
     for drink in drinks:
-        total += drink.count
+        total += drink.count * drink.volume
 
     return total
+
+
+def getAverage(drinks):
+    mean = 0
+
+    for drink in drinks:
+        mean += drink.count * drink.volume
+
+    return mean / 7
 
 
 def getWeekTotal(drinks):
@@ -72,6 +82,37 @@ def getYearTotal(drinks):
     drinks = filterDrinks(drinks, yearStart, yearEnd)
 
     return getTotal(drinks)
+
+
+def get7DayAverage(drinks, end=datetime.date.today()):
+    # end = datetime.date.today()
+    # end = datetime.date(2022, 3, 1)
+    start = end - datetime.timedelta(days=7)
+
+    drinks = filterDrinks(drinks, start, end)
+
+    # for drink in drinks:
+    #     print(drink.date)
+
+    return getAverage(drinks)
+
+
+def getToday(drinks, today):
+    # today = datetime.date.today()
+    # today = datetime.date(2022, 2, 28)
+    result = 0
+    for entry in drinks:
+        if entry.date.date() == today:
+            result += entry.count * entry.volume
+
+    return result
+
+
+# def getPerformance(drinks):
+#     mean = get7DayAverage(drinks, datetime.date(2022, 3, 1))
+#     mean_1 = get7DayAverage(drinks, datetime.date(2022, 3, 1) - datetime.timedelta(days=3))
+
+#     return (mean - mean_1) / mean
 
 
 def DEBUG(*args, **kwargs):

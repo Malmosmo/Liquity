@@ -6,13 +6,13 @@ from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 from users.models import FriendList
 
-from django.core.paginator import Paginator
+# from django.core.paginator import Paginator
 
 from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm,
                        GroupRenameForm)
 from app.models import Drink, DrinkEntry, Group
 
-from .util import getMonthTotal, getTotal, getWeekTotal, getYearTotal
+from .util import getTotal, get7DayAverage, getYearTotal, getToday
 
 
 def homepage(request):
@@ -109,11 +109,24 @@ def drinks(request):
 def overview(request):
     drinkEntries = DrinkEntry.objects.filter(user=request.user).order_by("date")
 
+    _today = datetime.date(2022, 2, 27)
+    _yesterday = _today - datetime.timedelta(days=1)
+
+    total = getTotal(drinkEntries)
+    today = getToday(drinkEntries, _today)
+
+    mean = get7DayAverage(drinkEntries, _today)
+    mean_last = get7DayAverage(drinkEntries, _yesterday)
+    mean_diff = mean - mean_last
+    performance = mean_diff / mean
+
     context = {
         "drinkEntries": drinkEntries,
-        "total": getTotal(drinkEntries),
-        "week": getWeekTotal(drinkEntries),
-        "month": getMonthTotal(drinkEntries),
+        "total": total,
+        "today": today,
+        "mean": mean,
+        "mean_diff": mean_diff,
+        "performance": performance,
         "year": getYearTotal(drinkEntries)
     }
 
