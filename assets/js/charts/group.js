@@ -140,7 +140,8 @@ if (document.getElementById("group-charts") != null) {
                 },
                 stroke: {
                     // curve: 'straight'
-                    curve: 'smooth',
+                    // curve: 'smooth',
+                    curve: 'stepline',
                     width: 4,
                 },
                 dataLabels: {

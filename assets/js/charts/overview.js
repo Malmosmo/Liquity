@@ -83,12 +83,12 @@ if (document.getElementById("charts") != null) {
                     id: 'area-datetime',
                     type: 'area',
                     height: 350,
-                    zoom: {
-                        autoScaleYaxis: true
-                    },
                     // zoom: {
-                    //     enabled: false
+                    //     autoScaleYaxis: true
                     // },
+                    zoom: {
+                        enabled: false
+                    },
                     toolbar: {
                         show: false
                     },
@@ -98,7 +98,8 @@ if (document.getElementById("charts") != null) {
                 },
                 stroke: {
                     // curve: 'straight'
-                    curve: 'smooth',
+                    // curve: 'smooth',
+                    curve: 'stepline',
                     width: 4,
                 },
                 dataLabels: {
@@ -349,7 +350,7 @@ if (document.getElementById("charts") != null) {
                 },
                 tooltip: {
                     y: {
-                        formatter: (value) => (value + " Liters")
+                        formatter: (value) => (parseFloat(value).toFixed(2) + " Liters")
                     }
                 },
                 plotOptions: {
@@ -360,16 +361,65 @@ if (document.getElementById("charts") != null) {
                                 show: true,
                                 name: {
                                     show: true,
-                                    fontSize: "22px",
+                                    fontSize: "2rem",
+                                    formatter: (name) => {
+                                        if (name.length > 20) {
+                                            return name.slice(0, 20) + "..."
+                                        }
+                                        return name
+                                    }
                                 },
                                 value: {
-                                    formatter: (value) => (value + " Liters")
+                                    fontSize: "2rem",
+                                    formatter: (value) => (parseFloat(value).toFixed(2) + " Liters")
+                                },
+                                total: {
+                                    show: true,
+                                    showAlways: false,
+                                    label: 'Total',
+                                    fontSize: '2rem',
+                                    formatter: function (w) {
+                                        return w.globals.seriesTotals.reduce((a, b) => {
+                                            return a + b
+                                        }, 0) + " Liters"
+                                    }
                                 }
                             }
                         }
                     },
                 },
-
+                responsive: [{
+                    breakpoint: 800,
+                    options: {
+                        chart: {
+                            height: "auto"
+                        },
+                        plotOptions: {
+                            pie: {
+                                customScale: 1.0,
+                                donut: {
+                                    labels: {
+                                        name: {
+                                            fontSize: "1.125rem",
+                                            formatter: (name) => {
+                                                if (name.length > 15) {
+                                                    return name.slice(0, 15) + "..."
+                                                }
+                                                return name
+                                            }
+                                        },
+                                        value: {
+                                            fontSize: "1.125rem",
+                                        },
+                                        total: {
+                                            fontSize: "1.125rem",
+                                        }
+                                    }
+                                }
+                            },
+                        },
+                    },
+                }]
             };
 
             var chart = new ApexCharts(document.querySelector("#donut-chart"), options);

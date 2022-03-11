@@ -12,6 +12,17 @@
 -   remove commented code
 -   change redirects on language change
 -   long loading time on drinks.html (with lazy loading)
+-   add drinks with bar code
+-   css to sass
+
+## 10.3.2022
+
+### Changed
+
+-   Pie chart labels
+-   moved group leave button
+-   overview shows total average + units
+-   clean up on views.py and util.py
 
 ## 9.3.2022
 
