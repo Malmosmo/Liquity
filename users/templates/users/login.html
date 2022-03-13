@@ -1,35 +1,25 @@
-{% extends 'main.html' %} {% block content %} {% load i18n %}
+{% extends 'main2.html' %} {% block content %} {% load i18n %}
 
-<div class="content flex-grow-1 d-flex justify-content-center">
-    <form class="user-box bg-body border rounded p-4 shadow-sm" method="POST">
-        <!-- Title -->
-        <div class="text-center fw-lighter fs-3">
-            {% trans "Log In" %}
-        </div>
+<form class="user-box surface rounded p-4 shadow" method="POST">
+    <!-- Title -->
+    <div class="text-center fw-lighter fs-3">{% trans "Log In" %}</div>
 
-        <hr>
+    <hr />
 
-        {% csrf_token %}
+    {% csrf_token %}
 
-        <fieldset class="form-group">
+    <fieldset class="form-group">{% include "forms.html" %}</fieldset>
 
-            {% include "forms.html" %}
+    <div class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-success px-4" type="submit">{% trans "Login" %}</button>
+        <small class="text-muted float-end"><a class="link" href="{% url 'password_reset' %}">{% trans "Forgot Password" %}?</a></small>
+    </div>
 
-        </fieldset>
+    <hr />
 
-        <div class="form-group">
-            <button class="btn btn-success" type="submit">{% trans "Login" %}</button>
-            <small class="text-muted mt-2 float-end"><a class="link" href="{% url 'password_reset' %}">{% trans "Forgot Password" %}?</a></small>
-        </div>
-
-        <hr>
-
-        <div class="text-center">
-            <small class="text-muted">
-                {% trans "Have no account" %}? <a class="link ms-2" href="{% url 'register' %}">{% trans "Register Now" %}!</a>
-            </small>
-        </div>
-    </form>
-</div>
+    <div class="text-center">
+        <small class="text-muted"> {% trans "Have no account" %}? <a class="link ms-2" href="{% url 'register' %}">{% trans "Register Now" %}!</a> </small>
+    </div>
+</form>
 
 {% endblock %}

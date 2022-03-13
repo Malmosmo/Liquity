@@ -1,0 +1,44 @@
+$theme-light: (
+    // background
+    background: #f5f9fc,
+    surface: white,
+    primary: #33658a,
+    secondary: #f2cd5d,
+    // color
+    on-background: #333,
+    on-surface: #333,
+    on-primary: white,
+    on-secondary: #333,
+    // extra
+    link: #0a58ca,
+    input: white,
+    input-border: #ced4da
+);
+
+$theme-dark: (
+    // background
+    background: #222831,
+    surface: #393e46,
+    primary: #33658a,
+    secondary: #f2cd5d,
+    // color
+    on-background: #eee,
+    on-surface: #eee,
+    on-primary: white,
+    on-secondary: #333,
+    // extra
+    link: lighten(#0a58ca, 25),
+    input: #222831,
+    input-border: #222831
+);
+
+$lighten_value: 5;
+$darken_value: 5;
+
+$radius: 0.25rem;
+
+$padding: 0.25rem;
+
+$types: ("background", "surface", "primary", "secondary");
+
+$extras: ("link", "input", "input-border");

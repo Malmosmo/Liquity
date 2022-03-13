@@ -1,0 +1,31 @@
+@import "_variables.scss";
+
+@function contains($list, $var) {
+    $_out: false;
+    @each $item in $list {
+        @if $item == $var {
+            $_out: true;
+        }
+    }
+    @return $_out;
+}
+
+:root {
+    @each $key, $value in $theme-light {
+        --#{$key}: #{$value};
+        @if not contains($extras, $key) {
+            --#{$key}-lighten: #{lighten($value, $lighten_value)};
+            --#{$key}-darken: #{darken($value, $darken_value)};
+        }
+    }
+}
+
+.dark-mode {
+    @each $key, $value in $theme-dark {
+        --#{$key}: #{$value};
+        @if not contains($extras, $key) {
+            --#{$key}-lighten: #{lighten($value, $lighten_value)};
+            --#{$key}-darken: #{darken($value, $darken_value)};
+        }
+    }
+}

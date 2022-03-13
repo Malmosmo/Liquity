@@ -1,7 +1,7 @@
 :root {
     --card-width: 200px;
 
-    --background: white;
+    --background: #f5f9fc;
     --on-background: #212529;
 
     --color-muted: #6c757d;
@@ -29,6 +29,10 @@ body {
 General
 ===============================================================================
 */
+
+.neo-shadow {
+    box-shadow: 15px 15px 10px rgba(70, 70, 70, 0.5), -15px -15px 10px rgba(255, 255, 255, 1);
+}
 
 .bg-highlight {
     background-color: rgba(255, 233, 168, 0.25);
@@ -157,7 +161,7 @@ Overview.html
 ===============================================================================
 */
 
-.overview-card {
+/* .overview-card {
     height: 75px;
     width: 200px;
 }
@@ -180,7 +184,7 @@ Overview.html
 .blue-gradient {
     background: rgb(165, 216, 255);
     background: linear-gradient(225deg, rgba(165, 216, 255, 1) 10%, rgba(0, 143, 251, 1) 100%);
-}
+} */
 
 /* 
 ===============================================================================
@@ -215,7 +219,7 @@ beers.html
 login.html / register.html
 ===============================================================================
 */
-
+/* 
 .lq-card {
     width: 100%;
 }
@@ -225,7 +229,7 @@ login.html / register.html
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
-}
+} */
 
 /* 
 ===============================================================================
