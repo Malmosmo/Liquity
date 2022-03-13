@@ -15,6 +15,13 @@
 -   add drinks with bar code
 -   css to sass
 
+## 13.3.2022
+
+### Changed
+
+-   register.html / login.hmtl has now darkmode
+-   \+ "forgot password" related sites
+
 ## 10.3.2022
 
 ### Changed
