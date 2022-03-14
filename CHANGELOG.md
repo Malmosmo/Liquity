@@ -15,13 +15,17 @@
 -   add drinks with bar code
 -   css to sass
 
-### 14.3.2022
+## 14.3.2022
 
+### Added
+- Flag icon select with svgs from https://flagicons.lipis.dev/
+- language selection on homepage
 ### Changed
 
--   language selection
+-   better language selection
 -   language redirects
 -   minor changes / fixes
+- language translation updates
 
 ## 13.3.2022
 

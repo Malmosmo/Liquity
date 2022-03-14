@@ -2,12 +2,12 @@
 
 <div class="text-center">
     <div class="mb-5">
-        <h1 class="display-1 fw-normal">Welcome to <span class="text-primary">Liquity</span></h1>
-        <small class="text-muted fs-6">The App to monitor your drinking habits. We have Charts!</small>
+        <h1 class="display-1 fw-normal">{% trans "Welcome to" %} <span class="text-primary">Liquity</span></h1>
+        <small class="text-muted fs-6">{% trans "The App to monitor your drinking habits. We have Charts!" %}</small>
     </div>
     <div class="d-flex justify-content-around">
-        <a class="btn-primary shadow" href="{% url 'login' %}">Login</a>
-        <a class="btn-primary shadow" href="{% url 'register' %}">Register</a>
+        <a class="btn-primary shadow" href="{% url 'login' %}">{% trans "Login" %}</a>
+        <a class="btn-primary shadow" href="{% url 'register' %}">{% trans "Register" %}</a>
     </div>
 </div>
 

@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <!-- Logo -->
@@ -24,10 +25,31 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav ms-md-auto ms-2 py-2">
+            <ul class="navbar-nav ms-md-auto ms-2">
+                <li class="nav-item dropdown d-flex align-items-center">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+
+                    <a class="nav-link d-flex align-items-center" href="#" role="button" id="selected-language" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{% static 'images/svg/'|add:LANGUAGE_CODE|add:'.svg' %}" width="20">
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="selected-language">
+                        {% for language in languages %}
+                        <li><a class="dropdown-item" href="#" onclick="languageSelect('{{ language.code }}')"><img src="{% static 'images/svg/'|add:language.code|add:'.svg' %}" width="20"> {{ language.name_local }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                    <form id="language-form" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                        <input name="language" type="hidden" id="language-select" onchange="this.form.submit()">
+                    </form>
+                </li>
+
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link p-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <!-- Image here -->
                         <img class="rounded-circle nav-image image" src="{{ user.profile.image.url }}" alt="" />
                         {% include "notification.html" %}
@@ -45,29 +67,6 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-
-                        <li class=" m-1">
-                            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                                <input name="next" type="hidden" value="{{ redirect_to }}">
-                                <select name="language" class="form-select" onchange="this.form.submit()">
-                                    {% get_current_language as LANGUAGE_CODE %}
-                                    {% get_available_languages as LANGUAGES %}
-                                    {% get_language_info_list for LANGUAGES as languages %}
-                                    {% for language in languages %}
-                                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                            {{ language.name_local }}
-                                        </option>
-                                    {% endfor %}
-                                </select>
-                                <!-- <input type="submit" value="Go"> -->
-                            </form>
-                        </li>
-
-                        <!-- <li class="d-flex justify-content-around">
-                            {% get_current_language as CURRENT_LANGUAGE %} {% get_available_languages as AVAILABLE_LANGUAGES %} {% get_language_info_list for AVAILABLE_LANGUAGES as languages %} {% for language in languages %}
-                            <a class="dropdown-item" href="/{{ language.code }}/"> {{ language.name_local }} </a>
-                            {% endfor %}
-                        </li> -->
 
                         <li><a class="dropdown-item" href="{% url 'profile' pk=user.pk %}">{% trans "Profile" %}</a></li>
 

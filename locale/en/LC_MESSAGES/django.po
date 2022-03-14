@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-27 01:10+0100\n"
+"POT-Creation-Date: 2022-03-14 14:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgid "You are not the creator of this group"
 msgstr ""
 
 #: .\actions\views.py:119 .\actions\views.py:170 .\actions\views.py:204
-#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:62
+#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:70
 msgid "Group does not exist"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Successfully left"
 msgstr ""
 
-#: .\actions\views.py:220 .\app\views.py:57
+#: .\actions\views.py:220 .\app\views.py:65
 msgid "You are not in this group"
 msgstr ""
 
@@ -176,10 +176,12 @@ msgid "Volume (in Liters)"
 msgstr ""
 
 #: .\app\templates\app\drinks.html:7
-msgid "Beer"
+#: .\app\templates\app\pagination__drinks.html:7 .\templates\nav.html:16
+msgid "Drinks"
 msgstr ""
 
 #: .\app\templates\app\drinks.html:13
+#: .\app\templates\app\pagination__drinks.html:13
 msgid "New"
 msgstr ""
 
@@ -188,7 +190,7 @@ msgid "No Drinks for you :(... maybe add one?"
 msgstr ""
 
 #: .\app\templates\app\drinks\add.html:9
-#: .\app\templates\app\drinks\form.html:63
+#: .\app\templates\app\drinks\form.html:53
 msgid "Add Drink"
 msgstr ""
 
@@ -197,7 +199,7 @@ msgid "Create New Drink"
 msgstr ""
 
 #: .\app\templates\app\drinks\create.html:21
-#: .\app\templates\app\drinks\form.html:62
+#: .\app\templates\app\drinks\form.html:52
 #: .\app\templates\app\group\add.html:47
 #: .\app\templates\app\group\leave.html:16
 #: .\app\templates\app\group\remove.html:17
@@ -211,34 +213,35 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: .\app\templates\app\drinks\form.html:16 .\app\templates\app\overview.html:77
+#: .\app\templates\app\drinks\form.html:16 .\app\templates\app\overview.html:90
 msgid "Drink"
 msgstr ""
 
-#: .\app\templates\app\group.html:14 .\app\templates\app\group\rename.html:29
+#: .\app\templates\app\group.html:11 .\app\templates\app\group\rename.html:29
 msgid "Rename"
 msgstr ""
 
-#: .\app\templates\app\group.html:27
-msgid "Members"
+#: .\app\templates\app\group.html:22
+msgid "Leaderboard"
 msgstr ""
 
-#: .\app\templates\app\group.html:34
-msgid "Creator"
+#: .\app\templates\app\group.html:25 .\app\templates\app\group\leave.html:7
+msgid "Leave Group"
 msgstr ""
 
-#: .\app\templates\app\group.html:46 .\app\templates\app\group\remove.html:18
+#: .\app\templates\app\group.html:37 .\app\templates\app\group\remove.html:18
 #: .\users\templates\users\friends.html:35
 #: .\users\templates\users\friends\remove.html:17
 msgid "Remove"
 msgstr ""
 
-#: .\app\templates\app\group.html:53 .\app\templates\app\group\leave.html:17
-msgid "Leave"
+#: .\app\templates\app\group.html:44 .\app\templates\app\group\add.html:7
+msgid "Add Member"
 msgstr ""
 
-#: .\app\templates\app\group.html:65 .\app\templates\app\group\add.html:7
-msgid "Add Member"
+#: .\app\templates\app\group.html:53 .\app\templates\app\overview.html:42
+#: .\app\templates\app\overview.html:69
+msgid "7 Day Average"
 msgstr ""
 
 #: .\app\templates\app\group\add.html:29
@@ -253,12 +256,12 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: .\app\templates\app\group\leave.html:7
-msgid "Leave Group"
-msgstr ""
-
 #: .\app\templates\app\group\leave.html:12
 msgid "Are you sure that you want to leave"
+msgstr ""
+
+#: .\app\templates\app\group\leave.html:17
+msgid "Leave"
 msgstr ""
 
 #: .\app\templates\app\group\remove.html:7
@@ -274,7 +277,7 @@ msgstr ""
 msgid "Rename Group"
 msgstr ""
 
-#: .\app\templates\app\groups.html:5 .\templates\nav.html:25
+#: .\app\templates\app\groups.html:5 .\templates\nav.html:24
 msgid "Groups"
 msgstr ""
 
@@ -283,7 +286,7 @@ msgid "Your Groups"
 msgstr ""
 
 #: .\app\templates\app\groups.html:20 .\app\templates\app\groups\delete.html:17
-#: .\app\templates\app\overview.html:81 .\app\templates\app\overview.html:96
+#: .\app\templates\app\overview.html:94 .\app\templates\app\overview.html:107
 #: .\app\templates\app\overview\delete.html:17
 #: .\venv\Lib\site-packages\django\forms\formsets.py:433
 msgid "Delete"
@@ -322,51 +325,59 @@ msgstr ""
 msgid "It can not be restored"
 msgstr ""
 
-#: .\app\templates\app\overview.html:5 .\templates\nav.html:21
+#: .\app\templates\app\home.html:5
+msgid "Welcome to"
+msgstr ""
+
+#: .\app\templates\app\home.html:6
+msgid "The App to monitor your drinking habits. We have Charts!"
+msgstr ""
+
+#: .\app\templates\app\home.html:9 .\templates\nav.html:86
+#: .\users\templates\users\__login.html:21
+#: .\users\templates\users\login.html:14
+msgid "Login"
+msgstr ""
+
+#: .\app\templates\app\home.html:10 .\templates\nav.html:89
+#: .\users\templates\users\__register.html:7
+#: .\users\templates\users\register.html:5
+msgid "Register"
+msgstr ""
+
+#: .\app\templates\app\overview.html:4 .\templates\nav.html:20
 msgid "Overview"
 msgstr ""
 
-#: .\app\templates\app\overview.html:14
+#: .\app\templates\app\overview.html:13
 msgid "Total"
 msgstr ""
 
-#: .\app\templates\app\overview.html:22
-msgid "This Week"
+#: .\app\templates\app\overview.html:29
+msgid "Total Average"
 msgstr ""
 
-#: .\app\templates\app\overview.html:30
-msgid "This Month"
+#: .\app\templates\app\overview.html:59
+msgid "Percentage Of Top 10"
 msgstr ""
 
-#: .\app\templates\app\overview.html:38
-msgid "This Year"
+#: .\app\templates\app\overview.html:74
+msgid "Top 10 Drinks"
 msgstr ""
 
-#: .\app\templates\app\overview.html:46
-msgid "Month"
-msgstr ""
-
-#: .\app\templates\app\overview.html:47
-msgid "Year"
-msgstr ""
-
-#: .\app\templates\app\overview.html:48
-msgid "All"
-msgstr ""
-
-#: .\app\templates\app\overview.html:68
+#: .\app\templates\app\overview.html:82
 msgid "Your Drinks"
 msgstr ""
 
-#: .\app\templates\app\overview.html:78
+#: .\app\templates\app\overview.html:91
 msgid "Date"
 msgstr ""
 
-#: .\app\templates\app\overview.html:79
+#: .\app\templates\app\overview.html:92
 msgid "Volume"
 msgstr ""
 
-#: .\app\templates\app\overview.html:80
+#: .\app\templates\app\overview.html:93
 msgid "Count"
 msgstr ""
 
@@ -374,63 +385,23 @@ msgstr ""
 msgid "Delete Drink"
 msgstr ""
 
-#: .\liquity\settings.py:129
+#: .\liquity\settings.py:134
 msgid "German"
 msgstr "German"
 
-#: .\liquity\settings.py:130
+#: .\liquity\settings.py:135
 msgid "English"
 msgstr "English"
 
-#: .\liquity\urls.py:31
-msgid "login/"
-msgstr ""
-
-#: .\liquity\urls.py:32
-msgid "logout/"
-msgstr ""
-
-#: .\liquity\urls.py:34
-msgid "password/change/"
-msgstr ""
-
-#: .\liquity\urls.py:35
-msgid "register/"
-msgstr ""
-
-#: .\liquity\urls.py:36
-msgid "profile/<uuid:pk>/"
-msgstr ""
-
-#: .\liquity\urls.py:37
-msgid "friends/"
-msgstr ""
-
-#: .\liquity\urls.py:38
-msgid "search/"
-msgstr ""
-
-#: .\liquity\urls.py:41
-msgid "api/"
-msgstr ""
-
-#: .\liquity\urls.py:42
-msgid "actions/"
-msgstr ""
-
-#: .\templates\nav.html:17
-msgid "Drinks"
-msgstr ""
-
-#: .\templates\nav.html:42
+#: .\templates\nav.html:61
 msgid "Logged in as"
 msgstr ""
 
-#: .\templates\nav.html:68
+#: .\templates\nav.html:71
 msgid "Profile"
 msgstr ""
 
-#: .\templates\nav.html:72
+#: .\templates\nav.html:75
 msgid "Friends"
 msgstr ""
 
@@ -438,12 +409,50 @@ msgstr ""
 msgid "Log Out"
 msgstr ""
 
-#: .\templates\nav.html:86 .\users\templates\users\login.html:21
-msgid "Login"
+#: .\users\templates\users\__login.html:7 .\users\templates\users\login.html:5
+msgid "Log In"
 msgstr ""
 
-#: .\templates\nav.html:89 .\users\templates\users\register.html:7
-msgid "Register"
+#: .\users\templates\users\__login.html:22
+#: .\users\templates\users\login.html:15
+msgid "Forgot Password"
+msgstr ""
+
+#: .\users\templates\users\__login.html:29
+#: .\users\templates\users\login.html:21
+msgid "Have no account"
+msgstr ""
+
+#: .\users\templates\users\__login.html:29
+#: .\users\templates\users\login.html:21
+msgid "Register Now"
+msgstr ""
+
+#: .\users\templates\users\__password_reset copy.html:7
+#: .\users\templates\users\password_reset.html:5
+#: .\users\templates\users\password_reset_confirm.html:5
+msgid "Reset Your Password"
+msgstr ""
+
+#: .\users\templates\users\__password_reset copy.html:21
+#: .\users\templates\users\password_reset.html:14
+#: .\users\templates\users\password_reset_confirm.html:14
+msgid "Reset Password"
+msgstr ""
+
+#: .\users\templates\users\__register.html:18
+#: .\users\templates\users\register.html:14
+msgid "Sign Up"
+msgstr ""
+
+#: .\users\templates\users\__register.html:25
+#: .\users\templates\users\register.html:20
+msgid "Already have an account"
+msgstr ""
+
+#: .\users\templates\users\__register.html:25
+#: .\users\templates\users\register.html:20
+msgid "Sign in"
 msgstr ""
 
 #: .\users\templates\users\friends.html:12
@@ -455,7 +464,7 @@ msgid "unread messages"
 msgstr ""
 
 #: .\users\templates\users\friends.html:21
-#: .\users\templates\users\search.html:12
+#: .\users\templates\users\search.html:5 .\users\templates\users\search.html:12
 msgid "Search"
 msgstr ""
 
@@ -499,18 +508,6 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: .\users\templates\users\login.html:22
-msgid "Forgot Password"
-msgstr ""
-
-#: .\users\templates\users\login.html:29
-msgid "Have no account"
-msgstr ""
-
-#: .\users\templates\users\login.html:29
-msgid "Register Now"
-msgstr ""
-
 #: .\users\templates\users\logout.html:6
 msgid "You have been logged out!"
 msgstr ""
@@ -526,6 +523,15 @@ msgstr ""
 #: .\users\templates\users\password_change.html:21
 #: .\users\templates\users\profile\form.html:53
 msgid "Change Password"
+msgstr ""
+
+#: .\users\templates\users\password_reset_complete.html:4
+#: .\users\templates\users\password_reset_complete.html:5
+msgid "Password has been reset!"
+msgstr ""
+
+#: .\users\templates\users\password_reset_done.html:3
+msgid "We have send you an Email with further insturcutions"
 msgstr ""
 
 #: .\users\templates\users\profile\delete.html:6
@@ -583,18 +589,6 @@ msgstr ""
 
 #: .\users\templates\users\profile\modals\remove.html:15
 msgid "Unfriend"
-msgstr ""
-
-#: .\users\templates\users\register.html:18
-msgid "Sign Up"
-msgstr ""
-
-#: .\users\templates\users\register.html:25
-msgid "Already have an account"
-msgstr ""
-
-#: .\users\templates\users\register.html:25
-msgid "Sign in"
 msgstr ""
 
 #: .\users\templates\users\search.html:17

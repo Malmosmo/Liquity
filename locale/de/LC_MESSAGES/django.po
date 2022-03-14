@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-27 01:10+0100\n"
-"PO-Revision-Date: 2021-12-27 01:19+0100\n"
+"POT-Creation-Date: 2022-03-14 14:36+0100\n"
+"PO-Revision-Date: 2022-03-14 14:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -39,7 +39,7 @@ msgid "You are not the creator of this group"
 msgstr "Du hast diese Gruppe nicht erstellt"
 
 #: .\actions\views.py:119 .\actions\views.py:170 .\actions\views.py:204
-#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:62
+#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:70
 msgid "Group does not exist"
 msgstr "Gruppe existiert nicht"
 
@@ -83,7 +83,7 @@ msgstr "Keinen Benutzer zum Löschen angegeben"
 msgid "Successfully left"
 msgstr "Gruppe gelöscht"
 
-#: .\actions\views.py:220 .\app\views.py:57
+#: .\actions\views.py:220 .\app\views.py:65
 msgid "You are not in this group"
 msgstr "Du bist kein Mitglied dieser Gruppe"
 
@@ -176,10 +176,12 @@ msgid "Volume (in Liters)"
 msgstr "Volumen (in Litern)"
 
 #: .\app\templates\app\drinks.html:7
-msgid "Beer"
-msgstr "Bier"
+#: .\app\templates\app\pagination__drinks.html:7 .\templates\nav.html:16
+msgid "Drinks"
+msgstr "Getränke"
 
 #: .\app\templates\app\drinks.html:13
+#: .\app\templates\app\pagination__drinks.html:13
 msgid "New"
 msgstr "Neu"
 
@@ -188,7 +190,7 @@ msgid "No Drinks for you :(... maybe add one?"
 msgstr "Keine Getränke für dich... Möchtest du einen hinzufügen?"
 
 #: .\app\templates\app\drinks\add.html:9
-#: .\app\templates\app\drinks\form.html:63
+#: .\app\templates\app\drinks\form.html:53
 msgid "Add Drink"
 msgstr "Getränk hinzufügen"
 
@@ -197,7 +199,7 @@ msgid "Create New Drink"
 msgstr "Getränk erstellen"
 
 #: .\app\templates\app\drinks\create.html:21
-#: .\app\templates\app\drinks\form.html:62
+#: .\app\templates\app\drinks\form.html:52
 #: .\app\templates\app\group\add.html:47
 #: .\app\templates\app\group\leave.html:16
 #: .\app\templates\app\group\remove.html:17
@@ -211,35 +213,36 @@ msgstr "Getränk erstellen"
 msgid "Close"
 msgstr "Schließen"
 
-#: .\app\templates\app\drinks\form.html:16 .\app\templates\app\overview.html:77
+#: .\app\templates\app\drinks\form.html:16 .\app\templates\app\overview.html:90
 msgid "Drink"
 msgstr "Getränk"
 
-#: .\app\templates\app\group.html:14 .\app\templates\app\group\rename.html:29
+#: .\app\templates\app\group.html:11 .\app\templates\app\group\rename.html:29
 msgid "Rename"
 msgstr "Umbenennen"
 
-#: .\app\templates\app\group.html:27
-msgid "Members"
-msgstr "Mitglieder"
+#: .\app\templates\app\group.html:22
+msgid "Leaderboard"
+msgstr "Rangliste"
 
-#: .\app\templates\app\group.html:34
-msgid "Creator"
-msgstr "Gruppenadmin"
+#: .\app\templates\app\group.html:25 .\app\templates\app\group\leave.html:7
+msgid "Leave Group"
+msgstr "Gruppe verlassen"
 
-#: .\app\templates\app\group.html:46 .\app\templates\app\group\remove.html:18
+#: .\app\templates\app\group.html:37 .\app\templates\app\group\remove.html:18
 #: .\users\templates\users\friends.html:35
 #: .\users\templates\users\friends\remove.html:17
 msgid "Remove"
 msgstr "Entfernen"
 
-#: .\app\templates\app\group.html:53 .\app\templates\app\group\leave.html:17
-msgid "Leave"
-msgstr "Verlassen"
-
-#: .\app\templates\app\group.html:65 .\app\templates\app\group\add.html:7
+#: .\app\templates\app\group.html:44 .\app\templates\app\group\add.html:7
 msgid "Add Member"
 msgstr "Mitglied hinzufügen"
+
+#: .\app\templates\app\group.html:53 .\app\templates\app\overview.html:42
+#: .\app\templates\app\overview.html:69
+msgid "7 Day Average"
+msgstr "7 Tage Durchschnitt"
 
 #: .\app\templates\app\group\add.html:29
 msgid "Add to Group"
@@ -253,13 +256,13 @@ msgstr "Keine Freunde :("
 msgid "Submit"
 msgstr "Senden"
 
-#: .\app\templates\app\group\leave.html:7
-msgid "Leave Group"
-msgstr "Gruppe verlassen"
-
 #: .\app\templates\app\group\leave.html:12
 msgid "Are you sure that you want to leave"
 msgstr "Sicher, dass du die Gruppe verlassen möchtest"
+
+#: .\app\templates\app\group\leave.html:17
+msgid "Leave"
+msgstr "Verlassen"
 
 #: .\app\templates\app\group\remove.html:7
 msgid "Remove Member"
@@ -274,7 +277,7 @@ msgstr "Sicher, dass du ein Mitglied entfernen möchtest"
 msgid "Rename Group"
 msgstr "Gruppe umbenennen"
 
-#: .\app\templates\app\groups.html:5 .\templates\nav.html:25
+#: .\app\templates\app\groups.html:5 .\templates\nav.html:24
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -283,7 +286,7 @@ msgid "Your Groups"
 msgstr "Deine Gruppen"
 
 #: .\app\templates\app\groups.html:20 .\app\templates\app\groups\delete.html:17
-#: .\app\templates\app\overview.html:81 .\app\templates\app\overview.html:96
+#: .\app\templates\app\overview.html:94 .\app\templates\app\overview.html:107
 #: .\app\templates\app\overview\delete.html:17
 #: .\venv\Lib\site-packages\django\forms\formsets.py:433
 msgid "Delete"
@@ -322,51 +325,59 @@ msgstr "Sicher, dass du ... entfernen möchtest"
 msgid "It can not be restored"
 msgstr "Sie kann nicht wiederhergestellt werden"
 
-#: .\app\templates\app\overview.html:5 .\templates\nav.html:21
+#: .\app\templates\app\home.html:5
+msgid "Welcome to"
+msgstr "Willkommen zu"
+
+#: .\app\templates\app\home.html:6
+msgid "The App to monitor your drinking habits. We have Charts!"
+msgstr "Die App zur Überwachung Deiner Trinkgewohnheiten."
+
+#: .\app\templates\app\home.html:9 .\templates\nav.html:86
+#: .\users\templates\users\__login.html:21
+#: .\users\templates\users\login.html:14
+msgid "Login"
+msgstr "Einloggen"
+
+#: .\app\templates\app\home.html:10 .\templates\nav.html:89
+#: .\users\templates\users\__register.html:7
+#: .\users\templates\users\register.html:5
+msgid "Register"
+msgstr "Registrieren"
+
+#: .\app\templates\app\overview.html:4 .\templates\nav.html:20
 msgid "Overview"
 msgstr "Übersicht"
 
-#: .\app\templates\app\overview.html:14
+#: .\app\templates\app\overview.html:13
 msgid "Total"
 msgstr "Gesamt"
 
-#: .\app\templates\app\overview.html:22
-msgid "This Week"
-msgstr "Diese Woche"
+#: .\app\templates\app\overview.html:29
+msgid "Total Average"
+msgstr "Gesamt"
 
-#: .\app\templates\app\overview.html:30
-msgid "This Month"
-msgstr "Diesen Monat"
+#: .\app\templates\app\overview.html:59
+msgid "Percentage Of Top 10"
+msgstr "Anteil der Top 10"
 
-#: .\app\templates\app\overview.html:38
-msgid "This Year"
-msgstr "Dieses Jahr"
+#: .\app\templates\app\overview.html:74
+msgid "Top 10 Drinks"
+msgstr "Top 10 Getränke"
 
-#: .\app\templates\app\overview.html:46
-msgid "Month"
-msgstr "Monat"
-
-#: .\app\templates\app\overview.html:47
-msgid "Year"
-msgstr "Jahr"
-
-#: .\app\templates\app\overview.html:48
-msgid "All"
-msgstr "Alles"
-
-#: .\app\templates\app\overview.html:68
+#: .\app\templates\app\overview.html:82
 msgid "Your Drinks"
 msgstr "Deine Getränke"
 
-#: .\app\templates\app\overview.html:78
+#: .\app\templates\app\overview.html:91
 msgid "Date"
 msgstr "Datum"
 
-#: .\app\templates\app\overview.html:79
+#: .\app\templates\app\overview.html:92
 msgid "Volume"
 msgstr "Volumen"
 
-#: .\app\templates\app\overview.html:80
+#: .\app\templates\app\overview.html:93
 msgid "Count"
 msgstr "Anzahl"
 
@@ -374,63 +385,23 @@ msgstr "Anzahl"
 msgid "Delete Drink"
 msgstr "Getränk entfernen"
 
-#: .\liquity\settings.py:129
+#: .\liquity\settings.py:134
 msgid "German"
 msgstr "Deutsch"
 
-#: .\liquity\settings.py:130
+#: .\liquity\settings.py:135
 msgid "English"
 msgstr "Englisch"
 
-#: .\liquity\urls.py:31
-msgid "login/"
-msgstr ""
-
-#: .\liquity\urls.py:32
-msgid "logout/"
-msgstr ""
-
-#: .\liquity\urls.py:34
-msgid "password/change/"
-msgstr ""
-
-#: .\liquity\urls.py:35
-msgid "register/"
-msgstr ""
-
-#: .\liquity\urls.py:36
-msgid "profile/<uuid:pk>/"
-msgstr ""
-
-#: .\liquity\urls.py:37
-msgid "friends/"
-msgstr ""
-
-#: .\liquity\urls.py:38
-msgid "search/"
-msgstr ""
-
-#: .\liquity\urls.py:41
-msgid "api/"
-msgstr ""
-
-#: .\liquity\urls.py:42
-msgid "actions/"
-msgstr ""
-
-#: .\templates\nav.html:17
-msgid "Drinks"
-msgstr "Getränke"
-
-#: .\templates\nav.html:42
+#: .\templates\nav.html:61
 msgid "Logged in as"
 msgstr "Eingeloggt als"
 
-#: .\templates\nav.html:68
+#: .\templates\nav.html:71
 msgid "Profile"
 msgstr "Profil"
 
-#: .\templates\nav.html:72
+#: .\templates\nav.html:75
 msgid "Friends"
 msgstr "Freunde"
 
@@ -438,13 +409,51 @@ msgstr "Freunde"
 msgid "Log Out"
 msgstr "Ausloggen"
 
-#: .\templates\nav.html:86 .\users\templates\users\login.html:21
-msgid "Login"
+#: .\users\templates\users\__login.html:7 .\users\templates\users\login.html:5
+msgid "Log In"
 msgstr "Einloggen"
 
-#: .\templates\nav.html:89 .\users\templates\users\register.html:7
-msgid "Register"
-msgstr "Registrieren"
+#: .\users\templates\users\__login.html:22
+#: .\users\templates\users\login.html:15
+msgid "Forgot Password"
+msgstr "Passwort vergessen"
+
+#: .\users\templates\users\__login.html:29
+#: .\users\templates\users\login.html:21
+msgid "Have no account"
+msgstr "Hast noch kein Konto"
+
+#: .\users\templates\users\__login.html:29
+#: .\users\templates\users\login.html:21
+msgid "Register Now"
+msgstr "Registriere dich jetzt"
+
+#: .\users\templates\users\__password_reset copy.html:7
+#: .\users\templates\users\password_reset.html:5
+#: .\users\templates\users\password_reset_confirm.html:5
+msgid "Reset Your Password"
+msgstr "Password zurücksetzen"
+
+#: .\users\templates\users\__password_reset copy.html:21
+#: .\users\templates\users\password_reset.html:14
+#: .\users\templates\users\password_reset_confirm.html:14
+msgid "Reset Password"
+msgstr "Password zurücksetzen"
+
+#: .\users\templates\users\__register.html:18
+#: .\users\templates\users\register.html:14
+msgid "Sign Up"
+msgstr "Anmelden"
+
+#: .\users\templates\users\__register.html:25
+#: .\users\templates\users\register.html:20
+msgid "Already have an account"
+msgstr "Du hast schon ein Konto"
+
+#: .\users\templates\users\__register.html:25
+#: .\users\templates\users\register.html:20
+msgid "Sign in"
+msgstr "Anmelden"
 
 #: .\users\templates\users\friends.html:12
 msgid "View Requests"
@@ -455,7 +464,7 @@ msgid "unread messages"
 msgstr "ungelesene Nachrichten"
 
 #: .\users\templates\users\friends.html:21
-#: .\users\templates\users\search.html:12
+#: .\users\templates\users\search.html:5 .\users\templates\users\search.html:12
 msgid "Search"
 msgstr "Suche"
 
@@ -499,21 +508,9 @@ msgstr "Ausgehend"
 msgid "Cancel"
 msgstr "Zurücknehmen"
 
-#: .\users\templates\users\login.html:22
-msgid "Forgot Password"
-msgstr "Passwort vergessen"
-
-#: .\users\templates\users\login.html:29
-msgid "Have no account"
-msgstr "Hast noch kein Konto"
-
-#: .\users\templates\users\login.html:29
-msgid "Register Now"
-msgstr "Registriere dich jetzt"
-
 #: .\users\templates\users\logout.html:6
 msgid "You have been logged out!"
-msgstr "Du wurdest ausgeloggt"
+msgstr "Du wurdest ausgeloggt!"
 
 #: .\users\templates\users\logout.html:9
 msgid "Log In Again"
@@ -521,12 +518,21 @@ msgstr "Wieder einloggen"
 
 #: .\users\templates\users\password_change.html:7
 msgid "Change Your Password"
-msgstr "Password ändern"
+msgstr "Passwort ändern"
 
 #: .\users\templates\users\password_change.html:21
 #: .\users\templates\users\profile\form.html:53
 msgid "Change Password"
 msgstr "Passwort ändern"
+
+#: .\users\templates\users\password_reset_complete.html:4
+#: .\users\templates\users\password_reset_complete.html:5
+msgid "Password has been reset!"
+msgstr "Passwort wurde zurückgesetzt!"
+
+#: .\users\templates\users\password_reset_done.html:3
+msgid "We have send you an Email with further insturcutions"
+msgstr "Wir haben die eine E-Mail mit weiteren Informationen geschickt"
 
 #: .\users\templates\users\profile\delete.html:6
 msgid "Do you really want to delete your Account"
@@ -587,18 +593,6 @@ msgstr "Sicher, dass du entfernen möchtest"
 msgid "Unfriend"
 msgstr "Freund entfernen"
 
-#: .\users\templates\users\register.html:18
-msgid "Sign Up"
-msgstr "Anmelden"
-
-#: .\users\templates\users\register.html:25
-msgid "Already have an account"
-msgstr "Du hast schon ein Konto"
-
-#: .\users\templates\users\register.html:25
-msgid "Sign in"
-msgstr "Anmelden"
-
 #: .\users\templates\users\search.html:17
 msgid "Profiles"
 msgstr "Profile"
@@ -609,11 +603,11 @@ msgstr "Ergebnisse"
 
 #: .\users\views.py:20
 msgid "Your account has been created! You are now able to log in!"
-msgstr "Dein Konto wurde erstellt. Du kannst dich nun anmelden"
+msgstr "Dein Konto wurde erstellt. Du kannst dich nun anmelden!"
 
 #: .\users\views.py:91
 msgid "Your password was successfully updated!"
-msgstr "Dein Konto wurde aktualisiert"
+msgstr "Dein Konto wurde aktualisiert!"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
 msgid "Messages"
@@ -1800,6 +1794,33 @@ msgstr ""
 #, python-format
 msgid "'%(value)s' (%(type_given)s) value must be of type %(type_wanted)s."
 msgstr ""
+
+#~ msgid "Beer"
+#~ msgstr "Bier"
+
+#~ msgid "Members"
+#~ msgstr "Mitglieder"
+
+#~ msgid "Creator"
+#~ msgstr "Gruppenadmin"
+
+#~ msgid "This Week"
+#~ msgstr "Diese Woche"
+
+#~ msgid "This Month"
+#~ msgstr "Diesen Monat"
+
+#~ msgid "This Year"
+#~ msgstr "Dieses Jahr"
+
+#~ msgid "Month"
+#~ msgstr "Monat"
+
+#~ msgid "Year"
+#~ msgstr "Jahr"
+
+#~ msgid "All"
+#~ msgstr "Alles"
 
 #~ msgid "You are not a member of this group"
 #~ msgstr "Du bist kein Mitglied dieser Gruppe"
