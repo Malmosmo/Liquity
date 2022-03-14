@@ -117,26 +117,26 @@ def overview(request):
 
     mean = get7DayAverage(drinkEntries, _today)
     mean_last = get7DayAverage(drinkEntries, _yesterday)
-    mean_diff = mean - mean_last
+    # mean_diff = mean - mean_last
 
-    if mean == 0:
-        performance = 0
-    else:
-        performance = mean_diff / mean
+    # if mean == 0:
+    #     performance = 0
+    # else:
+    #     performance = mean_diff / mean * 100
 
-    totalDays = (drinkEntries.latest('date').date - drinkEntries[0].date).days
-    if totalDays == 0:
-        total_average = 0
-    else:
-        total_average = total / totalDays
+    total_average = 0
+    if drinkEntries.count() > 0:
+        totalDays = (drinkEntries.latest('date').date - drinkEntries.first().date).days
+        if totalDays != 0:
+            total_average = total / totalDays
 
     context = {
         "drinkEntries": drinkEntries,
         "total": total,
         "today": today,
         "mean": mean,
-        "mean_growth": mean_diff,
-        "performance": performance,
+        "mean_growth": mean - mean_last,
+        # "performance": performance,
         "total_average": total_average
     }
 

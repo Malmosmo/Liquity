@@ -46,8 +46,9 @@ urlpatterns = i18n_patterns(
     path('', include('app.urls')),
     path('api/', include('api.urls')),
     path('actions/', include('actions.urls')),
-    # path('', include('django.contrib.auth.urls')),
 )
+
+urlpatterns += path('i18n/', include('django.conf.urls.i18n')),
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

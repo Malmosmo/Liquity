@@ -98,8 +98,8 @@ if (document.getElementById("charts") != null) {
                 },
                 stroke: {
                     // curve: 'straight'
-                    // curve: 'smooth',
-                    curve: 'stepline',
+                    curve: 'smooth',
+                    // curve: 'stepline',
                     width: 4,
                 },
                 dataLabels: {
@@ -317,6 +317,16 @@ if (document.getElementById("charts") != null) {
                 values.push(value)
                 keys.push(key)
             }
+
+            // Get Top 10 Share
+            let totalShare = values.reduce((partialSum, a) => partialSum + a, 0)
+            let total = parseInt(document.querySelector("#total").innerText.replace(",", "."))
+
+            percentage = 0
+            if (total != 0) {
+                percentage = (totalShare / total * 100).toFixed(0)
+            }
+            document.querySelector("#share").innerHTML = percentage + "<sup class='fs-6 fw-lighter'>%</sup>"
 
             var options = {
                 series: values,

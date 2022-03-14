@@ -18,7 +18,8 @@ $theme-light: (
 $theme-dark: (
     // background
     background: #222831,
-    surface: #393e46,
+    // surface: #393e46,
+    surface: lighten(#222831, 7),
     primary: #33658a,
     secondary: #f2cd5d,
     // color

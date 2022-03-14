@@ -10,10 +10,18 @@
 -   Better Charts **(DONE kind of)**
 -   Update languages
 -   remove commented code
--   change redirects on language change
+-   ~~change redirects on language change~~
 -   long loading time on drinks.html (with lazy loading)
 -   add drinks with bar code
 -   css to sass
+
+### 14.3.2022
+
+### Changed
+
+-   language selection
+-   language redirects
+-   minor changes / fixes
 
 ## 13.3.2022
 
