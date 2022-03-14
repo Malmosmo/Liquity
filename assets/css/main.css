@@ -31,7 +31,8 @@ General
 */
 
 .neo-shadow {
-    box-shadow: 15px 15px 10px rgba(70, 70, 70, 0.5), -15px -15px 10px rgba(255, 255, 255, 1);
+    box-shadow: 15px 15px 10px rgba(70, 70, 70, 0.5),
+        -15px -15px 10px rgba(255, 255, 255, 1);
 }
 
 .bg-highlight {
@@ -157,45 +158,12 @@ login.html / register.html / password_change.html
 
 /* 
 ===============================================================================
-Overview.html
-===============================================================================
-*/
-
-/* .overview-card {
-    height: 75px;
-    width: 200px;
-}
-
-.yellow-gradient {
-    background: rgb(255, 233, 168);
-    background: linear-gradient(225deg, rgba(255, 233, 168, 1) 10%, rgba(255, 193, 7, 1) 100%);
-}
-
-.red-gradient {
-    background: rgb(218, 144, 151);
-    background: linear-gradient(225deg, rgba(218, 144, 151, 1) 10%, rgba(220, 53, 69, 1) 100%);
-}
-
-.green-gradient {
-    background: rgb(123, 237, 184);
-    background: linear-gradient(225deg, rgba(123, 237, 184, 1) 10%, rgba(25, 135, 84, 1) 100%);
-}
-
-.blue-gradient {
-    background: rgb(165, 216, 255);
-    background: linear-gradient(225deg, rgba(165, 216, 255, 1) 10%, rgba(0, 143, 251, 1) 100%);
-} */
-
-/* 
-===============================================================================
 group.html
 ===============================================================================
 */
 
 #group-edit-toggle {
     float: right;
-
-    color: white;
 }
 
 #group-edit-toggle > i {
@@ -213,23 +181,6 @@ beers.html
     gap: 1rem;
     grid-template-columns: repeat(auto-fill, min(42.5vw, 200px));
 }
-
-/* 
-===============================================================================
-login.html / register.html
-===============================================================================
-*/
-/* 
-.lq-card {
-    width: 100%;
-}
-
-.lq-card-text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
-} */
 
 /* 
 ===============================================================================
