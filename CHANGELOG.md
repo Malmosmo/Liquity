@@ -8,7 +8,7 @@
 -   email-conformation **(not nessaccary)**
 -   Drink Edit
 -   Better Charts **(DONE kind of)**
--   Update languages
+-   ~~Update languages~~
 -   remove commented code
 -   ~~change redirects on language change~~
 -   long loading time on drinks.html (with lazy loading)

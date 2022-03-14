@@ -31,7 +31,7 @@
                     {% get_available_languages as LANGUAGES %}
                     {% get_language_info_list for LANGUAGES as languages %}
 
-                    <a class="nav-link d-flex align-items-center" href="#" role="button" id="selected-language" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link d-flex align-items-center ms-2" href="#" role="button" id="selected-language" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{% static 'images/svg/'|add:LANGUAGE_CODE|add:'.svg' %}" width="20">
                     </a>
 
@@ -49,7 +49,7 @@
 
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link ms-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <!-- Image here -->
                         <img class="rounded-circle nav-image image" src="{{ user.profile.image.url }}" alt="" />
                         {% include "notification.html" %}
