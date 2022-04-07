@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-14 14:36+0100\n"
-"PO-Revision-Date: 2022-03-14 14:37+0100\n"
+"POT-Creation-Date: 2022-04-07 15:47+0200\n"
+"PO-Revision-Date: 2022-04-07 15:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -39,7 +39,7 @@ msgid "You are not the creator of this group"
 msgstr "Du hast diese Gruppe nicht erstellt"
 
 #: .\actions\views.py:119 .\actions\views.py:170 .\actions\views.py:204
-#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:70
+#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:73
 msgid "Group does not exist"
 msgstr "Gruppe existiert nicht"
 
@@ -83,7 +83,7 @@ msgstr "Keinen Benutzer zum Löschen angegeben"
 msgid "Successfully left"
 msgstr "Gruppe gelöscht"
 
-#: .\actions\views.py:220 .\app\views.py:65
+#: .\actions\views.py:220 .\app\views.py:68
 msgid "You are not in this group"
 msgstr "Du bist kein Mitglied dieser Gruppe"
 
@@ -175,13 +175,13 @@ msgstr "Neuer Gruppenname"
 msgid "Volume (in Liters)"
 msgstr "Volumen (in Litern)"
 
-#: .\app\templates\app\drinks.html:7
-#: .\app\templates\app\pagination__drinks.html:7 .\templates\nav.html:16
+#: .\app\templates\app\__pagination__drinks.html:7
+#: .\app\templates\app\drinks.html:7 .\templates\nav.html:16
 msgid "Drinks"
 msgstr "Getränke"
 
+#: .\app\templates\app\__pagination__drinks.html:13
 #: .\app\templates\app\drinks.html:13
-#: .\app\templates\app\pagination__drinks.html:13
 msgid "New"
 msgstr "Neu"
 
@@ -213,7 +213,8 @@ msgstr "Getränk erstellen"
 msgid "Close"
 msgstr "Schließen"
 
-#: .\app\templates\app\drinks\form.html:16 .\app\templates\app\overview.html:90
+#: .\app\templates\app\drinks\form.html:16
+#: .\app\templates\app\overview.html:131
 msgid "Drink"
 msgstr "Getränk"
 
@@ -240,7 +241,7 @@ msgid "Add Member"
 msgstr "Mitglied hinzufügen"
 
 #: .\app\templates\app\group.html:53 .\app\templates\app\overview.html:42
-#: .\app\templates\app\overview.html:69
+#: .\app\templates\app\overview.html:82
 msgid "7 Day Average"
 msgstr "7 Tage Durchschnitt"
 
@@ -286,7 +287,7 @@ msgid "Your Groups"
 msgstr "Deine Gruppen"
 
 #: .\app\templates\app\groups.html:20 .\app\templates\app\groups\delete.html:17
-#: .\app\templates\app\overview.html:94 .\app\templates\app\overview.html:107
+#: .\app\templates\app\overview.html:135 .\app\templates\app\overview.html:148
 #: .\app\templates\app\overview\delete.html:17
 #: .\venv\Lib\site-packages\django\forms\formsets.py:433
 msgid "Delete"
@@ -361,23 +362,39 @@ msgstr "Gesamt"
 msgid "Percentage Of Top 10"
 msgstr "Anteil der Top 10"
 
-#: .\app\templates\app\overview.html:74
+#: .\app\templates\app\overview.html:71
+msgid "This Month"
+msgstr "Diesen Monat"
+
+#: .\app\templates\app\overview.html:87
 msgid "Top 10 Drinks"
 msgstr "Top 10 Getränke"
 
-#: .\app\templates\app\overview.html:82
+#: .\app\templates\app\overview.html:97
+msgid "Drinks by Type"
+msgstr "Getränke nach Typ"
+
+#: .\app\templates\app\overview.html:107
+msgid "Name"
+msgstr "Name"
+
+#: .\app\templates\app\overview.html:108
+msgid "Amount"
+msgstr "Anzahl"
+
+#: .\app\templates\app\overview.html:123
 msgid "Your Drinks"
 msgstr "Deine Getränke"
 
-#: .\app\templates\app\overview.html:91
+#: .\app\templates\app\overview.html:132
 msgid "Date"
 msgstr "Datum"
 
-#: .\app\templates\app\overview.html:92
+#: .\app\templates\app\overview.html:133
 msgid "Volume"
 msgstr "Volumen"
 
-#: .\app\templates\app\overview.html:93
+#: .\app\templates\app\overview.html:134
 msgid "Count"
 msgstr "Anzahl"
 
@@ -1806,9 +1823,6 @@ msgstr ""
 
 #~ msgid "This Week"
 #~ msgstr "Diese Woche"
-
-#~ msgid "This Month"
-#~ msgstr "Diesen Monat"
 
 #~ msgid "This Year"
 #~ msgstr "Dieses Jahr"

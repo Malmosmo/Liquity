@@ -94,7 +94,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="drinkType">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTypeList" aria-expanded="false" aria-controls="collapseTypeList">
-                            Drinks by Type
+                            {% trans "Drinks by Type" %}
                         </button>
                     </h2>
                     <div id="collapseTypeList" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#drinkTypeList">
@@ -104,8 +104,8 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Amount</th>
+                                        <th scope="col">{% trans "Name" %}</th>
+                                        <th scope="col">{% trans "Amount" %}</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tbody"></tbody>
