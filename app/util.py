@@ -2,13 +2,7 @@ import datetime
 
 
 def filterDrinks(entries, fromDate, toDate):
-    drinkList = []
-
-    for entry in entries:
-        if fromDate <= entry.date.date() <= toDate:
-            drinkList.append(entry)
-
-    return drinkList
+    return entries.filter(date__range=[fromDate, toDate])
 
 
 def getTotal(drinks):
@@ -20,20 +14,17 @@ def getTotal(drinks):
     return total
 
 
-def getAverage(drinks):
+def get7DayAverage(drinks, end=datetime.date.today()):
+    start = end - datetime.timedelta(days=7)
+
+    drinks = filterDrinks(drinks, start, end)
+
     mean = 0
 
     for drink in drinks:
         mean += drink.count * drink.volume
 
     return mean / 7
-
-
-def get7DayAverage(drinks, end=datetime.date.today()):
-    start = end - datetime.timedelta(days=7)
-
-    drinks = filterDrinks(drinks, start, end)
-    return getAverage(drinks)
 
 
 def getToday(drinks, today):
@@ -43,3 +34,9 @@ def getToday(drinks, today):
             result += entry.count * entry.volume
 
     return result
+
+
+def getMonthTotal(drinks, today):
+    month_start = datetime.date(today.year, today.month, 1)
+
+    return getTotal(filterDrinks(drinks, month_start, today))

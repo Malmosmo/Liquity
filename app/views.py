@@ -12,10 +12,13 @@ from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm,
                        GroupRenameForm)
 from app.models import Drink, DrinkEntry, Group
 
-from .util import getTotal, get7DayAverage, getToday
+from .util import getTotal, get7DayAverage, getToday, getMonthTotal
 
 
 def homepage(request):
+    if request.user.is_authenticated:
+        return redirect('drinks')
+
     return render(request, 'app/home.html')
 
 
@@ -117,12 +120,8 @@ def overview(request):
 
     mean = get7DayAverage(drinkEntries, _today)
     mean_last = get7DayAverage(drinkEntries, _yesterday)
-    # mean_diff = mean - mean_last
 
-    # if mean == 0:
-    #     performance = 0
-    # else:
-    #     performance = mean_diff / mean * 100
+    month = getMonthTotal(drinkEntries, _today)
 
     total_average = 0
     if drinkEntries.count() > 0:
@@ -136,7 +135,7 @@ def overview(request):
         "today": today,
         "mean": mean,
         "mean_growth": mean - mean_last,
-        # "performance": performance,
+        "month": month,
         "total_average": total_average
     }
 

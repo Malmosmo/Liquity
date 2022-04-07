@@ -1,6 +1,6 @@
 if (document.getElementById("charts") != null) {
     let url = document.getElementById("charts").getAttribute("url")
-
+    console.log(url)
     fetch(url).then(response => {
         return response.json()
     }).then(json => {
@@ -206,90 +206,6 @@ if (document.getElementById("charts") != null) {
         }
 
         // Chart 2
-        // {
-        //     let types = {}
-        //     let series = []
-
-        //     for (const entry of json.data) {
-        //         if (entry.beer in types) {
-        //             types[entry.beer].push({
-        //                 x: new Date(entry.date),
-        //                 y: entry.count
-        //             })
-        //         } else {
-        //             types[entry.beer] = [{
-        //                 x: new Date(entry.date),
-        //                 y: entry.count
-        //             }]
-        //         }
-        //     }
-
-        //     for (const [key, value] of Object.entries(types)) {
-        //         series.push({
-        //             name: key,
-        //             data: value
-        //         })
-        //     }
-
-        //     var options = {
-        //         series: series,
-        //         chart: {
-        //             fontFamily: 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-        //             type: 'bar',
-        //             height: 350,
-        //             zoom: {
-        //                 autoScaleYaxis: true
-        //             }
-        //         },
-        //         title: {
-        //             text: "Drinks",
-        //             align: "left",
-        //         },
-        //         subtitle: {
-        //             text: "by Type",
-        //             align: "left",
-        //         },
-        //         plotOptions: {
-        //             bar: {
-        //                 horizontal: false,
-        //                 columnWidth: '55%',
-        //                 endingShape: 'rounded',
-        //             },
-        //         },
-        //         dataLabels: {
-        //             enabled: false
-        //         },
-        //         // yaxis: {
-        //         //     min: 0,
-        //         //     // max: max + 1,
-        //         //     // tickAmount: max,
-        //         // },
-        //         xaxis: {
-        //             type: 'datetime',
-        //             tickAmount: 10,
-        //         },
-        //         theme: {
-        //             mode: 'light',
-        //             palette: 'palette4',
-        //             monochrome: {
-        //                 enabled: false,
-        //                 color: '#255aee',
-        //                 shadeTo: 'light',
-        //                 shadeIntensity: 0.65
-        //             },
-        //         },
-        //         tooltip: {
-        //             x: {
-        //                 format: 'dd.MM.yy - HH:mm'
-        //             },
-        //         }
-        //     };
-
-        //     var chart = new ApexCharts(document.querySelector("#type-chart"), options);
-        //     chart.render();
-        // }
-
-        // Chart 3
         {
             let types = {}
 
@@ -318,15 +234,34 @@ if (document.getElementById("charts") != null) {
                 keys.push(key)
             }
 
-            // Get Top 10 Share
-            let totalShare = values.reduce((partialSum, a) => partialSum + a, 0)
-            let total = parseInt(document.querySelector("#total").innerText.replace(",", "."))
+            /**
+             * 
+             * 
+             * 
+             */
 
-            percentage = 0
-            if (total != 0) {
-                percentage = (totalShare / total * 100).toFixed(0)
+            let tbody = document.querySelector("#tbody")
+            let i = 1
+            for (const element of array) {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${element[0]}</td>
+                        <td>${element[1].toFixed(2)}<sup>l</sup></td>
+                    </tr>
+                `
+                i++;
             }
-            document.querySelector("#share").innerHTML = percentage + "<sup class='fs-6 fw-lighter'>%</sup>"
+
+            // Get Top 10 Share
+            // let totalShare = values.reduce((partialSum, a) => partialSum + a, 0)
+            // let total = parseInt(document.querySelector("#total").innerText.replace(",", "."))
+
+            // percentage = 0
+            // if (total != 0) {
+            //     percentage = (totalShare / total * 100).toFixed(0)
+            // }
+            // document.querySelector("#share").innerHTML = percentage + "<sup class='fs-6 fw-lighter'>%</sup>"
 
             var options = {
                 series: values,
@@ -435,6 +370,33 @@ if (document.getElementById("charts") != null) {
             var chart = new ApexCharts(document.querySelector("#donut-chart"), options);
             chart.render();
         }
+
+        // List
+        let list_dict = sortByType(json.data)
+        let list_array = Object.keys(list_dict).map(function (key) {
+            return [key, list_dict[key]];
+        })
+        list_array.sort(function (first, second) {
+            return second[1] - first[1];
+        });
+
+        console.log(list_array)
+
     })
 
+}
+
+
+function sortByType(data) {
+    let dict = {}
+
+    for (const entry of data) {
+        if (entry.beer in dict) {
+            dict[entry.beer] += entry.count * entry.volume
+        } else {
+            dict[entry.beer] = entry.count * entry.volume
+        }
+    }
+
+    return dict
 }
