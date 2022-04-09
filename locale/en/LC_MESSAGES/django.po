@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-07 15:47+0200\n"
+"POT-Creation-Date: 2022-04-09 11:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,160 +18,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\actions\views.py:30 .\actions\views.py:61
+#: .\actions\views.py:32 .\actions\views.py:63
 msgid "Successfully added Drink"
 msgstr ""
 
-#: .\actions\views.py:33
+#: .\actions\views.py:35
 msgid "Drink already exists with that name"
 msgstr ""
 
-#: .\actions\views.py:63
+#: .\actions\views.py:65 .\app\views.py:130
 msgid "Drink does not exist"
 msgstr ""
 
-#: .\actions\views.py:113
+#: .\actions\views.py:96
+msgid "Drink successfully deleted"
+msgstr ""
+
+#: .\actions\views.py:122
 msgid "Group successfully deleted"
 msgstr ""
 
-#: .\actions\views.py:116 .\actions\views.py:201
+#: .\actions\views.py:125 .\actions\views.py:210
 msgid "You are not the creator of this group"
 msgstr ""
 
-#: .\actions\views.py:119 .\actions\views.py:170 .\actions\views.py:204
-#: .\actions\views.py:225 .\actions\views.py:267 .\app\views.py:73
+#: .\actions\views.py:128 .\actions\views.py:179 .\actions\views.py:213
+#: .\actions\views.py:234 .\actions\views.py:276 .\app\views.py:73
 msgid "Group does not exist"
 msgstr ""
 
-#: .\actions\views.py:133
+#: .\actions\views.py:142
 msgid "You already have created a group with this Name"
 msgstr ""
 
-#: .\actions\views.py:137
+#: .\actions\views.py:146
 msgid "Group successfully created"
 msgstr ""
 
-#: .\actions\views.py:140 .\actions\views.py:167 .\actions\views.py:309
+#: .\actions\views.py:149 .\actions\views.py:176 .\actions\views.py:318
 msgid "Form invalid"
 msgstr ""
 
-#: .\actions\views.py:161
+#: .\actions\views.py:170
 msgid "Group successfully renamed"
 msgstr ""
 
-#: .\actions\views.py:164
+#: .\actions\views.py:173
 msgid "Cannot rename group. You are not the creator of this Group"
 msgstr ""
 
-#: .\actions\views.py:189
+#: .\actions\views.py:198
 msgid "Successfully removed User"
 msgstr ""
 
-#: .\actions\views.py:192
+#: .\actions\views.py:201
 msgid "User not in Group"
 msgstr ""
 
-#: .\actions\views.py:195
+#: .\actions\views.py:204
 msgid "Cannot remove User. User does not exist"
 msgstr ""
 
-#: .\actions\views.py:198
+#: .\actions\views.py:207
 msgid "No user provided to remove"
 msgstr ""
 
-#: .\actions\views.py:217
+#: .\actions\views.py:226
 msgid "Successfully left"
 msgstr ""
 
-#: .\actions\views.py:220 .\app\views.py:68
+#: .\actions\views.py:229 .\app\views.py:68
 msgid "You are not in this group"
 msgstr ""
 
-#: .\actions\views.py:253
+#: .\actions\views.py:262
 msgid "Could not add some users"
 msgstr ""
 
-#: .\actions\views.py:256
+#: .\actions\views.py:265
 msgid "Added all users"
 msgstr ""
 
-#: .\actions\views.py:262
+#: .\actions\views.py:271
 msgid "You cannot add users"
 msgstr ""
 
-#: .\actions\views.py:284
+#: .\actions\views.py:293
 msgid "Your account has been deleted"
 msgstr ""
 
-#: .\actions\views.py:289
+#: .\actions\views.py:298
 msgid "You cannot delete someones other account"
 msgstr ""
 
-#: .\actions\views.py:292 .\actions\views.py:329 .\users\views.py:34
+#: .\actions\views.py:301 .\actions\views.py:338 .\users\views.py:34
 msgid "User does not exist"
 msgstr ""
 
-#: .\actions\views.py:306
+#: .\actions\views.py:315
 msgid "Your account has been updated"
 msgstr ""
 
-#: .\actions\views.py:323
+#: .\actions\views.py:332
 msgid "Friend successfully removed"
 msgstr ""
 
-#: .\actions\views.py:326
+#: .\actions\views.py:335
 msgid "You are not friends"
 msgstr ""
 
-#: .\actions\views.py:340
+#: .\actions\views.py:349
 msgid "You have already send a friend request"
 msgstr ""
 
-#: .\actions\views.py:343
+#: .\actions\views.py:352
 msgid "The User already send you a request"
 msgstr ""
 
-#: .\actions\views.py:348
+#: .\actions\views.py:357
 msgid "successfully send friend request"
 msgstr ""
 
-#: .\actions\views.py:351
+#: .\actions\views.py:360
 msgid "User could not be found"
 msgstr ""
 
-#: .\actions\views.py:367
+#: .\actions\views.py:376
 msgid "Accepted Friend Request"
 msgstr ""
 
-#: .\actions\views.py:370 .\actions\views.py:389
+#: .\actions\views.py:379 .\actions\views.py:398
 msgid "This friend request is not for you"
 msgstr ""
 
-#: .\actions\views.py:373 .\actions\views.py:392 .\actions\views.py:411
+#: .\actions\views.py:382 .\actions\views.py:401 .\actions\views.py:420
 msgid "No friend request found"
 msgstr ""
 
-#: .\actions\views.py:386
+#: .\actions\views.py:395
 msgid "Declined Friend Request"
 msgstr ""
 
-#: .\actions\views.py:405
+#: .\actions\views.py:414
 msgid "Canceled Friend Request"
 msgstr ""
 
-#: .\actions\views.py:408
+#: .\actions\views.py:417
 msgid "This friend request is not from you"
 msgstr ""
 
-#: .\app\forms.py:8
+#: .\app\forms.py:9
 msgid "Group Name"
 msgstr ""
 
-#: .\app\forms.py:12
+#: .\app\forms.py:13
 msgid "New Group Name"
 msgstr ""
 
-#: .\app\forms.py:25
+#: .\app\forms.py:32
 msgid "Volume (in Liters)"
 msgstr ""
 
@@ -190,7 +194,7 @@ msgid "No Drinks for you :(... maybe add one?"
 msgstr ""
 
 #: .\app\templates\app\drinks\add.html:9
-#: .\app\templates\app\drinks\form.html:53
+#: .\app\templates\app\drinks\form.html:58
 msgid "Add Drink"
 msgstr ""
 
@@ -199,7 +203,8 @@ msgid "Create New Drink"
 msgstr ""
 
 #: .\app\templates\app\drinks\create.html:21
-#: .\app\templates\app\drinks\form.html:52
+#: .\app\templates\app\drinks\edit.html:62
+#: .\app\templates\app\drinks\form.html:57
 #: .\app\templates\app\group\add.html:47
 #: .\app\templates\app\group\leave.html:16
 #: .\app\templates\app\group\remove.html:17
@@ -211,6 +216,32 @@ msgstr ""
 #: .\users\templates\users\profile\delete.html:14
 #: .\users\templates\users\profile\modals\remove.html:14
 msgid "Close"
+msgstr ""
+
+#: .\app\templates\app\drinks\edit.html:2
+msgid "Edit Drink"
+msgstr ""
+
+#: .\app\templates\app\drinks\edit.html:38
+#: .\app\templates\app\drinks\edit.html:63 .\app\templates\app\groups.html:20
+#: .\app\templates\app\groups\delete.html:17
+#: .\app\templates\app\overview.html:135 .\app\templates\app\overview.html:148
+#: .\app\templates\app\overview\delete.html:17
+#: .\venv\Lib\site-packages\django\forms\formsets.py:433
+msgid "Delete"
+msgstr ""
+
+#: .\app\templates\app\drinks\edit.html:55
+#: .\app\templates\app\overview\delete.html:7
+msgid "Delete Drink"
+msgstr ""
+
+#: .\app\templates\app\drinks\edit.html:59
+msgid "Are you sure you want to delete the following?"
+msgstr ""
+
+#: .\app\templates\app\drinks\edit.html:59
+msgid "All entries with this drink will be lost! (including other users)"
 msgstr ""
 
 #: .\app\templates\app\drinks\form.html:16
@@ -284,13 +315,6 @@ msgstr ""
 
 #: .\app\templates\app\groups.html:12
 msgid "Your Groups"
-msgstr ""
-
-#: .\app\templates\app\groups.html:20 .\app\templates\app\groups\delete.html:17
-#: .\app\templates\app\overview.html:135 .\app\templates\app\overview.html:148
-#: .\app\templates\app\overview\delete.html:17
-#: .\venv\Lib\site-packages\django\forms\formsets.py:433
-msgid "Delete"
 msgstr ""
 
 #: .\app\templates\app\groups.html:29
@@ -398,8 +422,8 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-#: .\app\templates\app\overview\delete.html:7
-msgid "Delete Drink"
+#: .\app\views.py:127
+msgid "You cannot edit this drink"
 msgstr ""
 
 #: .\liquity\settings.py:134

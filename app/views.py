@@ -9,7 +9,7 @@ from users.models import FriendList
 # from django.core.paginator import Paginator
 
 from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm,
-                       GroupRenameForm)
+                       GroupRenameForm, DrinkEditForm)
 from app.models import Drink, DrinkEntry, Group
 
 from .util import getTotal, get7DayAverage, getToday, getMonthTotal
@@ -106,6 +106,30 @@ def drinks(request):
     }
 
     return render(request, 'app/drinks.html', context)
+
+
+@login_required
+def drink_edit(request, pk):
+    drink = Drink.objects.filter(pk=pk).first()
+
+    if drink:
+        if drink.creator == request.user:
+            form = DrinkEditForm(instance=drink)
+
+            context = {
+                "form": form,
+                "drink": drink
+            }
+
+            return render(request, 'app/drinks/edit.html', context)
+
+        else:
+            messages.info(request, _("You cannot edit this drink"))
+
+    else:
+        messages.info(request, _("Drink does not exist"))
+
+    return redirect('drinks')
 
 
 @login_required

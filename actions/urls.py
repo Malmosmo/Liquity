@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from .views import (drink_add, drink_create, friend_add,
+from .views import (drink_add, drink_create, drink_delete, drink_edit, friend_add,
                     friend_remove, friend_rq_accept, friend_rq_cancel,
                     friend_rq_decline, group_leave, group_rename,
                     group_user_add, group_user_remove, groups_create,
@@ -12,7 +12,9 @@ from .views import (drink_add, drink_create, friend_add,
 urlpatterns = [
     path('drink/create', drink_create, name="action-drink-create"),
     path('drink/add', drink_add, name="action-drink-add"),
-    # drink delete
+    path('drink/edit/<uuid:pk>', drink_edit, name="action-drink-edit"),
+    path('drink/delete/<uuid:pk>', drink_delete, name="action-drink-delete"),
+
     path('overview/delete/<uuid:pk>', overview_delete, name="action-overview-delete"),
 
     path('groups/delete/<uuid:pk>', groups_delete, name="action-groups-delete"),

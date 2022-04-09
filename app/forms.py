@@ -1,3 +1,4 @@
+from pyexpat import model
 from django import forms
 
 from .models import Drink
@@ -16,6 +17,12 @@ class DrinkCreateForm(forms.ModelForm):
     class Meta:
         model = Drink
         fields = ['name', 'image']
+
+
+class DrinkEditForm(forms.ModelForm):
+    class Meta:
+        model = Drink
+        fields = ["name", "image"]
 
 
 class DrinkEntryForm(forms.Form):

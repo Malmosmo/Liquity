@@ -1,6 +1,8 @@
 import datetime
 
-from app.forms import (DrinkCreateForm, DrinkEntryForm, GroupCreateForm,
+from django.http import HttpResponse
+
+from app.forms import (DrinkCreateForm, DrinkEditForm, DrinkEntryForm, GroupCreateForm,
                        GroupRenameForm)
 from app.models import Drink, DrinkEntry, Group
 
@@ -68,25 +70,32 @@ def drink_add(request):
     return redirect('drinks')
 
 
-# @login_required
-# def drink_delete(request):
-#     # TODO: function does not work as intendet
-#     delete_pk = request.GET.get('delete')
+@login_required
+def drink_edit(request, pk):
+    drink = Drink.objects.filter(pk=pk).first()
 
-#     if delete_pk:
-#         drink = Drink.objects.filter(
-#             pk=delete_pk, creator=request.user).first()
+    if drink:
+        if drink.creator == request.user:
+            if request.method == "POST":
+                form = DrinkEditForm(request.POST, request.FILES, instance=drink)
 
-#         if drink:
-#             drink.delete()
-#             # TODO: Translate
-#             messages.success(request, "Beer successfully deleted")
+                if form.is_valid():
+                    form.save()
 
-#         else:
-#             # TODO: Translate
-#             messages.info(request, "Beer does not exist or was not created by yourself")
+    return redirect('drinks')
 
-#     return redirect('drinks')
+
+@login_required
+def drink_delete(request, pk):
+    drink = Drink.objects.filter(pk=pk).first()
+
+    if drink:
+        if drink.creator == request.user:
+            drink.delete()
+
+            messages.success(request, _("Drink successfully deleted"))
+
+    return redirect('drinks')
 
 
 ##########################################################

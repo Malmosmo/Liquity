@@ -6,8 +6,6 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 
-# from users.models import User
-
 
 def upload_to(instance, filename):
     return f"profiles/{instance.creator.profile.id}/drinks/{filename}"
@@ -37,7 +35,7 @@ class Drink(models.Model):
         return f"{self.name}"
 
     def delete(self, *args, **kwargs) -> None:
-        if not settings.MEDIA_DEFAULT_DRINK in self.image.path:
+        if not str(settings.DEFAULT_DRINK_IMAGE) in self.image.path:
             os.remove(self.image.path)
 
         super().delete(*args, **kwargs)

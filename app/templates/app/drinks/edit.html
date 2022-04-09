@@ -1,0 +1,70 @@
+{% extends 'main.html' %} {% block content %} {% load widget_tweaks %} {% load i18n %}
+<div class="container d-flex justify-content-center justify-content-md-start fw-lighter fs-2 text-center text-md-start my-3">{% trans "Edit Drink" %}</div>
+
+<div class="content flex-grow-1">
+    <div class="my-4" style="max-width: 500px; margin: 0 auto;">
+        <div class="card p-5 border-0 shadow-sm">
+            <form action="{% url 'action-drink-edit' pk=drink.pk %}" method="POST" enctype="multipart/form-data" class="d-flex flex-column justify-content-center">
+
+                {% csrf_token %}
+
+                <img height="200" width="200" class="image m-3 mx-auto" src="{{ drink.image.url }}" alt="Drink" />
+
+                <div class="d-flex flex-column">
+                    <div class="form-group mb-3">
+                        {{ form.name.errors }}
+                        <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}</label>
+                        {{ form.name|add_class:'form-control' }}
+                    </div>
+
+                    <div class="form-group mb-3">
+                        {{ form.image.errors }}
+                        <label for="{{ form.image.id_for_label }}" class="form-label">{{ form.image.label }}</label>
+                        <input type="file" name="image" accept="image/*" class="form-control" id="id_image">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <did class="col-12 col-md-6">
+
+                    </did>
+                    <did class="col-12 col-md-6">
+
+                    </did>
+                </div>
+
+                <div class="d-flex justify-content-around">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#drinkDelete">
+                        {% trans "Delete" %}
+                    </button>
+                    <input class="btn btn-success" type="submit" name="drinkEdit" value="Edit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="drinkDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{% trans "Delete Drink" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% trans "Are you sure you want to delete the following?" %} <b>{{ drink.name }}</b>. {% trans "All entries with this drink will be lost! (including other users)" %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                <a href="{% url 'action-drink-delete' pk=drink.pk %}" class="btn btn-danger">{% trans "Delete" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

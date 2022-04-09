@@ -49,6 +49,11 @@
     </div>
 
     <div class="modal-footer">
+
+        {% if drink.creator == user %}
+        <a class="btn btn-secondary me-auto" href="{% url 'drink-edit' pk=drink.id %}"><i class="bi bi-pencil-square"></i></a>
+        {% endif %}
+
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
         <button class="btn btn-outline-success" type="submit">{% trans "Add Drink" %}</button>
     </div>
